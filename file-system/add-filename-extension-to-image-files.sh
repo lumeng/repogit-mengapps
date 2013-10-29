@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
+## Meng Lu <lumeng.dev@gmail.com>
+## 2013-10-28
+##
+## Repository: https://github.com/lumeng/repogit-mengapps/blob/master/file-system/add-filename-extension-to-image-files.sh
+##
 ## Summary: identify image file type and add filename extension appropriately when applicable
+##
 ## Example:
 ## $ add-filename-extension-to-image-files.sh -d ~/temp
 ##
