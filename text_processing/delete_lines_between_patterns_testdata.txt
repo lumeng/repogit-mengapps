@@ -1,0 +1,23 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+int main(int argc,
+         char **argv)
+{
+    init_scanner();
+    parse();
+    if (argc != 1)
+    {
+        fprintf(stderr, "tc: No args expected.\n");
+        exit(1);
+    }
+    if (nerr == 0)
+        gencode();
+    else
+        fprintf(stderr, "No code generated.\n");
+<<<<<<< driver.c
+    exit(nerr == 0 ? EXIT_SUCCESS : EXIT_FAILURE);
+=======
+    exit(!!nerr);
+>>>>>>> 1.6
+}
