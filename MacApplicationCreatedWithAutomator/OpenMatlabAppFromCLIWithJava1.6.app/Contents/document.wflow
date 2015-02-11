@@ -61,7 +61,7 @@
 					<key>COMMAND_STRING</key>
 					<string>export JAVA_HOME=$(/usr/libexec/java_home -v 1.6*)
 
-open -a "/Applications/MATLAB_R2013a.app"
+open -a "/Applications/MATLAB_R2014a.app"
 </string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
@@ -172,8 +172,6 @@ open -a "/Applications/MATLAB_R2013a.app"
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
