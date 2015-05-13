@@ -8,12 +8,12 @@ Starting Mathematica.app from CLI using
 
     open -a /Applications/Mathematica.app
 
-will ensure that the environment variables such as JAVA_HOME set in
-.bashrc is loaded before Mathematica.app is started. 
+will ensure that the environment variables such as `JAVA_HOME` set in
+`$HOME/.bashrc` is loaded before Mathematica.app is started. 
 
 ### Verify version of Java and related environment variables
 
-One can verify the version of Java and environment variables at UNIX command-line and in Mathematica are consistent.
+One can verify the version of Java and environment variables at Unix command-line and in Mathematica are consistent.
 
 #### In Mathematica
 

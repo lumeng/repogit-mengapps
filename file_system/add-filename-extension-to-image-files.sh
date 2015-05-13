@@ -31,6 +31,26 @@
 ## quit the script if whenever a failure is occuring without attempting any following commands
 set -e
 
+## Logging function
+
+## Set mengLOGGING_LEVEL to different value to print different set of messages.
+## mengLOGGING_LEVEL=1: print no messages
+## mengLOGGING_LEVEL=2: print INFO messages
+## mengLOGGING_LEVEL=3: print INFO, DEBUG messages
+mengLOGGING_LEVEL=1
+
+function mengLog () {
+	case "$1" in
+		"INFO") mengLEVEL=2;;
+		"DEBUG") mengLEVEL=3;;
+		*) mengLEVEL=1;;
+    esac
+    if [[ "$mengLOGGING_LEVEL" -ge "$mengLEVEL" ]]; then
+        echo "[$1] $(date '+%H:%m:%S'): $2" 
+    fi
+}
+
+
 ## quit if imagemagick or the image files do not exist
 
 while getopts d:d opt; do
@@ -69,7 +89,7 @@ fi
 
 
 if hash identify 2>/dev/null; then
-	#echo "[DEBUG] identify exists! good!"
+	mengLog "DEBUG" "identify exists! good!"
 	IMAGEMAGICK_IDENTIFY_BIN=identify
 else
 	echo >&2 "[ERROR] $IMAGEMAGICK_IDENTIFY_BIN; the utility 'identify' does not exist! On Mac OS X, install package 'imagemagick' by 'brew install imagemagick'!"
@@ -78,22 +98,22 @@ fi
 
 
 ## Add file name extensions
-echo "[INFO] Adding file name extensions to files in directory IMAGE_FILE_DIR=$IMAGE_FILE_DIR ..."
+mengLog "INFO" "Adding file name extensions to files in directory IMAGE_FILE_DIR=$IMAGE_FILE_DIR ..."
 
 for file in $FILES
 do
 	filename=$(basename "$file")
     extension="${filename##*.}"
-	#echo "[DEBUG] extension: $extension"
+	mengLog "DEBUG" "extension: $extension"
     newextension=`$IMAGEMAGICK_IDENTIFY_BIN $file 2>/dev/null| cut -d ' '  -f 2 | tr '[:upper:]' '[:lower:]'`
-	#echo "[DEBUG] newextension: $newextension"
+	mengLog "DEBUG" "newextension: $newextension"
 	if [ ! "$extension" = "$newextension" ]; then
 		rsync -qrthp $file "$file.$newextension" && rm $file && echo -e "[INFO] renamed\n\t$filename\nto\n\t$filename.$newextension\n!"
 	else
-		echo "[INFO] skipping $filename"
+		mengLog "INFO" "skipping $filename"
 	fi
 done
 
-echo "[INFO] done!"
+mengLog "INFO" "done!"
 
 ## END
