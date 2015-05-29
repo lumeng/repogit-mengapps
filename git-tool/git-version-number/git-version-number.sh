@@ -105,6 +105,14 @@ or specify a directory:
     exit 1
 fi
 
+GIT_CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+git fetch origin >/dev/null 2>&1
+
+git stash >/dev/null 2>&1
+
+git checkout master >/dev/null 2>&1
+
 git_release_branch_latest_version=$( \
 git for-each-ref                   `# output information on each ref` \
     --sort=-committerdate          `# sort by the commit date` \
@@ -114,6 +122,11 @@ cut -c 78-                         `# only keep the version number part, e.g. 1.
 )
 
 mengLog "DEBUG" '$git_release_branch_latest_version = '"$git_release_branch_latest_version"
+
+git checkout $GIT_CURRENT_BRANCH >/dev/null 2>&1
+
+git stash pop >/dev/null 2>&1
+
 
 # Regular expression matching version number such as 1.15.2, 1.14
 CLOUD_VERSION_NUMBER_REGEX='^[1-9][0-9]*\.[0-9]+(\.[1-9][0-9]*)?$'
