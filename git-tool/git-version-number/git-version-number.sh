@@ -10,6 +10,12 @@
 #+ ## To-do:
 #+ * Support GNU-styled long options '--foo-bar'
 #+ 
+#+ ## Usage examples:
+#+   ./git-version-number.sh -d "$HOME/WorkSpace/projectfoobar" -p 'release/*'
+#+   [DEBUG] 17:05:22: /home/lumeng/WorkSpace/projectfoobar is in a Git repo
+#+   [DEBUG] 17:05:22: $git_release_branch_latest_version = 1.17
+#+   1.17
+#+
 #+ ## References:
 #+ * http://stackoverflow.com/questions/2180270/check-if-current-directory-is-a-git-repository
 ##
@@ -19,7 +25,7 @@
 ##
 
 mengLOGGING_LEVEL=6   ## If for production use, use 6
-# mengLOGGING_LEVEL=3 ## If debugging, use 3
+mengLOGGING_LEVEL=3 ## If debugging, use 3
 
 function mengLog () {
     local level
