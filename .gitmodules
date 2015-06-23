@@ -1,0 +1,3 @@
+[submodule "MediaWiki_Backup"]
+	path = MediaWiki_Backup
+	url = https://github.com/lumeng/MediaWiki_Backup.git
