@@ -16,9 +16,9 @@ TMPFILEDUPKEYS=`mktemp /tmp/${FILENAME}.${DATETIME}.dupkeys` || exit 1
 TMPFILELOG=`mktemp /tmp/${FILENAME}.${DATETIME}.log` || exit 1
 
 ## TODO: how to put everything into oneline?
-#find -P $DIR -type f -exec cksum {} \; | sort | tee $TMPFILEDATA | cut -f 1-2 -d ' ' | uniq -d | grep -if - $TMPFILEDATA | sort -nr -t' ' -k2,2 | cut -f 3- -d ' ' | while read line; do ls -lhta "$line"; done
+#find -P $DIR -type f -exec cksum '{}' \; | sort | tee $TMPFILEDATA | cut -f 1-2 -d ' ' | uniq -d | grep -if - $TMPFILEDATA | sort -nr -t' ' -k2,2 | cut -f 3- -d ' ' | while read line; do ls -lhta "$line"; done
 
-find -P $DIR -type f -exec cksum {} \; `# find all files and calculate checksum` \
+find -P $DIR -type f -exec cksum '{}' \; `# find all files and calculate checksum` \
     | sort `# sort by checksum, size, file name` \
 	| tee ${TMPFILEDATA} `# output the data into file and stdout` \
 	| cut -f 1-2 -d ' ' `# take the checksum and size which will be used as keys` \
@@ -47,10 +47,10 @@ echo "Done!"
 # TMPFILE=`mktemp /tmp/${FILENAME}.XXXXXX` || exit 1
 # 
 # ## one-line version
-# #find -P . -type f -exec cksum {} \; | sort | tee $TMPFILE | cut -f 1-2 -d ' ' | uniq -d | grep -if - $TMPFILE | sort -nr -t' ' -k2,2 | cut -f 3- -d ' ' | while read line; do ls -lhta "$line"; done
+# #find -P . -type f -exec cksum '{}' \; | sort | tee $TMPFILE | cut -f 1-2 -d ' ' | uniq -d | grep -if - $TMPFILE | sort -nr -t' ' -k2,2 | cut -f 3- -d ' ' | while read line; do ls -lhta "$line"; done
 # 
 # ## multi-line version with comments
-# find -P $DIR -type f -exec cksum {} \; | # find non-directory files and compute their checksum; -P: never follow symbolic links
+# find -P $DIR -type f -exec cksum '{}' \; | # find non-directory files and compute their checksum; -P: never follow symbolic links
 # sort | # sort by {checksum, file size, file name}
 # tee $TMPFILE | # save a copy in a temporary file and pass along
 # cut -f 1-2 -d ' ' | # keep only the checksum and file size
@@ -62,9 +62,9 @@ echo "Done!"
 # 
 # 
 # ## Some previous problematic implementations
-# #find . \! -type d -exec cksum {} \; | sort | tee $TMPFILE | cut -f 1-2 -d ' ' | uniq -d | grep -if - $TMPFILE | cut -f 3- -d ' ' | while read line; do ls -lhtaSr "$line"; done
-# #find . \! -type d -exec cksum {} \; | sort | tee $TMPFILE | cut c 1-2 -d ' ' | uniq -d | grep -if - $TMPFILE | awk '{print $3}'
-# #find . \! -type d -exec cksum {} \; | sort | tee $TMPFILE | uniq -d | grep -if - $TMPFILE | awk '{print $1 $2 $3}'
+# #find . \! -type d -exec cksum '{}' \; | sort | tee $TMPFILE | cut -f 1-2 -d ' ' | uniq -d | grep -if - $TMPFILE | cut -f 3- -d ' ' | while read line; do ls -lhtaSr "$line"; done
+# #find . \! -type d -exec cksum '{}' \; | sort | tee $TMPFILE | cut c 1-2 -d ' ' | uniq -d | grep -if - $TMPFILE | awk '{print $3}'
+# #find . \! -type d -exec cksum '{}' \; | sort | tee $TMPFILE | uniq -d | grep -if - $TMPFILE | awk '{print $1 $2 $3}'
 # 
 
 
