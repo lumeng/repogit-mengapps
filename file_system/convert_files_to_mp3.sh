@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+#######################################################################
+#+ Summary: convert non-MP3 files in current directory to MP3 using
+#+ ffmpeg.
+#+ Author: Meng Lu <lumeng.dev@gmail.com>
+#+ 
+#######################################################################
+
 FILES=./*
 
 type ffmpeg >/dev/null 2>&1 || { echo >&2 "This script requires ffmpeg but it's not installed.  Aborting."; exit 1; }
