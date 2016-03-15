@@ -4,7 +4,14 @@
 OLD_PATH="$PATH"
 
 ## Get the path of binaries installed via Homebrew.
-ANACONDA_BIN_PATH=$HOME/anaconda/bin
+if [[ $(uname) == 'Linux' ]]; then
+    ANACONDA_BIN_PATH=$HOME/anaconda2/bin
+elif [[ $(uname) == 'Darwin' ]]; then
+    ANACONDA_BIN_PATH=$HOME/anaconda/bin
+else
+    echo >&2 "Anaconda installation path is not determined on $(uname)."
+	exit 1
+fi
 
 ##
 #+ Prepend Anaconda binary path to $PATH, so when installing of compiling
