@@ -3,17 +3,24 @@
 ## Summary: find duplicate files
 ## Meng Lu <lumeng.dev@gmail.com>
 
+## If gmktemp exists, use it instead of mktemp
+{ type gmktemp >/dev/null 2>&1 && MKTEMP_BIN=gmktemp ; } || \
+	{ type mktemp >/dev/null 2>&1 && MKTEMP_BIN=mktemp ; } || \
+	{ echo >&2 "Please install gmktemp and/or mktemp. Aborting."; exit 1; }
+
 DIR=${1:-`pwd`}
 
 FILENAME=`basename $0`
 
+TMPDIR="/tmp"
+
 DATETIME=`date +%Y%m%d%H%M%S`
 
-TMPFILEDATA=`mktemp /tmp/${FILENAME}.${DATETIME}` || exit 1
+TMPFILEDATA=`$MKTEMP_BIN ${TMPDIR}/XXXXX_${FILENAME}_${DATETIME}` || exit 1
 
-TMPFILEDUPKEYS=`mktemp /tmp/${FILENAME}.${DATETIME}.dupkeys` || exit 1
+TMPFILEDUPKEYS=`$MKTEMP_BIN ${TMPDIR}/XXXXX_${FILENAME}_${DATETIME}.dupkeys` || exit 1
 
-TMPFILELOG=`mktemp /tmp/${FILENAME}.${DATETIME}.log` || exit 1
+TMPFILELOG=`$MKTEMP_BIN ${TMPDIR}/XXXXX_${FILENAME}_${DATETIME}.log` || exit 1
 
 ## TODO: how to put everything into oneline?
 #find -P $DIR -type f -exec cksum '{}' \; | sort | tee $TMPFILEDATA | cut -f 1-2 -d ' ' | uniq -d | grep -if - $TMPFILEDATA | sort -nr -t' ' -k2,2 | cut -f 3- -d ' ' | while read line; do ls -lhta "$line"; done
@@ -44,7 +51,7 @@ echo "Done!"
 # 
 # FILENAME=`basename $0`
 # 
-# TMPFILE=`mktemp /tmp/${FILENAME}.XXXXXX` || exit 1
+# TMPFILE=`$MKTEMP_BIN /tmp/${FILENAME}.XXXXXX` || exit 1
 # 
 # ## one-line version
 # #find -P . -type f -exec cksum '{}' \; | sort | tee $TMPFILE | cut -f 1-2 -d ' ' | uniq -d | grep -if - $TMPFILE | sort -nr -t' ' -k2,2 | cut -f 3- -d ' ' | while read line; do ls -lhta "$line"; done
