@@ -26,11 +26,11 @@ fi
 ##
 WORKSPACE_DIR="$HOME/WorkSpace-$HOST_NAME"
 
-if [[ -d $WORKSPACE_DIR ]]; then
-	cd $WORKSPACE_DIR
+if [[ -d "$WORKSPACE_DIR" ]]; then
+	cd "$WORKSPACE_DIR"
 fi
 	
-if [[ -f $WORKSPACE_DIR/git/.git/config ]]; then
+if [[ -f "$WORKSPACE_DIR/git/.git/config" ]]; then
 	sudo cp git/contrib/mw-to-git/git-remote-mediawiki.perl "$(git --exec-path)/git-remote-mediawiki"
 	sudo chmod a+x "$(git --exec-path)/git-remote-mediawiki"
 	sudo cp git/contrib/mw-to-git/git-mw.perl "$(git --exec-path)/git-mw"
