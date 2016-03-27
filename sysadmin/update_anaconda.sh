@@ -2,12 +2,15 @@
 
 ## Save old $PATH and restore it later
 OLD_PATH="$PATH"
+OLD_MANPATH="$MANPATH"
 
 ## Get the path of binaries installed via Homebrew.
 if [[ $(uname) == 'Linux' ]]; then
-    ANACONDA_BIN_PATH=$HOME/anaconda2/bin
+    ANACONDA_PATH=$HOME/anaconda2/bin
+    ANACONDA_MANPATH=$HOME/anaconda2/share/man
 elif [[ $(uname) == 'Darwin' ]]; then
-    ANACONDA_BIN_PATH=$HOME/anaconda/bin
+    ANACONDA_PATH=$HOME/anaconda/bin
+    ANACONDA_MANPATH=$HOME/anaconda/share/man
 else
     echo >&2 "Anaconda installation path is not determined on $(uname)."
 	exit 1
@@ -31,7 +34,8 @@ fi
 #+ softwares using conda, it sees softwares and libraries installed by
 #+ conda first.
 ##
-export PATH=$ANACONDA_BIN_PATH:$BASIC_PATH
+export PATH=$ANACONDA_PATH:$BASIC_PATH
+export MANPATH=$ANACONDA_MANPATH:$MANPATH
 
 ## If brew is not installed, exit.
 type conda >/dev/null 2>&1 || { echo >&2 "Anaconda is not installed. Aborting."; exit 1; }
@@ -41,5 +45,6 @@ conda update anaconda >/dev/null 2>&1
 
 ## Restore $PATH.
 export PATH=$OLD_PATH
+export MANPATH=$OLD_MANPATH
 
 ## END
