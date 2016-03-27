@@ -36,8 +36,8 @@ export PATH=$ANACONDA_BIN_PATH:$BASIC_PATH
 ## If brew is not installed, exit.
 type conda >/dev/null 2>&1 || { echo >&2 "Anaconda is not installed. Aborting."; exit 1; }
 
-conda update conda
-conda update anaconda
+conda update conda >/dev/null 2>&1
+conda update anaconda >/dev/null 2>&1
 
 ## Restore $PATH.
 export PATH=$OLD_PATH
