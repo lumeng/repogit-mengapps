@@ -77,11 +77,24 @@ brew cask doctor
 #+ Install softwares.
 ##
 
-## 2017-5-21: for using Multimarkdown syntax in source files of Ikiwiki websites.
+## 2017-5-21: For using Multimarkdown syntax in source files of Ikiwiki websites.
 brew list multimarkdown >/dev/null || brew install multimarkdown
 
 ## 2017-5-21: Install FileZilla via Homebrew so it's automatically updated via the cron job to update Homebrew.
 brew cask list filezilla >/dev/null || brew cask install filezilla
+
+## 2017-5-30: Install R.
+#+ To enable rJava support, run the following command:
+#+   R CMD javareconf JAVA_CPPFLAGS=-I/System/Library/Frameworks/JavaVM.framework/Headers
+#+ If you've installed a version of Java other than the default, you might need to instead use:
+#+   R CMD javareconf JAVA_CPPFLAGS="-I/System/Library/Frameworks/JavaVM.framework/Headers -I/Library/Java/JavaVirtualMachines/jdk<version>.jdk/"
+#+ (where <version> can be found by running `java -version`, `/usr/libexec/java_home`, or `locate jni.h`), or:
+#+   R CMD javareconf JAVA_CPPFLAGS="-I/System/Library/Frameworks/JavaVM.framework/Headers -I$(/usr/libexec/java_home | grep -o '.*jdk')"
+#+
+##
+
+## 2017-6: Install R
+brew list R >/dev/null || brew install R
 
 ## 2017-6-8: Install MacTeX
 brew cask list mactex >/dev/null || brew cask install mactex
