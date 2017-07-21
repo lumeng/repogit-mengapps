@@ -90,8 +90,9 @@ perlbrew use perl-blead
 
 #+ 2017-7-19: install packages required by git-mediawiki
 #+ Reference: https://github.com/Git-Mediawiki/Git-Mediawiki/wiki/User-manual
-cpan MediaWiki::API
-cpan DateTime::Format::ISO8601
+sudo cpan MediaWiki::API
+sudo cpan DateTime::Format::ISO8601
+sudo cpan LWP::Protocol::https
 
 ## Restore $PATH.
 export PATH=$OLD_PATH
