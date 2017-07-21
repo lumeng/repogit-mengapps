@@ -115,6 +115,11 @@ brew cask list docker-toolbox > /dev/null || brew cask install docker-toolbox
 ## 2017-7-17： Install torbrowser.
 brew cask list torbrowser > /dev/null || brew cask install torbrowser
 
+## 2017-7-20： Install Python.
+brew list python > /dev/null || brew install python
+brew list python3 > /dev/null || brew install python3
+#brew reinstall python
+
 ## more ...
 
 
