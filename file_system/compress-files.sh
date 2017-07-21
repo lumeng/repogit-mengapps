@@ -24,22 +24,22 @@
 XLWMETADATA="${DROPBOX_PATH%%/}/DataSpace-Dropbox/ToUpload/小狼窝宣传文件"
 
 if [ -f "$XLWMETADATA" ]; then
-	echo "Bad metadata path $XLWMETADATA"
-	exit
+    echo "Bad metadata path $XLWMETADATA"
+    exit
 fi
 
 for var in "$@"
 do
     echo "`date` Start to compress $var"
     7z a \
-	-p \
+    -p \
     -t7z \
     -m0=lzma2 \
     -mx=5 \
     -ms=on \
     -mfb=64 \
     -md=32m \
-	"${var}.7z" \
+    "${var}.7z" \
     "${var}" \
     "$XLWMETADATA"
     echo "`date` done!"
