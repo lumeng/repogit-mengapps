@@ -40,13 +40,13 @@ set -e
 mengLOGGING_LEVEL=1
 
 function mengLog () {
-	case "$1" in
-		"INFO") mengLEVEL=2;;
-		"DEBUG") mengLEVEL=3;;
-		*) mengLEVEL=1;;
+    case "$1" in
+        "INFO") mengLEVEL=2;;
+        "DEBUG") mengLEVEL=3;;
+        *) mengLEVEL=1;;
     esac
     if [[ "$mengLOGGING_LEVEL" -ge "$mengLEVEL" ]]; then
-        echo "[$1] $(date '+%H:%m:%S'): $2" 
+    echo "[$1] $(date '+%H:%m:%S'): $2"
     fi
 }
 
@@ -67,10 +67,10 @@ done
 
 
 if [ -d "$IMAGE_FILE_DIR" ]; then
-	FILES=`find $IMAGE_FILE_DIR -maxdepth 1 -type f`
+    FILES=`find $IMAGE_FILE_DIR -maxdepth 1 -type f`
 else
-	echo >&2 "[ERROR] $IMAGE_FILE_DIR is a bad directory"
-	exit 1
+    echo >&2 "[ERROR] $IMAGE_FILE_DIR is a bad directory"
+    exit 1
 fi
 
 
@@ -83,17 +83,17 @@ fi
 ## * http://www.cyberciti.biz/faq/linux-unix-bash-check-interactive-shell/
 ## * http://serverfault.com/questions/119273/how-to-use-my-aliases-in-my-crontab
 if [ -z "$PS1" ]; then
-	shopt -s expand_aliases
+    shopt -s expand_aliases
     source "$HOME/.bashrc"
 fi
 
 
 if hash identify 2>/dev/null; then
-	mengLog "DEBUG" "identify exists! good!"
-	IMAGEMAGICK_IDENTIFY_BIN=identify
+    mengLog "DEBUG" "identify exists! good!"
+    IMAGEMAGICK_IDENTIFY_BIN=identify
 else
-	echo >&2 "[ERROR] $IMAGEMAGICK_IDENTIFY_BIN; the utility 'identify' does not exist! On Mac OS X, install package 'imagemagick' by 'brew install imagemagick'!"
-	exit 1
+    echo >&2 "[ERROR] $IMAGEMAGICK_IDENTIFY_BIN; the utility 'identify' does not exist! On Mac OS X, install package 'imagemagick' by 'brew install imagemagick'!"
+    exit 1
 fi
 
 
@@ -102,16 +102,16 @@ mengLog "INFO" "Adding file name extensions to files in directory IMAGE_FILE_DIR
 
 for file in $FILES
 do
-	filename=$(basename "$file")
+    filename=$(basename "$file")
     extension="${filename##*.}"
-	mengLog "DEBUG" "extension: $extension"
+    mengLog "DEBUG" "extension: $extension"
     newextension=`$IMAGEMAGICK_IDENTIFY_BIN $file 2>/dev/null| cut -d ' '  -f 2 | tr '[:upper:]' '[:lower:]'`
-	mengLog "DEBUG" "newextension: $newextension"
-	if [ ! "$extension" = "$newextension" ]; then
-		rsync -qrthp $file "$file.$newextension" && rm $file && echo -e "[INFO] renamed\n\t$filename\nto\n\t$filename.$newextension\n!"
-	else
-		mengLog "INFO" "skipping $filename"
-	fi
+    mengLog "DEBUG" "newextension: $newextension"
+    if [ ! "$extension" = "$newextension" ]; then
+        rsync -qrthp $file "$file.$newextension" && rm $file && echo -e "[INFO] renamed\n\t$filename\nto\n\t$filename.$newextension\n!"
+    else
+        mengLog "INFO" "skipping $filename"
+    fi
 done
 
 mengLog "INFO" "done!"
