@@ -1,5 +1,4 @@
 #!/usr/bin/env perl
-
 #!/Users/meng/perl5/perlbrew/perls/perl-5.22.1/bin/perl
 
 ######################################################################
@@ -26,7 +25,14 @@
 #+
 #+ ## Usage:
 #+
-#+     convert-from-markdown-to-twiki.pl myfile.md
+#+    Optionally turn on perlbrew's version of perl:
+#+
+#+       perlbrew available
+#+       perlbrew use perl-5.22.1
+#+
+#+    Convert:
+#+
+#+       convert-from-markdown-to-twiki.pl myfile.md
 ##
 
 use strict;
