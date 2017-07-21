@@ -48,10 +48,30 @@ cd "$(brew --repo)" && git fetch && git reset --hard origin/master && git clean 
 
 #+ Update, upgrade, cleanup, diagnose
 brew update
+
+
 brew upgrade
+
+
 brew prune
+
+##
+#+ Update all softwares installed using "brew cask" using 'brew-cask-upgrade'.
+#+ * https://github.com/buo/homebrew-cask-upgrade
+##
+
+brew tap buo/cask-upgrade
+brew cu -y -a --cleanup
+# brew cask list | xargs brew cask reinstall ## alternatively, reinstall all softwares
+
+
 brew cleanup
+
+
 brew doctor
+
+
+brew cask doctor
 
 ################################################################################
 #+ Install softwares.
@@ -63,6 +83,24 @@ brew list multimarkdown >/dev/null || brew install multimarkdown
 ## 2017-5-21: Install FileZilla via Homebrew so it's automatically updated via the cron job to update Homebrew.
 brew cask list filezilla >/dev/null || brew cask install filezilla
 
+## 2017-6-8: Install MacTeX
+brew cask list mactex >/dev/null || brew cask install mactex
+
+## 2017-6-25: Install RocketChat
+brew cask list rocket-chat >/dev/null || brew cask install rocket-chat
+
+## 2017-6-26: Intall MySQL Workbench
+brew cask list mysqlworkbench > /dev/null || brew cask install mysqlworkbench
+
+## 2017-6-26: Intall MySQL Workbench
+brew cask list mysqlworkbench > /dev/null || brew cask install mysqlworkbench
+
+## 2017-6-26: Intall docker
+brew cask list docker > /dev/null || brew cask install docker
+brew cask list docker-toolbox > /dev/null || brew cask install docker-toolbox
+
+## 2017-7-17： Install torbrowser.
+brew cask list torbrowser > /dev/null || brew cask install torbrowser
 
 ## more ...
 
