@@ -2,12 +2,17 @@
 
 ## Summary: find largest files recursively
 
-TIMESTANP=`time +%s`
-OUTPUTFILE="/tmp/list_of_large_files__$TIMESTAMP.txt"
+TMPSUBDIR=$(mktemp -d "${TMPDIR:-/tmp/}$(basename 0).XXXXXXXXXXXX")
 
-find -P -O2 . -type f -size +100M -user $USER -exec ls -sh '{}' >> $OUTPUTFILE \;
+TIMESTAMP="$(date +%s)"
+OUTPUTFILE="${TMPSUBDIR}/list_of_large_files__${TIMESTAMP}.txt"
+touch $OUTPUTFILE
 
-## A different method
-#du -h | awk '{printf "%s %08.2f\t%s\n", index("KMG", substr($1, length($1))), substr($1, 0, length($1)-1), $0}'
+find -P -O2 . -type f -size +500M -user $USER -exec ls -s '{}' \; | \
+    sort -nr -t' ' -k1,1 >> $OUTPUTFILE
+
+echo ${OUTPUTFILE}
+
+cat ${OUTPUTFILE}
 
 ## EOF
