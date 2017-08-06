@@ -45,8 +45,11 @@ if [[ $(uname) == 'Darwin' && -d '/usr/local/opt/python/libexec/bin' ]]; then
 fi
 
 ## Update pip and setuptools
-pip2 install --upgrade pip setuptools
-pip3 install --upgrade pip setuptools
+pip2 install --upgrade pip
+pip3 install --upgrade pip
+
+pip2 install --upgrade setuptools
+pip3 install --upgrade setuptools
 
 ##############################################################################
 #+ Restore $PATH.
