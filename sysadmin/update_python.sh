@@ -51,6 +51,14 @@ pip3 install --upgrade pip
 pip2 install --upgrade setuptools
 pip3 install --upgrade setuptools
 
+## 2017-7-21: Install and upgrade virtualenv.
+pip2 install --upgrade virtualenv
+pip3 install --upgrade virtualenv
+
+pip2 install --upgrade virtualenvwrapper
+pip3 install --upgrade virtualenvwrapper
+
+
 ##############################################################################
 #+ Restore $PATH.
 ##
