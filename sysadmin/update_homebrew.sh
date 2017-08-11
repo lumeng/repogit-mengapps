@@ -55,6 +55,7 @@ brew upgrade
 
 brew prune
 
+
 ##
 #+ Update all softwares installed using "brew cask" using 'brew-cask-upgrade'.
 #+ * https://github.com/buo/homebrew-cask-upgrade
@@ -150,6 +151,16 @@ brew cask list emacs > /dev/null || brew cask install emacs
 #+ properly created since 'brew linkapps macvim' is depcrecated since
 #+ at least 2017-8.
 brew cask list macvim > /dev/null || brew cask install macvim
+
+
+## 2017-8-10: Install ghostscript
+brew list ghostscript > /dev/null || ( brew install ghostscript && brew link ghostscript --overwrite )
+
+## 2017-8-10: Install gnupg 
+brew list gnupg > /dev/null || ( brew install gnupg && brew link gnupg --overwrite )
+
+
+
 ## more ...
 
 
