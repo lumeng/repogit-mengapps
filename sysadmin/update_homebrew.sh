@@ -139,6 +139,17 @@ brew list python3 > /dev/null || brew install python3
 #+ at least 2017-8.
 brew cask list emacs > /dev/null || brew cask install emacs
 
+
+## 2017-8-10: Install macvim
+
+#+ Uninstall emacs that was previously installed with
+#+ 'brew install macvim'
+#brew uninstall --ignore-dependencies macvim
+
+#+ Install macvim using 'brew cask' so /Applications/Macvim.app is
+#+ properly created since 'brew linkapps macvim' is depcrecated since
+#+ at least 2017-8.
+brew cask list macvim > /dev/null || brew cask install macvim
 ## more ...
 
 
