@@ -120,6 +120,25 @@ brew list python > /dev/null || brew install python
 brew list python3 > /dev/null || brew install python3
 #brew reinstall python
 
+## 2017-8-10: Install Emacs
+#+
+
+#+ Uninstall emacs that was previously installed with
+#+ 'brew install emacs --with-cocoa'.
+
+# brew uninstall --ignore-dependencies emacs
+
+
+#+ Prior to at the most 2017-8 and Homebrew 1.3.1-24-g67b20d9, Emacs
+#+ can be intalled using the following command.
+
+# brew list emacs > /dev/null || ( brew install emacs --with-cocoa && brew linkapps emacs )
+
+#+ Install emacs using 'brew cask' so /Applications/Emacs.app is
+#+ properly created since 'brew linkapps emacs' is depcrecated since
+#+ at least 2017-8.
+brew cask list emacs > /dev/null || brew cask install emacs
+
 ## more ...
 
 
