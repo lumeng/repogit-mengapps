@@ -75,6 +75,14 @@ pip2 install --upgrade mrjob
 pip3 install --upgrade mrjob
 
 
+## 2017-9-16: Install and upgrade pyzmq
+#+ * pyzmq is required for the Python executable to be registered in Wolfram
+#+ Language as an external evalutor using RegisterExternalEvaluator[<>]
+##
+pip2 install --upgrade pyzmq
+pip3 install --upgrade pyzmq
+
+
 ##############################################################################
 #+ Restore $PATH.
 ##
