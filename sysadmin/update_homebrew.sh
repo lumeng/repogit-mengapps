@@ -156,10 +156,13 @@ brew cask list macvim > /dev/null || brew cask install macvim
 ## 2017-8-10: Install ghostscript
 brew list ghostscript > /dev/null || ( brew install ghostscript && brew link ghostscript --overwrite )
 
+
 ## 2017-8-10: Install gnupg 
 brew list gnupg > /dev/null || ( brew install gnupg && brew link gnupg --overwrite )
 
 
+## 2017-9-20: Install ntfs-3g.
+brew list ntfs-3g > /dev/null || brew install ntfs-3g
 
 ## more ...
 
