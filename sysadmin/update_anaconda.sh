@@ -40,8 +40,9 @@ export MANPATH=$ANACONDA_MANPATH:$MANPATH
 ## If brew is not installed, exit.
 type conda >/dev/null 2>&1 || { echo >&2 "Anaconda is not installed. Aborting."; exit 1; }
 
-conda update conda >/dev/null 2>&1
-conda update anaconda >/dev/null 2>&1
+conda clean --lock
+conda update conda
+conda update anaconda
 
 ## Restore $PATH.
 export PATH=$OLD_PATH
