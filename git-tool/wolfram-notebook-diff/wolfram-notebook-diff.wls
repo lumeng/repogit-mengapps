@@ -1,4 +1,4 @@
-#!/Applications/Mathematica.app/Contents/MacOS/wolframscript -function -signature String String
+#!/usr/bin/env wolframscript -function -signature String String
 
 <<AuthorTools`;
 
