@@ -161,8 +161,13 @@ brew list ghostscript > /dev/null || ( brew install ghostscript && brew link gho
 brew list gnupg > /dev/null || ( brew install gnupg && brew link gnupg --overwrite )
 
 
-## 2017-9-20: Install ntfs-3g.
+## 2017-9-20: Install ntfs-3g and osxfuse to enable read and write on NTFS hard
+#+ drives.
+#+ References:
+#+ * medium.com/@technikhil/setting-up-ntfs-3g-on-your-mac-os-sierra-11eff1749898
+##
 brew list ntfs-3g > /dev/null || brew install ntfs-3g
+brew cask list osxfuse >/dev/null || brew cask install osxfuse
 
 ## more ...
 
