@@ -169,6 +169,11 @@ brew list gnupg > /dev/null || ( brew install gnupg && brew link gnupg --overwri
 brew list ntfs-3g > /dev/null || brew install ntfs-3g
 brew cask list osxfuse >/dev/null || brew cask install osxfuse
 
+## 2017-9-23: Install diffmerge
+##
+brew cask list diffmerge >/dev/null || brew cask install diffmerge
+
+
 ## more ...
 
 
