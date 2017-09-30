@@ -161,6 +161,11 @@ brew list ghostscript > /dev/null || ( brew install ghostscript && brew link gho
 brew list gnupg > /dev/null || ( brew install gnupg && brew link gnupg --overwrite )
 
 
+## 2017-9-29: Install simple-comic
+brew cask list simple-comic > /dev/null || brew cask install simple-comic
+
+
+
 ## 2017-9-20: Install ntfs-3g and osxfuse to enable read and write on NTFS hard
 #+ drives.
 #+ References:
