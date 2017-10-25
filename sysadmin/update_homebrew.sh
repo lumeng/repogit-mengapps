@@ -178,6 +178,9 @@ brew cask list osxfuse >/dev/null || brew cask install osxfuse
 ##
 brew cask list diffmerge >/dev/null || brew cask install diffmerge
 
+## 2017-10-12L Install sloccount
+brew list sloccount > /dev/null || brew install sloccount
+
 
 ## more ...
 
