@@ -181,6 +181,10 @@ brew cask list diffmerge >/dev/null || brew cask install diffmerge
 ## 2017-10-12L Install sloccount
 brew list sloccount > /dev/null || brew install sloccount
 
+## 2017-10-25: Install and upgrade graphviz.
+#+ * https://en.wikipedia.org/wiki/Graphviz
+##
+brew list graphviz > /dev/null || brew install graphviz
 
 ## more ...
 
