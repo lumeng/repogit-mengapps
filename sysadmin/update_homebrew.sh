@@ -190,6 +190,10 @@ brew list graphviz > /dev/null || brew install graphviz
 brew cask list vagrant >/dev/null || brew cask install vagrant
 brew cask list virtualbox >/dev/null || brew cask install virtualbox
 brew cask list virtualbox-extension-pack >/dev/null || brew cask install virtualbox-extension-pack
+
+## 2017-11-2: Install cvs.
+brew list cvs > /dev/null || ( brew install cvs && brew link cvs --overwrite )
+
 ## more ...
 
 
