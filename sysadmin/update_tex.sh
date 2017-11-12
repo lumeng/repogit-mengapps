@@ -9,7 +9,7 @@
 OLD_PATH="$PATH"
 
 ## The most basic paths that should be included in $PATH
-BASIC_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/sbin
+BASIC_PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/sbin:/usr/local/bin
 
 ##
 #+ Prepend Homebrew binary path to $PATH, so when installing of compiling
