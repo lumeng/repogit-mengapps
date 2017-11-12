@@ -186,6 +186,10 @@ brew list sloccount > /dev/null || brew install sloccount
 ##
 brew list graphviz > /dev/null || brew install graphviz
 
+## 2017-11-2: Install vagrant (VM) and virtualbox (hypervisor, i.e. VM player)
+brew cask list vagrant >/dev/null || brew cask install vagrant
+brew cask list virtualbox >/dev/null || brew cask install virtualbox
+brew cask list virtualbox-extension-pack >/dev/null || brew cask install virtualbox-extension-pack
 ## more ...
 
 
