@@ -197,7 +197,7 @@ brew list cvs > /dev/null || ( brew install cvs && brew link cvs --overwrite )
 ## 2017-11-11: Intall xquartz.
 brew cask list xquartz >/dev/null || brew cask install xquartz
 ## Or reinstall it to upgrade it to the newest version
-brew cask reinstall xquartz
+# brew cask reinstall xquartz
 
 
 ## more ...
