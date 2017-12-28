@@ -200,6 +200,10 @@ brew cask list xquartz >/dev/null || brew cask install xquartz
 # brew cask reinstall xquartz
 
 
+## 2017-11-19: Intall 'Resilio Sync'.
+brew cask list resilio-sync >/dev/null || brew cask install resilio-sync
+
+
 ## more ...
 
 
