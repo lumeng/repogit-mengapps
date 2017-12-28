@@ -204,6 +204,10 @@ brew cask list xquartz >/dev/null || brew cask install xquartz
 brew cask list resilio-sync >/dev/null || brew cask install resilio-sync
 
 
+## 2017-11-22: Install npm.
+brew list npm > /dev/null || brew install npm
+
+
 ## more ...
 
 
