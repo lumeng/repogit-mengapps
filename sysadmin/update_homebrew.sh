@@ -208,6 +208,10 @@ brew cask list resilio-sync >/dev/null || brew cask install resilio-sync
 brew list npm > /dev/null || brew install npm
 
 
+## 2017-11-22: Install [GPG Suite, namely GPGTools](https://gpgtools.org/).
+brew cask list gpg-suite > /dev/null || brew cask install gpg-suite
+
+
 ## more ...
 
 
