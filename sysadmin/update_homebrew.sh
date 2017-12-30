@@ -233,6 +233,10 @@ brew cask list clion > /dev/null || brew cask install clion
 [[ -d /Applications/CLion.app ]] && xattr -d com.apple.quarantine /Applications/CLion.app
 
 
+## 2017-12-14: Install and update node.
+brew list node >/dev/null || brew install node
+
+
 ## more ...
 
 
