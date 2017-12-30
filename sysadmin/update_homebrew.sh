@@ -237,6 +237,10 @@ brew cask list clion > /dev/null || brew cask install clion
 brew list node >/dev/null || brew install node
 
 
+## 2017-12-20: Install and update [Tableau Public](https://public.tableau.com/).
+brew cask list tableau-public >/dev/null || brew cask install tableau-public
+
+
 ## more ...
 
 
