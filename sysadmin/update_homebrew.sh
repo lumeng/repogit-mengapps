@@ -216,6 +216,23 @@ brew cask list gpg-suite > /dev/null || brew cask install gpg-suite
 brew cask list menumeters > /dev/null || brew cask install menumeters
 
 
+## 2017-11-24: Install and update selected [JetBrains](https://www.jetbrains.com/products.html) softwares.
+brew cask list intellij-idea > /dev/null || brew cask install intellij-idea
+brew cask list pycharm > /dev/null || brew cask install pycharm
+brew cask list phpstorm > /dev/null || brew cask install phpstorm
+## brew cask list webstorm > /dev/null || brew cask install webstorm
+brew cask list datagrip > /dev/null || brew cask install datagrip
+brew cask list clion > /dev/null || brew cask install clion
+
+#+ c.f. https://stackoverflow.com/questions/40251201/upgrading-intellij-idea-after-sierra-upgrade-does-not-have-write-access-to-pri/41383566#41383566
+[[ -d /Applications/IntelliJ\ IDEA.app ]] && xattr -d com.apple.quarantine /Applications/IntelliJ\ IDEA.app
+[[ -d /Applications/PyCharm.app ]] && xattr -d com.apple.quarantine /Applications/PyCharm.app
+[[ -d /Applications/PhpStorm.app ]] && xattr -d com.apple.quarantine /Applications/PhpStorm.app
+## [[ -d /Applications/WebStorm.app ]] && xattr -d com.apple.quarantine /Applications/WebStorm.app
+[[ -d /Applications/DataGrip.app ]] && xattr -d com.apple.quarantine /Applications/DataGrip.app
+[[ -d /Applications/CLion.app ]] && xattr -d com.apple.quarantine /Applications/CLion.app
+
+
 ## more ...
 
 
