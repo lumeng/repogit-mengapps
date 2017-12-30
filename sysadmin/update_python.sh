@@ -83,6 +83,12 @@ pip2 install --upgrade pyzmq
 pip3 install --upgrade pyzmq
 
 
+## 2017-11-19: Install and upgrade JypyterLab
+##
+pip2 install --upgrade jupyterlab
+pip3 install --upgrade jupyterlab
+
+
 ##############################################################################
 #+ Restore $PATH.
 ##
