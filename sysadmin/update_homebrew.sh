@@ -241,6 +241,13 @@ brew list node >/dev/null || brew install node
 brew cask list tableau-public >/dev/null || brew cask install tableau-public
 
 
+## 2017-12-22: Install and update mp4box.
+#+ https://stackoverflow.com/questions/5651654/ffmpeg-how-to-split-video-efficiently
+#+ mp4box -cat file1.mp4 -cat file2.mp4 output.mp4
+##
+brew list mp4box >/dev/null || brew install mp4box
+
+
 ## more ...
 
 
