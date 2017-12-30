@@ -248,6 +248,10 @@ brew cask list tableau-public >/dev/null || brew cask install tableau-public
 brew list mp4box >/dev/null || brew install mp4box
 
 
+## 2017-12-30: Install and update ccleaner.
+brew cask list ccleaner > /dev/null || brew cask install ccleaner
+
+
 ## more ...
 
 
