@@ -212,6 +212,10 @@ brew list npm > /dev/null || brew install npm
 brew cask list gpg-suite > /dev/null || brew cask install gpg-suite
 
 
+## 2017-11-24: Install [MenuMeters](https://www.ragingmenace.com/software/menumeters/)
+brew cask list menumeters > /dev/null || brew cask install menumeters
+
+
 ## more ...
 
 
