@@ -45,33 +45,33 @@ if [[ $(uname) == 'Darwin' && -d '/usr/local/opt/python/libexec/bin' ]]; then
 fi
 
 ## Update pip and setuptools
-pip2 install --upgrade pip
+pip install --upgrade pip
 pip3 install --upgrade pip
 
-pip2 install --upgrade setuptools
+pip install --upgrade setuptools
 pip3 install --upgrade setuptools
 
 ## 2017-7-21: Install and upgrade virtualenv.
-pip2 install --upgrade virtualenv
+pip install --upgrade virtualenv
 pip3 install --upgrade virtualenv
 
-pip2 install --upgrade virtualenvwrapper
+pip install --upgrade virtualenvwrapper
 pip3 install --upgrade virtualenvwrapper
 
 ## 2017-9-7: Install and upgrade matplotlib, pandas, scikit-learn, nltk, mrjob
-pip2 install --upgrade matplotlib
+pip install --upgrade matplotlib
 pip3 install --upgrade matplotlib
 
-pip2 install --upgrade pandas
+pip install --upgrade pandas
 pip3 install --upgrade pandas
 
-pip2 install --upgrade scikit-learn
+pip install --upgrade scikit-learn
 pip3 install --upgrade scikit-learn
 
-pip2 install --upgrade nltk
+pip install --upgrade nltk
 pip3 install --upgrade nltk
 
-pip2 install --upgrade mrjob
+pip install --upgrade mrjob
 pip3 install --upgrade mrjob
 
 
@@ -79,13 +79,13 @@ pip3 install --upgrade mrjob
 #+ * pyzmq is required for the Python executable to be registered in Wolfram
 #+ Language as an external evalutor using RegisterExternalEvaluator[<>]
 ##
-pip2 install --upgrade pyzmq
+pip install --upgrade pyzmq
 pip3 install --upgrade pyzmq
 
 
 ## 2017-11-19: Install and upgrade JypyterLab
 ##
-pip2 install --upgrade jupyterlab
+pip install --upgrade jupyterlab
 pip3 install --upgrade jupyterlab
 
 
