@@ -273,6 +273,12 @@ brew cask list ccleaner > /dev/null || brew cask install ccleaner
 #   sudo chmod -R o-w /usr/local/munki
 #fi
 
+## Cleaning up.
+
+brew cleanup -s
+brew cask cleanup
+rm -rf $(brew --cache)
+
 ## Restore $PATH.
 export PATH=$OLD_PATH
 
