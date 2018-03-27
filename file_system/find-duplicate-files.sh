@@ -25,7 +25,7 @@ TMPFILELOG=`$MKTEMP_BIN ${TMPDIR}/XXXXX_${FILENAME}_${DATETIME}.log` || exit 1
 ## TODO: how to put everything into oneline?
 #find -P $DIR -type f -exec cksum '{}' \; | sort | tee $TMPFILEDATA | cut -f 1-2 -d ' ' | uniq -d | grep -if - $TMPFILEDATA | sort -nr -t' ' -k2,2 | cut -f 3- -d ' ' | while read line; do ls -lhta "$line"; done
 
-find -P $DIR -type f -exec cksum '{}' \; `# find all files and calculate checksum` \
+find -P "${DIR}" -type f -exec cksum '{}' \; `# find all files and calculate checksum` \
     | sort `# sort by checksum, size, file name` \
 	| tee ${TMPFILEDATA} `# output the data into file and stdout` \
 	| cut -f 1-2 -d ' ' `# take the checksum and size which will be used as keys` \
