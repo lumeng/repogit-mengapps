@@ -79,6 +79,28 @@ npm list -g ask-cli > /dev/null || (npm install -g ask-cli && npm update -g ask-
 npm list -g http > /dev/null || (npm install -g http && npm update -g http)
 
 
+## 2018-1-5: Intall and update mastodon
+npm list -g mastodon > /dev/null || (npm install -g mastodon && npm update -g mastodon)
+
+
+## 2018-1-5: Intall and update oauth
+npm list -g oauth > /dev/null || (npm install -g oauth && npm update -g oauth)
+
+
+## 2018-1-9: Intall and update twitter
+npm list -g twitter > /dev/null || (npm install -g twitter && npm update -g twitter)
+
+
+npm list -g url-exists > /dev/null || (npm install -g url-exists && npm update -g url-exists)
+
+
+npm list -g jquery > /dev/null || (npm install -g jquery && npm update -g jquery)
+
+## 2018-1-10: Install and update [mocha](https://mochajs.org)
+npm list -g mocha > /dev/null || (npm install -g mocha && npm update -g mocha)
+
+
+## more ...
 
 ##############################################################################
 #+ Restore $PATH.
