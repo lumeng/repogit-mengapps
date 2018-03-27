@@ -89,6 +89,12 @@ pip install --upgrade jupyterlab
 pip3 install --upgrade jupyterlab
 
 
+## 2018-1-8: [Install and upgrade TensorFlow](https://www.tensorflow.org/install/install_mac)
+##
+pip install --upgrade tensorflow
+pip3 install --upgrade tensorflow
+
+
 ##############################################################################
 #+ Restore $PATH.
 ##
