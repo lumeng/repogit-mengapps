@@ -157,8 +157,9 @@ brew cask list macvim > /dev/null || brew cask install macvim
 brew list ghostscript > /dev/null || ( brew install ghostscript && brew link ghostscript --overwrite )
 
 
-## 2017-8-10: Install gnupg 
-brew list gnupg > /dev/null || ( brew install gnupg && brew link gnupg --overwrite )
+## 2017-8-10: Install gnupg
+## 2018-3-3: On macOS, do not install gnupg. Instead, install the formula 'gpg-suite' and use the gpg binary inside it.
+#brew list gnupg > /dev/null || ( brew install gnupg && brew link gnupg --overwrite )
 
 
 ## 2017-9-29: Install simple-comic
