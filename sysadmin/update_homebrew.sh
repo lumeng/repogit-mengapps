@@ -213,7 +213,8 @@ brew cask list gpg-suite > /dev/null || brew cask install gpg-suite
 
 
 ## 2017-11-24: Install [MenuMeters](https://www.ragingmenace.com/software/menumeters/)
-brew cask list menumeters > /dev/null || brew cask install menumeters
+# brew cask list menumeters > /dev/null || brew cask install menumeters
+brew cask list yujitach-menumeters > /dev/null || brew cask install yujitach-menumeters
 
 
 ## 2017-11-24: Install and update selected [JetBrains](https://www.jetbrains.com/products.html) softwares.
