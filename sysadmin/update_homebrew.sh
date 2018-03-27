@@ -255,6 +255,12 @@ brew cask list ccleaner > /dev/null || brew cask install ccleaner
 
 ## 2018-1-4: Install and update [OpenBazaar](https://www.openbazaar.org/)
 brew cask list openbazaar >/dev/null || brew cask install openbazaar
+
+
+## 2018-1-4: Install and update [MPlayer](https://en.wikipedia.org/wiki/MPlayer)
+brew list mplayer >/dev/null || brew cask install mplayer
+
+
 ## 2018-1-31: Install and update [Blockstack](https://blockstack.org/)
 brew cask list blockstack >/dev/null || brew cask install blockstack
 
