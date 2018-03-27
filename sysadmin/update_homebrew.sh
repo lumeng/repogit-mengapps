@@ -252,6 +252,10 @@ brew list mp4box >/dev/null || brew install mp4box
 brew cask list ccleaner > /dev/null || brew cask install ccleaner
 
 
+## 2018-1-31: Install and update [Blockstack](https://blockstack.org/)
+brew cask list blockstack >/dev/null || brew cask install blockstack
+
+
 ## more ...
 
 
