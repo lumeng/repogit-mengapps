@@ -8,9 +8,10 @@
 ## Abort if not on Mac OS X.
 if [[ ! $(uname) == 'Darwin' ]]; then
     echo >&2 "Since Homebrew is a package management system for macOS (formerly known as Mac OS X), it does not make sense to update it on $(uname). Abort."
-	exit 1
+    exit 1
 fi
 
+xcode-select --install
 
 ## If brew is not installed, exit.
 export PATH=/usr/local/bin:$PATH  ## Make sure brew is on the path before checking its existence.
@@ -53,7 +54,7 @@ brew update
 brew upgrade
 
 
-brew prune
+brew cleanup
 
 
 ##
@@ -101,6 +102,9 @@ brew list R >/dev/null || brew install R
 brew cask list mactex >/dev/null || brew cask install mactex
 
 ## 2017-6-25: Install RocketChat
+if [[ -e /Applications/RocketChat.app ]]; then
+    rm -rf /Applications/RocketChat.app
+fi
 brew cask list rocket-chat >/dev/null || brew cask install rocket-chat
 
 ## 2017-6-26: Intall MySQL Workbench
@@ -150,8 +154,8 @@ brew cask list emacs > /dev/null || brew cask install emacs
 #+ Install macvim using 'brew cask' so /Applications/Macvim.app is
 #+ properly created since 'brew linkapps macvim' is depcrecated since
 #+ at least 2017-8.
-brew cask list macvim > /dev/null || brew cask install macvim
-
+brew list macvim > /dev/null || brew reinstall macvim --with-override-system-vim
+brew link --overwrite macvim
 
 ## 2017-8-10: Install ghostscript
 brew list ghostscript > /dev/null || ( brew install ghostscript && brew link ghostscript --overwrite )
@@ -219,12 +223,12 @@ brew cask list yujitach-menumeters > /dev/null || brew cask install yujitach-men
 
 
 ## 2017-11-24: Install and update selected [JetBrains](https://www.jetbrains.com/products.html) softwares.
-brew cask list intellij-idea > /dev/null || brew cask install intellij-idea
-brew cask list pycharm > /dev/null || brew cask install pycharm
-brew cask list phpstorm > /dev/null || brew cask install phpstorm
-## brew cask list webstorm > /dev/null || brew cask install webstorm
-brew cask list datagrip > /dev/null || brew cask install datagrip
-brew cask list clion > /dev/null || brew cask install clion
+brew cask list intellij-idea > /dev/null || brew cask install --force intellij-idea
+brew cask list pycharm > /dev/null || brew cask install --force  pycharm
+brew cask list phpstorm > /dev/null || brew cask install --force  phpstorm
+## brew cask list webstorm > /dev/null || brew cask install --force  webstorm
+brew cask list datagrip > /dev/null || brew cask install --force  datagrip
+brew cask list clion > /dev/null || brew cask install --force  clion
 
 #+ c.f. https://stackoverflow.com/questions/40251201/upgrading-intellij-idea-after-sierra-upgrade-does-not-have-write-access-to-pri/41383566#41383566
 [[ -d /Applications/IntelliJ\ IDEA.app ]] && xattr -d com.apple.quarantine /Applications/IntelliJ\ IDEA.app 2>/dev/null
@@ -259,16 +263,37 @@ brew cask list openbazaar >/dev/null || brew cask install openbazaar
 
 
 ## 2018-1-4: Install and update [MPlayer](https://en.wikipedia.org/wiki/MPlayer)
-brew list mplayer >/dev/null || brew cask install mplayer
+if [[ -e '/Applications/MPlayer OSX Extended.app' ]]; then
+    rm -rf '/Applications/MPlayer OSX Extended.app'
+fi
+
+brew list mplayer-osx-extended >/dev/null || brew cask install mplayer-osx-extended
 
 
 ## 2018-1-31: Install and update [Blockstack](https://blockstack.org/)
 brew cask list blockstack >/dev/null || brew cask install blockstack
 
 
+## 2018-3-29: Install and update [Transmission](https://en.wikipedia.org/wiki/Transmission_(BitTorrent_client))
+brew cask list transmission >/dev/null || brew cask install transmission
+
+
+
+## 2018-9-6: Install and update [Google Chrome Beta](https://www.google.com/chrome/beta/)
+#brew cask list homebrew/cask-versions/google-chrome-beta >/dev/null || brew cask install homebrew/cask-versions/google-chrome-beta
+
+
+## 2018-10-1: Install and update [Telegram](https://en.wikipedia.org/wiki/Telegram_(service))
+brew cask list telegram >/dev/null || brew cask install telegram
+brew cask list telegram-desktop >/dev/null || brew cask install telegram-desktop
 ## more ...
 
 
+# 2018-12-10: Install and update [git-lfs](https://git-lfs.github.com)
+brew cask list git-lfs >/dev/null || brew install git-lfs
+
+# 2018-12-20: Install and update [LimeChat](http://limechat.net)
+brew cask list limechat >/dev/null || brew cask install limechat
 
 ##
 #+ Fix permissions required by applications installed via Munki 
@@ -289,11 +314,15 @@ brew cask list blockstack >/dev/null || brew cask install blockstack
 
 ## Cleaning up.
 
+brew cleanup
 brew cleanup -s
-brew cask cleanup
 rm -rf $(brew --cache)
 
 ## Restore $PATH.
 export PATH=$OLD_PATH
+
+## Say finished!
+say "Updating homebrew finished!"
+echo -ne '\007'
 
 ## END
