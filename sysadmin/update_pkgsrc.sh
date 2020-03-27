@@ -55,8 +55,8 @@ sudo pkgin -y autoremove
 ## Install packages
 
 ## 201705 ikiwiki
-# sudo pkgin -y install ikiwiki
-# sudo pkgin -y install p5-PerlMagick
+sudo pkgin -y install ikiwiki
+sudo pkgin -y install p5-PerlMagick
 
 ## 20170521: ikiwiki dependency (see https://ikiwiki.info/forum/How_to_install_Text:Multimarkdown__63__/)
 #+ 2019-11-8: Install multimarkdown via homebrew instead.
