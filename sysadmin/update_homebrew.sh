@@ -337,6 +337,24 @@ fi
 # the latest version of the software can ONLY be downloaded from Apple's
 # App Store.
 # brew cask list limechat >/dev/null || brew cask install limechat
+
+
+
+# 2019-3-5: Install and update [Android Studio](https://developer.android.com/studio)
+#
+brew cask list android-studio >/dev/null || brew cask install android-studio
+brew cask list android-file-transfer >/dev/null || brew cask install android-file-transfer
+# android-messages
+# android-ndk
+# android-platform-tools
+# android-sdk
+# android-studio-preview
+# androidtool
+# anytrans-for-android
+# unity-android-support-for-editor
+# whoozle-android-file-transfer-nightly
+# xamarin-android
+# xamarin-android-player
 ## 2020-3-10: Install [CyberDuck](https://cyberduck.io/).
 brew cask list cyberduck >/dev/null || brew cask install cyberduck
 
