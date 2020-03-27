@@ -302,8 +302,17 @@ brew cask list transmission >/dev/null || brew cask install transmission
 
 
 ## 2018-10-1: Install and update [Telegram](https://en.wikipedia.org/wiki/Telegram_(service))
-brew cask list telegram >/dev/null || brew cask install telegram
+#+ 2019-11-29: Install Telegram Desktop in favor of Telegram as the latter seems to have one drawback: you cannot use Cmd + <up arrow> to scroll back a screenful of content.
+##
+#brew cask list telegram >/dev/null || brew cask install telegram
 brew cask list telegram-desktop >/dev/null || brew cask install telegram-desktop
+if [[ $(brew outdated | grep -c telegram-desktop) > 0 ]]; then
+    if [[ -e '/Applications/Telegram Desktop.app' ]]; then
+        rm -rf '/Applications/Telegram Desktop.app'
+    fi
+    brew cask reinstall telegram-desktop
+fi
+
 ## more ...
 
 
