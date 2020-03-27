@@ -333,7 +333,10 @@ fi
 
 
 # 2018-12-20: Install and update [LimeChat](http://limechat.net)
-brew cask list limechat >/dev/null || brew cask install limechat
+# 2019-2-28: LimeChat is not longer released via Homebrew due to the fact
+# the latest version of the software can ONLY be downloaded from Apple's
+# App Store.
+# brew cask list limechat >/dev/null || brew cask install limechat
 ## 2020-3-10: Install [CyberDuck](https://cyberduck.io/).
 brew cask list cyberduck >/dev/null || brew cask install cyberduck
 
