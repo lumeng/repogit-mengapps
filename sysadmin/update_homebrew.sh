@@ -315,9 +315,22 @@ fi
 
 ## more ...
 
+## 2020-3-26: Install and update [git](https://git-scm.com/)
+#+
+##
+if [[ $(brew outdated | grep -c git) > 0 ]]; then
+    brew upgrade git
+fi
 
-# 2018-12-10: Install and update [git-lfs](https://git-lfs.github.com)
-brew cask list git-lfs >/dev/null || brew install git-lfs
+## 2018-12-10: Install and update [git-lfs](https://git-lfs.github.com)
+#+ 2020-3-11: Stop installing git-lfs as it is no longer available.
+#+
+##
+brew cask list git-lfs >/dev/null || brew cask install git-lfs
+if [[ $(brew outdated | grep -c git-lfs) > 0 ]]; then
+    brew upgrade git-lfs
+fi
+
 
 # 2018-12-20: Install and update [LimeChat](http://limechat.net)
 brew cask list limechat >/dev/null || brew cask install limechat
