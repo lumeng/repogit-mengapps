@@ -45,7 +45,7 @@ export PATH=$PKGSRC_BIN_PATH:$BASIC_PATH
 ## Refresh the pkgin database with the latest version
 sudo pkgin -y update
 
-## Upgrade all out-of-date packages
+## Upgrade all out-of-date packages, this supersedes 'sudo pkgin -y upgrade'
 sudo pkgin -y full-upgrade
 
 ## Automatically remove orphaned dependencies
