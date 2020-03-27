@@ -106,10 +106,15 @@ brew list R >/dev/null || brew install R
 brew cask list mactex >/dev/null || brew cask install mactex
 
 ## 2017-6-25: Install RocketChat
-if [[ -e /Applications/RocketChat.app ]]; then
-    rm -rf /Applications/RocketChat.app
-fi
 brew cask list rocket-chat >/dev/null || brew cask install rocket-chat
+if [[ $(brew outdated | grep -c rocket-chat) > 0 ]]; then
+    if [[ -e /Applications/RocketChat.app ||  -e /Applications/Rocket.Chat.app ]]; then
+        rm -rf '/Applications/RocketChat.app'
+        rm -rf '/Applications/Rocket.Chat.app'
+    fi
+    brew cask reinstall rocket-chat
+fi
+
 
 ## 2017-6-26: Intall MySQL Workbench
 brew cask list mysqlworkbench > /dev/null || brew cask install mysqlworkbench
@@ -227,18 +232,26 @@ brew cask list yujitach-menumeters > /dev/null || brew cask install yujitach-men
 
 
 ## 2017-11-24: Install and update selected [JetBrains](https://www.jetbrains.com/products.html) softwares.
-brew cask list intellij-idea > /dev/null || brew cask install --force intellij-idea
-brew cask list pycharm > /dev/null || brew cask install --force  pycharm
-brew cask list phpstorm > /dev/null || brew cask install --force  phpstorm
-## brew cask list webstorm > /dev/null || brew cask install --force  webstorm
-brew cask list datagrip > /dev/null || brew cask install --force  datagrip
-brew cask list clion > /dev/null || brew cask install --force  clion
+
+formulas=(intellij-idea pycharm phpstorm webstorm datagrip clion)
+appdirs=("Intellij IDEA" "PyCharm" "PhpStorm" "WebStorm" "DataGrip" "CLion")
+
+for idx in {0..5}
+do
+    brew cask list ${formulas[$idx]} >/dev/null || brew cask install ${formulas[$idx]}
+    if [[ $(brew outdated | grep -c ${formulas[$idx]}) > 0 ]]; then
+        if [[ -d "/Applications/${appdirs[$idx]}.app" ]]; then
+            rm -rf "/Applications/${appdirs[$idx]}.app"
+        fi
+        brew cask reinstall ${formulas[$idx]}
+    fi
+done
 
 #+ c.f. https://stackoverflow.com/questions/40251201/upgrading-intellij-idea-after-sierra-upgrade-does-not-have-write-access-to-pri/41383566#41383566
 [[ -d /Applications/IntelliJ\ IDEA.app ]] && xattr -d com.apple.quarantine /Applications/IntelliJ\ IDEA.app 2>/dev/null
 [[ -d /Applications/PyCharm.app ]] && xattr -d com.apple.quarantine /Applications/PyCharm.app 2>/dev/null
 [[ -d /Applications/PhpStorm.app ]] && xattr -d com.apple.quarantine /Applications/PhpStorm.app 2>/dev/null
-## [[ -d /Applications/WebStorm.app ]] && xattr -d com.apple.quarantine /Applications/WebStorm.app 2>/dev/null
+[[ -d /Applications/WebStorm.app ]] && xattr -d com.apple.quarantine /Applications/WebStorm.app 2>/dev/null
 [[ -d /Applications/DataGrip.app ]] && xattr -d com.apple.quarantine /Applications/DataGrip.app 2>/dev/null
 [[ -d /Applications/CLion.app ]] && xattr -d com.apple.quarantine /Applications/CLion.app 2>/dev/null
 
@@ -267,12 +280,13 @@ brew cask list openbazaar >/dev/null || brew cask install openbazaar
 
 
 ## 2018-1-4: Install and update [MPlayer](https://en.wikipedia.org/wiki/MPlayer)
-if [[ -e '/Applications/MPlayer OSX Extended.app' ]]; then
-    rm -rf '/Applications/MPlayer OSX Extended.app'
+brew cask list mplayer-osx-extended >/dev/null || brew cask install mplayer-osx-extended
+if [[ $(brew outdated | grep -c mplayer-osx-extended) > 0 ]]; then
+    if [[ -e '/Applications/MPlayer OSX Extended.app' ]]; then
+        rm -rf '/Applications/MPlayer OSX Extended.app'
+    fi
+    brew cask reinstall mplayer-osx-extended
 fi
-
-brew list mplayer-osx-extended >/dev/null || brew cask install mplayer-osx-extended
-
 
 ## 2018-1-31: Install and update [Blockstack](https://blockstack.org/)
 brew cask list blockstack >/dev/null || brew cask install blockstack
