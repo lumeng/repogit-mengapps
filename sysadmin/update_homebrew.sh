@@ -79,8 +79,9 @@ brew cask doctor
 #+ Install softwares.
 ##
 
-## 2017-5-21: For using Multimarkdown syntax in source files of Ikiwiki websites.
-brew list multimarkdown >/dev/null || brew install multimarkdown
+## 2017-5-21: For using Multimarkdown syntax in source files of Ikiwiki websites#+ 2019-10-10: Superseded this with multimarkdown in pkgsrc as an dependency of ikiwiki.
+##.
+# brew list multimarkdown >/dev/null || brew install multimarkdown
 
 ## 2017-5-21: Install FileZilla via Homebrew so it's automatically updated via the cron job to update Homebrew.
 brew cask list filezilla >/dev/null || brew cask install filezilla
