@@ -337,6 +337,14 @@ brew cask list limechat >/dev/null || brew cask install limechat
 ## 2020-3-10: Install [CyberDuck](https://cyberduck.io/).
 brew cask list cyberduck >/dev/null || brew cask install cyberduck
 
+## 2020-3-26: Install [Zoom](https://zoom.us).
+brew cask list zoomus >/dev/null || brew cask install zoomus
+if [[ $(brew outdated | grep -c zoomus) > 0 ]]; then
+    if [[ -e /Applications/zoom.us.app ]]; then
+        rm -rf '/Applications/zoom.us.app'
+    fi
+    brew cask reinstall zoomus
+fi
 
 ##
 #+ Fix permissions required by applications installed via Munki 
