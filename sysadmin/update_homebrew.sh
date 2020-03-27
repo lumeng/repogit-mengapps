@@ -83,8 +83,11 @@ brew cask doctor
 ##.
 # brew list multimarkdown >/dev/null || brew install multimarkdown
 
-## 2017-5-21: Install FileZilla via Homebrew so it's automatically updated via the cron job to update Homebrew.
-brew cask list filezilla >/dev/null || brew cask install filezilla
+## 2017-5-21: Install FileZilla via Homebrew so it's automatically updated via
+#+ the cron job to update Homebrew.
+#+ 2020-3-10: Stop installing FileZilla. Replace it with CyberDuck.
+## 
+#brew cask list filezilla >/dev/null || brew cask install filezilla
 
 ## 2017-5-30: Install R.
 #+ To enable rJava support, run the following command:
@@ -295,6 +298,9 @@ brew cask list git-lfs >/dev/null || brew install git-lfs
 
 # 2018-12-20: Install and update [LimeChat](http://limechat.net)
 brew cask list limechat >/dev/null || brew cask install limechat
+## 2020-3-10: Install [CyberDuck](https://cyberduck.io/).
+brew cask list cyberduck >/dev/null || brew cask install cyberduck
+
 
 ##
 #+ Fix permissions required by applications installed via Munki 
