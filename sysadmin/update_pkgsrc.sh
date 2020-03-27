@@ -59,6 +59,14 @@ sudo pkgin -y autoremove
 # sudo pkgin -y install p5-PerlMagick
 
 ## 20170521: ikiwiki dependency (see https://ikiwiki.info/forum/How_to_install_Text:Multimarkdown__63__/)
+#+ 2019-11-8: Install multimarkdown via homebrew instead.
+#+ 2020-2-13: It is NOT recommended to turn on the multimarkdown features for
+#+ Ikiwiki as the source files written in Multimarkdown syntax is less
+#+ compatible with other Markdown systems, if they are ever used in other
+#+ contexts.
+#+ C.f. https://web.archive.org/web/20200213202056/https://ikiwiki.info/plugins/mdwn/
+#+
+##
 # sudo pkgin -y install multimarkdown
 
 
