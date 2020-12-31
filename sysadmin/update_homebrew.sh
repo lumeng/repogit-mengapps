@@ -129,8 +129,6 @@ fi
 ## 2017-6-26: Intall MySQL Workbench
 brew list --cask mysqlworkbench > /dev/null || brew cask install mysqlworkbench
 
-## 2017-6-26: Intall MySQL Workbench
-brew cask list mysqlworkbench > /dev/null || brew cask install mysqlworkbench
 
 ## 2017-6-26: Intall docker
 brew list --cask docker > /dev/null || brew cask install docker
