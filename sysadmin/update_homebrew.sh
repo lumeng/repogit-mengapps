@@ -225,6 +225,13 @@ brew list --cask xquartz >/dev/null || brew cask install xquartz
 ## 2017-11-19: Intall 'Resilio Sync'.
 brew list --cask resilio-sync >/dev/null || brew cask install resilio-sync
 
+if [[ $(brew outdated | grep -c resilio-sync) > 0 ]]; then
+    if [[ -e '/Applications/Resilio Sync.app' ]]; then
+        rm -rf '/Applications/Resilio Sync.app'
+    fi
+    brew cask reinstall resilio-sync
+fi
+
 
 ## 2017-11-22: Install npm.
 brew list npm > /dev/null || brew install npm
