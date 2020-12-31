@@ -248,8 +248,10 @@ brew list --cask yujitach-menumeters > /dev/null || brew cask install yujitach-m
 
 ## 2017-11-24: Install and update selected [JetBrains](https://www.jetbrains.com/products.html) softwares.
 
-formulas=(intellij-idea pycharm phpstorm webstorm datagrip clion)
-appdirs=("Intellij IDEA" "PyCharm" "PhpStorm" "WebStorm" "DataGrip" "CLion")
+#formulas=(intellij-idea pycharm phpstorm webstorm datagrip clion)
+#appdirs=("Intellij IDEA" "PyCharm" "PhpStorm" "WebStorm" "DataGrip" "CLion")
+formulas=(intellij-idea pycharm phpstorm datagrip clion)
+appdirs=("Intellij IDEA" "PyCharm" "PhpStorm" "DataGrip" "CLion")
 
 for idx in {0..5}
 do
@@ -266,7 +268,7 @@ done
 [[ -d /Applications/IntelliJ\ IDEA.app ]] && xattr -d com.apple.quarantine /Applications/IntelliJ\ IDEA.app 2>/dev/null
 [[ -d /Applications/PyCharm.app ]] && xattr -d com.apple.quarantine /Applications/PyCharm.app 2>/dev/null
 [[ -d /Applications/PhpStorm.app ]] && xattr -d com.apple.quarantine /Applications/PhpStorm.app 2>/dev/null
-[[ -d /Applications/WebStorm.app ]] && xattr -d com.apple.quarantine /Applications/WebStorm.app 2>/dev/null
+#[[ -d /Applications/WebStorm.app ]] && xattr -d com.apple.quarantine /Applications/WebStorm.app 2>/dev/null
 [[ -d /Applications/DataGrip.app ]] && xattr -d com.apple.quarantine /Applications/DataGrip.app 2>/dev/null
 [[ -d /Applications/CLion.app ]] && xattr -d com.apple.quarantine /Applications/CLion.app 2>/dev/null
 
