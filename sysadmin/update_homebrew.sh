@@ -64,7 +64,7 @@ brew cleanup
 
 brew tap buo/cask-upgrade
 brew cu -y -a --cleanup
-# brew cask list | xargs brew cask reinstall ## alternatively, reinstall all softwares
+# brew list --cask | xargs brew cask reinstall ## alternatively, reinstall all softwares
 
 
 brew cleanup
@@ -87,7 +87,7 @@ brew cask doctor
 #+ the cron job to update Homebrew.
 #+ 2020-3-10: Stop installing FileZilla. Replace it with CyberDuck.
 ## 
-#brew cask list filezilla >/dev/null || brew cask install filezilla
+#brew list --cask filezilla >/dev/null || brew cask install filezilla
 
 ## 2017-5-30: Install R.
 #+ To enable rJava support, run the following command:
@@ -103,10 +103,10 @@ brew cask doctor
 brew list R >/dev/null || brew install R
 
 ## 2017-6-8: Install MacTeX
-brew cask list mactex >/dev/null || brew cask install mactex
+brew list --cask mactex >/dev/null || brew cask install mactex
 
 ## 2017-6-25: Install RocketChat
-brew cask list rocket-chat >/dev/null || brew cask install rocket-chat
+brew list --cask rocket-chat >/dev/null || brew cask install rocket-chat
 if [[ $(brew outdated | grep -c rocket-chat) > 0 ]]; then
     if [[ -e /Applications/RocketChat.app ||  -e /Applications/Rocket.Chat.app ]]; then
         rm -rf '/Applications/RocketChat.app'
@@ -117,17 +117,17 @@ fi
 
 
 ## 2017-6-26: Intall MySQL Workbench
-brew cask list mysqlworkbench > /dev/null || brew cask install mysqlworkbench
+brew list --cask mysqlworkbench > /dev/null || brew cask install mysqlworkbench
 
 ## 2017-6-26: Intall MySQL Workbench
 brew cask list mysqlworkbench > /dev/null || brew cask install mysqlworkbench
 
 ## 2017-6-26: Intall docker
-brew cask list docker > /dev/null || brew cask install docker
-brew cask list docker-toolbox > /dev/null || brew cask install docker-toolbox
+brew list --cask docker > /dev/null || brew cask install docker
+brew list --cask docker-toolbox > /dev/null || brew cask install docker-toolbox
 
 ## 2017-7-17： Install torbrowser.
-brew cask list torbrowser > /dev/null || brew cask install torbrowser
+brew list --cask torbrowser > /dev/null || brew cask install torbrowser
 
 ## 2017-7-20： Install Python.
 brew list python > /dev/null || brew install python
@@ -151,7 +151,7 @@ brew list python3 > /dev/null || brew install python3
 #+ Install emacs using 'brew cask' so /Applications/Emacs.app is
 #+ properly created since 'brew linkapps emacs' is depcrecated since
 #+ at least 2017-8.
-brew cask list emacs > /dev/null || brew cask install emacs
+brew list --cask emacs > /dev/null || brew cask install emacs
 
 
 ## 2017-8-10: Install macvim
@@ -176,7 +176,7 @@ brew list ghostscript > /dev/null || ( brew install ghostscript && brew link gho
 
 
 ## 2017-9-29: Install simple-comic
-brew cask list simple-comic > /dev/null || brew cask install simple-comic
+brew list --cask simple-comic > /dev/null || brew cask install simple-comic
 
 
 
@@ -186,11 +186,11 @@ brew cask list simple-comic > /dev/null || brew cask install simple-comic
 #+ * medium.com/@technikhil/setting-up-ntfs-3g-on-your-mac-os-sierra-11eff1749898
 ##
 brew list ntfs-3g > /dev/null || brew install ntfs-3g
-brew cask list osxfuse >/dev/null || brew cask install osxfuse
+brew list --cask osxfuse >/dev/null || brew cask install osxfuse
 
 ## 2017-9-23: Install diffmerge
 ##
-brew cask list diffmerge >/dev/null || brew cask install diffmerge
+brew list --cask diffmerge >/dev/null || brew cask install diffmerge
 
 ## 2017-10-12L Install sloccount
 brew list sloccount > /dev/null || brew install sloccount
@@ -201,21 +201,21 @@ brew list sloccount > /dev/null || brew install sloccount
 brew list graphviz > /dev/null || brew install graphviz
 
 ## 2017-11-2: Install vagrant (VM) and virtualbox (hypervisor, i.e. VM player)
-brew cask list vagrant >/dev/null || brew cask install vagrant
-brew cask list virtualbox >/dev/null || brew cask install virtualbox
-brew cask list virtualbox-extension-pack >/dev/null || brew cask install virtualbox-extension-pack
+brew list --cask vagrant >/dev/null || brew cask install vagrant
+brew list --cask virtualbox >/dev/null || brew cask install virtualbox
+brew list --cask virtualbox-extension-pack >/dev/null || brew cask install virtualbox-extension-pack
 
 ## 2017-11-2: Install cvs.
 brew list cvs > /dev/null || ( brew install cvs && brew link cvs --overwrite )
 
 ## 2017-11-11: Intall xquartz.
-brew cask list xquartz >/dev/null || brew cask install xquartz
+brew list --cask xquartz >/dev/null || brew cask install xquartz
 ## Or reinstall it to upgrade it to the newest version
 # brew cask reinstall xquartz
 
 
 ## 2017-11-19: Intall 'Resilio Sync'.
-brew cask list resilio-sync >/dev/null || brew cask install resilio-sync
+brew list --cask resilio-sync >/dev/null || brew cask install resilio-sync
 
 
 ## 2017-11-22: Install npm.
@@ -223,12 +223,12 @@ brew list npm > /dev/null || brew install npm
 
 
 ## 2017-11-22: Install [GPG Suite, namely GPGTools](https://gpgtools.org/).
-brew cask list gpg-suite > /dev/null || brew cask install gpg-suite
+brew list --cask gpg-suite > /dev/null || brew cask install gpg-suite
 
 
 ## 2017-11-24: Install [MenuMeters](https://www.ragingmenace.com/software/menumeters/)
-# brew cask list menumeters > /dev/null || brew cask install menumeters
-brew cask list yujitach-menumeters > /dev/null || brew cask install yujitach-menumeters
+# brew list --cask menumeters > /dev/null || brew cask install menumeters
+brew list --cask yujitach-menumeters > /dev/null || brew cask install yujitach-menumeters
 
 
 ## 2017-11-24: Install and update selected [JetBrains](https://www.jetbrains.com/products.html) softwares.
@@ -238,7 +238,7 @@ appdirs=("Intellij IDEA" "PyCharm" "PhpStorm" "WebStorm" "DataGrip" "CLion")
 
 for idx in {0..5}
 do
-    brew cask list ${formulas[$idx]} >/dev/null || brew cask install ${formulas[$idx]}
+    brew list --cask ${formulas[$idx]} >/dev/null || brew cask install ${formulas[$idx]}
     if [[ $(brew outdated | grep -c ${formulas[$idx]}) > 0 ]]; then
         if [[ -d "/Applications/${appdirs[$idx]}.app" ]]; then
             rm -rf "/Applications/${appdirs[$idx]}.app"
@@ -261,7 +261,7 @@ brew list node >/dev/null || brew install node
 
 
 ## 2017-12-20: Install and update [Tableau Public](https://public.tableau.com/).
-brew cask list tableau-public >/dev/null || brew cask install tableau-public
+brew list --cask tableau-public >/dev/null || brew cask install tableau-public
 
 
 ## 2017-12-22: Install and update mp4box.
@@ -272,15 +272,15 @@ brew list mp4box >/dev/null || brew install mp4box
 
 
 ## 2017-12-30: Install and update ccleaner.
-brew cask list ccleaner > /dev/null || brew cask install ccleaner
+brew list --cask ccleaner > /dev/null || brew cask install ccleaner
 
 
 ## 2018-1-4: Install and update [OpenBazaar](https://www.openbazaar.org/)
-brew cask list openbazaar >/dev/null || brew cask install openbazaar
+brew list --cask openbazaar >/dev/null || brew cask install openbazaar
 
 
 ## 2018-1-4: Install and update [MPlayer](https://en.wikipedia.org/wiki/MPlayer)
-brew cask list mplayer-osx-extended >/dev/null || brew cask install mplayer-osx-extended
+brew list --cask mplayer-osx-extended >/dev/null || brew cask install mplayer-osx-extended
 if [[ $(brew outdated | grep -c mplayer-osx-extended) > 0 ]]; then
     if [[ -e '/Applications/MPlayer OSX Extended.app' ]]; then
         rm -rf '/Applications/MPlayer OSX Extended.app'
@@ -289,23 +289,23 @@ if [[ $(brew outdated | grep -c mplayer-osx-extended) > 0 ]]; then
 fi
 
 ## 2018-1-31: Install and update [Blockstack](https://blockstack.org/)
-brew cask list blockstack >/dev/null || brew cask install blockstack
+brew list --cask blockstack >/dev/null || brew cask install blockstack
 
 
 ## 2018-3-29: Install and update [Transmission](https://en.wikipedia.org/wiki/Transmission_(BitTorrent_client))
-brew cask list transmission >/dev/null || brew cask install transmission
+brew list --cask transmission >/dev/null || brew cask install transmission
 
 
 
 ## 2018-9-6: Install and update [Google Chrome Beta](https://www.google.com/chrome/beta/)
-#brew cask list homebrew/cask-versions/google-chrome-beta >/dev/null || brew cask install homebrew/cask-versions/google-chrome-beta
+#brew list --cask homebrew/cask-versions/google-chrome-beta >/dev/null || brew cask install homebrew/cask-versions/google-chrome-beta
 
 
 ## 2018-10-1: Install and update [Telegram](https://en.wikipedia.org/wiki/Telegram_(service))
 #+ 2019-11-29: Install Telegram Desktop in favor of Telegram as the latter seems to have one drawback: you cannot use Cmd + <up arrow> to scroll back a screenful of content.
 ##
-#brew cask list telegram >/dev/null || brew cask install telegram
-brew cask list telegram-desktop >/dev/null || brew cask install telegram-desktop
+#brew list --cask telegram >/dev/null || brew cask install telegram
+brew list --cask telegram-desktop >/dev/null || brew cask install telegram-desktop
 if [[ $(brew outdated | grep -c telegram-desktop) > 0 ]]; then
     if [[ -e '/Applications/Telegram Desktop.app' ]]; then
         rm -rf '/Applications/Telegram Desktop.app'
@@ -326,7 +326,7 @@ fi
 #+ 2020-3-11: Stop installing git-lfs as it is no longer available.
 #+
 ##
-brew cask list git-lfs >/dev/null || brew cask install git-lfs
+brew list git-lfs >/dev/null || brew install git-lfs
 if [[ $(brew outdated | grep -c git-lfs) > 0 ]]; then
     brew upgrade git-lfs
 fi
@@ -336,14 +336,14 @@ fi
 # 2019-2-28: LimeChat is not longer released via Homebrew due to the fact
 # the latest version of the software can ONLY be downloaded from Apple's
 # App Store.
-# brew cask list limechat >/dev/null || brew cask install limechat
+# brew list --cask limechat >/dev/null || brew cask install limechat
 
 
 
 # 2019-3-5: Install and update [Android Studio](https://developer.android.com/studio)
 #
-brew cask list android-studio >/dev/null || brew cask install android-studio
-brew cask list android-file-transfer >/dev/null || brew cask install android-file-transfer
+brew list --cask android-studio >/dev/null || brew cask install android-studio
+brew list --cask android-file-transfer >/dev/null || brew cask install android-file-transfer
 # android-messages
 # android-ndk
 # android-platform-tools
@@ -356,12 +356,12 @@ brew cask list android-file-transfer >/dev/null || brew cask install android-fil
 # xamarin-android
 # xamarin-android-player
 ## 2020-3-10: Install [CyberDuck](https://cyberduck.io/).
-brew cask list cyberduck >/dev/null || brew cask install cyberduck
+brew list --cask cyberduck >/dev/null || brew cask install cyberduck
 
 ## 2020-3-26: Install [Zoom](https://zoom.us).
-brew cask list zoomus >/dev/null || brew cask install zoomus
 if [[ $(brew outdated | grep -c zoomus) > 0 ]]; then
     if [[ -e /Applications/zoom.us.app ]]; then
+#brew list --cask zoomus >/dev/null || brew cask install zoomus
         rm -rf '/Applications/zoom.us.app'
     fi
     brew cask reinstall zoomus
