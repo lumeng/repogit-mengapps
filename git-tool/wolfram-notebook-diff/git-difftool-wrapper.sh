@@ -23,7 +23,7 @@ new_file_name_base="${new_file_name%.*}"
 shopt -s nocasematch
 
 if [[ "$old_file_name_extension" =~ nb|cdf && "$new_file_name_extension" =~ nb|cdf ]]; then
-	echo "diff-ing Wolfram notebooks:
+	echo "diff-ing files with Wolfram format:
 $2
 $5
 "

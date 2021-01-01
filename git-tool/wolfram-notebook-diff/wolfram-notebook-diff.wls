@@ -4,17 +4,19 @@
 
 (*UsingFrontEnd[
     With[
-        {diffnb = NotebookDiff[#1, #2]},
-        With[{nb = NotebookPut[diffnb]}, NotebookOpen[nb]]
+	{diffnb = NotebookDiff[#1, #2]},
+	With[{nb = NotebookPut[diffnb]}, NotebookOpen[nb]]
     ]
 ]&*)
 
 UsingFrontEnd[
     With[
-        {
-		    diffnb = NotebookDiff[#1, #2],
-		    diffnbFile = FileNameJoin[{$TemporaryDirectory, "wolfram_notebook_diff_result.nb"}]
-        },
-        Export[diffnbFile, diffnb, "Notebook"]
+	{
+	    diffnb = NotebookDiff[#1, #2],
+	    diffnbFile = FileNameJoin[{$TemporaryDirectory, "wolfram_notebook_diff_result.nb"}]
+	},
+	Export[diffnbFile, diffnb, "Notebook"]
     ]
 ]&
+
+(* END *)
