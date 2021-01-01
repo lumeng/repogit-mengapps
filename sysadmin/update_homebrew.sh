@@ -88,16 +88,19 @@ brew cask doctor
 brew list --cask filezilla >/dev/null && brew cask install filezilla
 
 
+################################################################################
 ## 2017-5-21: For using Multimarkdown syntax in source files of Ikiwiki websites#+ 2019-10-10: Superseded this with multimarkdown in pkgsrc as an dependency of ikiwiki.
 ##.
 # brew list multimarkdown >/dev/null || brew install multimarkdown
 
+################################################################################
 ## 2017-5-21: Install FileZilla via Homebrew so it's automatically updated via
 #+ the cron job to update Homebrew.
 #+ 2020-3-10: Stop installing FileZilla. Replace it with CyberDuck.
 ## 
 #brew list --cask filezilla >/dev/null || brew cask install filezilla
 
+################################################################################
 ## 2017-5-30: Install R.
 #+ To enable rJava support, run the following command:
 #+   R CMD javareconf JAVA_CPPFLAGS=-I/System/Library/Frameworks/JavaVM.framework/Headers
@@ -126,22 +129,27 @@ if [[ $(brew outdated | grep -c rocket-chat) > 0 ]]; then
 fi
 
 
+################################################################################
 ## 2017-6-26: Intall MySQL Workbench
 brew list --cask mysqlworkbench > /dev/null || brew cask install mysqlworkbench
 
 
+################################################################################
 ## 2017-6-26: Intall docker
 brew list --cask docker > /dev/null || brew cask install docker
 brew list --cask docker-toolbox > /dev/null || brew cask install docker-toolbox
 
+################################################################################
 ## 2017-7-17： Install torbrowser.
 brew list --cask torbrowser > /dev/null || brew cask install torbrowser
 
+################################################################################
 ## 2017-7-20： Install Python.
 brew list python > /dev/null || brew install python
 brew list python3 > /dev/null || brew install python3
 #brew reinstall python
 
+################################################################################
 ## 2017-8-10: Install Emacs
 #+
 
@@ -162,6 +170,7 @@ brew list python3 > /dev/null || brew install python3
 brew list --cask emacs > /dev/null || brew cask install emacs
 
 
+################################################################################
 ## 2017-8-10: Install macvim
 
 #+ Uninstall emacs that was previously installed with
@@ -174,10 +183,12 @@ brew list --cask emacs > /dev/null || brew cask install emacs
 brew list macvim > /dev/null || brew reinstall macvim --with-override-system-vim
 brew link --overwrite macvim
 
+################################################################################
 ## 2017-8-10: Install ghostscript
 brew list ghostscript > /dev/null || ( brew install ghostscript && brew link ghostscript --overwrite )
 
 
+################################################################################
 ## 2017-8-10: Install gnupg
 ## 2018-3-3: On macOS, do not install gnupg. Instead, install the formula 'gpg-suite' and use the gpg binary inside it.
 #brew list gnupg > /dev/null || ( brew install gnupg && brew link gnupg --overwrite )
@@ -294,6 +305,12 @@ brew list --cask ccleaner > /dev/null || brew cask install ccleaner
 
 ## 2018-1-4: Install and update [OpenBazaar](https://www.openbazaar.org/)
 brew list --cask openbazaar >/dev/null || brew cask install openbazaar
+if [[ $(brew outdated | grep -c openbazaar) > 0 ]]; then
+    if [[ -e '/Applications/OpenBazaar2.app' ]]; then
+        rm -rf '/Applications/OpenBazaar2.app'
+    fi
+    brew cask reinstall openbazaar
+fi
 
 
 ## 2018-1-4: Install and update [MPlayer](https://en.wikipedia.org/wiki/MPlayer)
@@ -307,6 +324,12 @@ fi
 
 ## 2018-1-31: Install and update [Blockstack](https://blockstack.org/)
 brew list --cask blockstack >/dev/null || brew cask install blockstack
+if [[ $(brew outdated | grep -c blockstack) > 0 ]]; then
+    if [[ -e '/Applications/Blockstack.app' ]]; then
+        rm -rf '/Applications/Blockstack.app'
+    fi
+    brew cask reinstall blockstack
+fi
 
 
 ## 2018-3-29: Install and update [Transmission](https://en.wikipedia.org/wiki/Transmission_(BitTorrent_client))
@@ -341,7 +364,7 @@ fi
 
 ## 2018-12-10: Install and update [git-lfs](https://git-lfs.github.com)
 #+ 2020-3-11: Stop installing git-lfs as it is no longer available.
-#+
+#+ 2020-7-20: git-lfs is changed from a cask to formula.
 ##
 brew list git-lfs >/dev/null || brew install git-lfs
 if [[ $(brew outdated | grep -c git-lfs) > 0 ]]; then
@@ -360,7 +383,22 @@ fi
 # 2019-3-5: Install and update [Android Studio](https://developer.android.com/studio)
 #
 brew list --cask android-studio >/dev/null || brew cask install android-studio
+if [[ $(brew outdated | grep -c android-studio) > 0 ]]; then
+    if [[ -e '/Applications/Android Studio.app' ]]; then
+        rm -rf '/Applications/Android Studio.app'
+    fi
+    brew cask reinstall android-studio
+fi
+
 brew list --cask android-file-transfer >/dev/null || brew cask install android-file-transfer
+if [[ $(brew outdated | grep -c android-file-transfer) > 0 ]]; then
+    if [[ -e '/Applications/Android File Transfer.app' ]]; then
+        rm -rf '/Applications/Android File Transfer.app'
+    fi
+    brew cask reinstall android-file-transfer
+fi
+
+
 # android-messages
 # android-ndk
 # android-platform-tools
@@ -372,17 +410,201 @@ brew list --cask android-file-transfer >/dev/null || brew cask install android-f
 # whoozle-android-file-transfer-nightly
 # xamarin-android
 # xamarin-android-player
+
+
+# 2019-3-17: Install and update [MacDown](https://macdown.uranusjr.com/)
+#
+brew list --cask macdown >/dev/null || brew cask install macdown
+
+
+# 2019-3-26: Install and update Thunderbird.
+#
+#brew list --cask thunderbird-beta >/dev/null || brew cask install thunderbird-beta
+brew list --cask thunderbird >/dev/null || brew cask install thunderbird
+if [[ $(brew outdated | grep -c thunderbird) > 0 ]]; then
+    if [[ -e '/Applications/Thunderbird.app' ]]; then
+        rm -rf '/Applications/Thunderbird.app'
+    fi
+    brew cask reinstall thunderbird
+fi
+
+
+
+# 2019-3-26: Install and update Welly.
+#
+brew list --cask welly >/dev/null || brew cask install welly
+
+# 2019-9-29 Install and update Libre Office.
+brew list --cask libreoffice > /dev/null || brew cask install libreoffice
+brew list --cask libreoffice-language-pack > /dev/null || brew cask install libreoffice-language-pack
+
+# 2019-12-1 Install and update Calibre.
+brew list --cask calibre >/dev/null || brew cask install calibre
+if [[ $(brew outdated | grep -c calibre) > 0 ]]; then
+    if [[ -e '/Applications/calibre.app' ]]; then
+        rm -rf '/Applications/calibre.app'
+    fi
+    brew cask reinstall calibre
+fi
+
+
+# 2019-12-13 Install and update VLC Player.
+brew list --cask vlc || brew cask install --force vlc
+brew list --cask vlc-webplugin || brew cask install vlc-webplugin
+brew list --cask vlcstreamer || brew cask install --force vlcstreamer
+
+if [[ $(brew outdated | grep -c vlc) > 0 ]]; then
+    if [[ -e '/Applications/VLC.app' ]]; then
+        rm -rf '/Applications/VLC.app'
+    fi
+    if [[ -e '/Applications/VLCStreamer.app' ]]; then
+        rm -rf '/Applications/VLCStreamer.app'
+    fi
+    brew cask reinstall vlc
+    brew cask reinstall vlc-webplugin
+    brew cask reinstall --force vlcstreamer
+fi
+
+
+
+# 2020-1-7 Install and update Soundflower
+brew list --cask soundflower || brew cask install soundflower
+
+# TODO 2020-2-4 Install and update Mutt
+#brew list mutt || brew install mutt
+#brew list getmail || brew install getmail
+
+# 2020-2-5 Install and update [NextCloud](https://nextcloud.com)
+brew list --cask nextcloud || brew cask install nextcloud
+
+# 2020-2-5 Install and update [AirDroid](https://www.airdroid.com/)
+brew list --cask airdroid || brew cask install airdroid
+
 ## 2020-3-10: Install [CyberDuck](https://cyberduck.io/).
 brew list --cask cyberduck >/dev/null || brew cask install cyberduck
 
 ## 2020-3-26: Install [Zoom](https://zoom.us).
-if [[ $(brew outdated | grep -c zoomus) > 0 ]]; then
-    if [[ -e /Applications/zoom.us.app ]]; then
 #brew list --cask zoomus >/dev/null || brew cask install zoomus
-        rm -rf '/Applications/zoom.us.app'
+#if [[ $(brew outdated | grep -c zoomus) > 0 ]]; then
+#    if [[ -e /Applications/zoom.us.app ]]; then
+#        rm -rf '/Applications/zoom.us.app'
+#    fi
+#    brew cask reinstall zoomus
+#fi
+
+
+## 2020-3-28: Install [Wickr](https://wickr.com).
+brew list --cask wickrme >/dev/null || brew cask install wickrme
+if [[ $(brew outdated | grep -c wickrme) > 0 ]]; then
+    if [[ -e /Applications/WickrMe.app ]]; then
+        rm -rf '/Applications/WickrMe.app'
     fi
-    brew cask reinstall zoomus
+    brew cask reinstall wickrme
 fi
+
+
+## 2020-6-11: Install [JDownloader](https://jdownloader.com).
+#+ * First install JDK 8 which is required by jDownloader.
+##
+brew list --cask homebrew/cask-versions/adoptopenjdk8 >/dev/null || brew cask install homebrew/cask-versions/adoptopenjdk8
+
+brew list --cask jdownloader >/dev/null || brew cask install jdownloader
+if [[ $(brew outdated | grep -c jdownloader) > 0 ]]; then
+    if [[ -e '/Applications/jDownloader 2.0.app' ]]; then
+        rm -rf '/Applications/jDownloader 2.0.app'
+    fi
+    if [[ -e '/Applications/JDownloader2.app' ]]; then
+        rm -rf '/Applications/JDownloader2.app'
+    fi
+    brew cask reinstall jdownloader
+fi
+
+## 2020-6-21: Install [Stretchly](https://hovancik.net/stretchly/).
+##
+brew list --cask stretchly >/dev/null || brew cask install stretchly
+
+
+## 2020-6-11: Install [JDownloader](https://jdownloader.com).
+#+ * First install JDK 8 which is required by jDownloader.
+##
+brew list --cask macdjview >/dev/null || brew cask install macdjview
+if [[ $(brew outdated | grep -c MacDjView) > 0 ]]; then
+    if [[ -e '/Applications/MacDjView.app' ]]; then
+        rm -rf '/Applications/MacDjView.app'
+    fi
+    brew cask reinstall macdjview
+fi
+
+## 2020-6-23: Install [Skitch]().
+brew list --cask skitch >/dev/null || brew cask install skitch
+if [[ $(brew outdated | grep -c skitch) > 0 ]]; then
+    if [[ -e '/Applications/Skitch.app' ]]; then
+        rm -rf '/Applications/Skitch.app'
+    fi
+    brew cask reinstall skitch
+fi
+
+## 2020-6-23: Install OpenJDK.
+#+ 2020-07-20: Change openjdk from cask to formula.
+#+
+##
+brew list openjdk >/dev/null || brew install openjdk
+brew list --cask adoptopenjdk >/dev/null || brew cask install adoptopenjdk
+
+
+## 2020-6-23: Install curl.
+brew list --cask curl >/dev/null || brew cask install curl
+
+
+## 2020-9-28: Install WhatSize.
+brew list --cask whatsize >/dev/null || brew cask install whatsize
+if [[ $(brew outdated | grep -c whatsize) > 0 ]]; then
+    if [[ -e '/Applications/WhatSize.app' ]]; then
+        rm -rf '/Applications/WhatSize.app'
+    fi
+    brew cask reinstall whatsize
+fi
+
+## 2020-11-1: Install youtube-dl.
+brew list youtube-dl >/dev/null || brew install youtube-dl
+
+## 2020-11-9: Install Franz.
+# brew list --cask franz >/dev/null || brew cask install franz
+# if [[ $(brew outdated | grep -c franz) > 0 ]]; then
+#     if [[ -e '/Applications/Franz.app' ]]; then
+#         rm -rf '/Applications/Franz.app'
+#     fi
+#     brew cask reinstall franz
+# fi
+
+## 2020-11-20: Install [GoPanda](https://pandanet-igs.com).
+brew list --cask gopanda >/dev/null || brew cask install gopanda
+if [[ $(brew outdated | grep -c gopanda) > 0 ]]; then
+    if [[ -e '/Applications/GoPanda2.app' ]]; then
+        rm -rf '/Applications/GoPanda2.app'
+    fi
+    brew cask reinstall gopanda
+fi
+
+
+## 2020-11-26: Install [GoPanda](https://pandanet-igs.com).
+brew list --cask gopanda >/dev/null || brew cask install gopanda
+if [[ $(brew outdated | grep -c gopanda) > 0 ]]; then
+    if [[ -e '/Applications/GoPanda2.app' ]]; then
+        rm -rf '/Applications/GoPanda2.app'
+    fi
+    brew cask reinstall gopanda
+fi
+
+## 2020-12-24: Install [pyglossary](https://github.com/ilius/pyglossary).
+brew list pygobject3 >/dev/null || brew install pygobject3
+brew list gtk+3 >/dev/null || brew install --cask gtk+3
+
+
+## 2020-12-31: Install [ocrmypdf](https://github.com/jbarlow83/OCRmyPDF)
+brew list ocrmypdf >/dev/null || brew install ocrmypdf
+brew list tesseract-lang >/dev/null || brew install tesseract-lang
+
 
 ##
 #+ Fix permissions required by applications installed via Munki 
