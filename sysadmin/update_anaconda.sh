@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+###############################################################################
+#+ * Update Anaconda
+#+
+#+ * References
+#+ - https://docs.anaconda.com/anaconda/install/
+## 
 
 ## Save old $PATH and restore it later
 OLD_PATH="$PATH"
@@ -13,7 +19,7 @@ elif [[ $(uname) == 'Darwin' ]]; then
     ANACONDA_MANPATH=$HOME/anaconda/share/man
 else
     echo >&2 "Anaconda installation path is not determined on $(uname)."
-	exit 1
+    exit 1
 fi
 
 
