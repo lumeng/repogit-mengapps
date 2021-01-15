@@ -13,7 +13,7 @@
 #+
 #################################################################################
 
-REGEX='(.*)\.local'
+REGEX='(.*)\.(local|lan)'
 
 HOST_NAME="$(hostname)"
 
@@ -24,7 +24,7 @@ fi
 ## This arbitrarily assumes git://git.kernel.org/pub/scm/git/git.git
 #+ is checked out at the following workspace directory.
 ##
-WORKSPACE_DIR="$HOME/WorkSpace-$HOST_NAME/repos-external"
+WORKSPACE_DIR="$HOME/WorkSpace-${HOST_NAME}/repos-external"
 
 if [[ -d "$WORKSPACE_DIR" ]]; then
 	cd "$WORKSPACE_DIR"
