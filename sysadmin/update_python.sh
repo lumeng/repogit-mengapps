@@ -57,9 +57,13 @@ pip3 install --upgrade pip
 pip install --upgrade setuptools
 pip3 install --upgrade setuptools
 
-## 2017-7-21: Install and upgrade virtualenv.
+## * 2017-7-21: Install and upgrade virtualenv.
+#+ * 2020-7-20: Stop installing virtualenv for Python 3.8 as it is superseded
+#+   by venv. 
+#+
+##
 pip install --upgrade virtualenv
-pip3 install --upgrade virtualenv
+## pip3 install --upgrade virtualenv
 
 pip install --upgrade virtualenvwrapper
 pip3 install --upgrade virtualenvwrapper
