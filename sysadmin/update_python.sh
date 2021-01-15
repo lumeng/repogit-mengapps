@@ -14,9 +14,15 @@ fi
 #+ Update Homebrew
 ##
 if [[ -f ./update_homebrew.sh ]]; then
-    source ./update_homebrew.sh
+    read -n1 -p "Update Homebrew packages first (It may take more than 10 minutes to finish.)? [y,n]" doit
+    case $doit in  
+       y|Y) source ./update_homebrew.sh ;; 
+       n|N) source ./update_homebrew_no_install.sh ;; 
+       *) echo "Skipping updating Homebrew." ;; 
+    esac
 else
     echo "Cannot find script ./update_homebrew.sh. Please update Homebrew first."
+    echo "\n"
     exit 1
 fi
 
