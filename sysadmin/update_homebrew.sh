@@ -605,6 +605,14 @@ brew list gtk+3 >/dev/null || brew install --cask gtk+3
 brew list ocrmypdf >/dev/null || brew install ocrmypdf
 brew list tesseract-lang >/dev/null || brew install tesseract-lang
 
+## 2021-11-20: Install [TeamViewer](https://www.teamviewer.com).
+brew list --cask teamviewer >/dev/null || brew install --cask teamviewer
+if [[ $(brew outdated | grep -c teamviewer) > 0 ]]; then
+    if [[ -e '/Applications/TeamViewer.app' ]]; then
+        rm -rf '/Applications/TeamViewer.app'
+    fi
+    brew reinstall --cask teamviewer
+fi
 
 ##
 #+ Fix permissions required by applications installed via Munki 
