@@ -82,10 +82,11 @@ brew cask doctor
 
 ################################################################################
 #+ Install FileZilla.
-#+
+#+ * 2021-1-20: Disable the installation as it is no longer available or
+#+ compatible with macOS 10.14.6 (at least).
 ##
 
-brew list --cask filezilla >/dev/null && brew install --cask filezilla
+# brew list --cask filezilla >/dev/null && brew install --cask filezilla
 
 
 ################################################################################
@@ -613,6 +614,10 @@ if [[ $(brew outdated | grep -c teamviewer) > 0 ]]; then
     fi
     brew reinstall --cask teamviewer
 fi
+
+################################################################################
+## 2021-1-20: Install exiftool.
+brew list exiftool >/dev/null || brew install exiftool
 
 ##
 #+ Fix permissions required by applications installed via Munki 
