@@ -66,14 +66,10 @@ brew tap buo/cask-upgrade
 brew cu -y -a --cleanup
 # brew list --cask | xargs brew reinstall --cask ## alternatively, reinstall all softwares
 
-
 brew cleanup
-
 
 brew doctor
 
-
-brew cask doctor
 
 ################################################################################
 #+ Install softwares.
