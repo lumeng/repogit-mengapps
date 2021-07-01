@@ -679,6 +679,12 @@ fi
 ## 2021-1-20: Install exiftool.
 brew list exiftool >/dev/null 2>&1 || brew install exiftool
 
+################################################################################
+## 2021-3-14: Install mediainfo.
+brew list media-info >/dev/null 2>&1 || brew install media-info
+brew list --cask mediainfo >/dev/null 2>&1 || brew install --cask mediainfo
+
+
 ##
 #+ Fix permissions required by applications installed via Munki 
 #+ See http://apple.stackexchange.com/questions/174492/how-to-uninstall-munki-managed-software-center-app/
