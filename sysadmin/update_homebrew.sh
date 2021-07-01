@@ -427,7 +427,7 @@ fi
 #+ 2020-3-11: Stop installing git-lfs as it is no longer available.
 #+ 2020-7-20: git-lfs is changed from a cask to formula.
 ##
-brew list git-lfs >/dev/null || brew install git-lfs
+brew list git-lfs >/dev/null 2>&1 || brew install git-lfs
 if [[ $(brew outdated | grep -c git-lfs) > 0 ]]; then
     brew upgrade git-lfs
 fi
@@ -437,13 +437,13 @@ fi
 # 2019-2-28: LimeChat is not longer released via Homebrew due to the fact
 # the latest version of the software can ONLY be downloaded from Apple's
 # App Store.
-# brew list --cask limechat >/dev/null || brew install --cask limechat
+# brew list --cask limechat >/dev/null 2>&1 || brew install --cask limechat
 
 
 
 # 2019-3-5: Install and update [Android Studio](https://developer.android.com/studio)
 #
-brew list --cask android-studio >/dev/null || brew install --cask android-studio
+brew list --cask android-studio >/dev/null 2>&1 || brew install --cask android-studio
 if [[ $(brew outdated | grep -c android-studio) > 0 ]]; then
     if [[ -e '/Applications/Android Studio.app' ]]; then
         rm -rf '/Applications/Android Studio.app'
@@ -451,7 +451,7 @@ if [[ $(brew outdated | grep -c android-studio) > 0 ]]; then
     brew reinstall --cask android-studio
 fi
 
-brew list --cask android-file-transfer >/dev/null || brew install --cask android-file-transfer
+brew list --cask android-file-transfer >/dev/null 2>&1 || brew install --cask android-file-transfer
 if [[ $(brew outdated | grep -c android-file-transfer) > 0 ]]; then
     if [[ -e '/Applications/Android File Transfer.app' ]]; then
         rm -rf '/Applications/Android File Transfer.app'
@@ -582,13 +582,13 @@ fi
 
 ## 2020-6-21: Install [Stretchly](https://hovancik.net/stretchly/).
 ##
-brew list --cask stretchly >/dev/null || brew install --cask stretchly
+brew list --cask stretchly >/dev/null 2>&1 || brew install --cask stretchly
 
 
 ## 2020-6-11: Install [JDownloader](https://jdownloader.com).
 #+ * First install JDK 8 which is required by jDownloader.
 ##
-brew list --cask macdjview >/dev/null || brew install --cask macdjview
+brew list --cask macdjview >/dev/null 2>&1 || brew install --cask macdjview
 if [[ $(brew outdated | grep -c MacDjView) > 0 ]]; then
     if [[ -e '/Applications/MacDjView.app' ]]; then
         rm -rf '/Applications/MacDjView.app'
@@ -597,7 +597,7 @@ if [[ $(brew outdated | grep -c MacDjView) > 0 ]]; then
 fi
 
 ## 2020-6-23: Install [Skitch]().
-brew list --cask skitch >/dev/null || brew install --cask skitch
+brew list --cask skitch >/dev/null 2>&1 || brew install --cask skitch
 if [[ $(brew outdated | grep -c skitch) > 0 ]]; then
     if [[ -e '/Applications/Skitch.app' ]]; then
         rm -rf '/Applications/Skitch.app'
@@ -609,16 +609,16 @@ fi
 #+ 2020-07-20: Change openjdk from cask to formula.
 #+
 ##
-brew list openjdk >/dev/null || brew install openjdk
-brew list --cask adoptopenjdk >/dev/null || brew install --cask adoptopenjdk
+brew list openjdk >/dev/null 2>&1 || brew install openjdk
+brew list --cask adoptopenjdk >/dev/null 2>&1 || brew install --cask adoptopenjdk
 
 
 ## 2020-6-23: Install curl.
-brew list --cask curl >/dev/null || brew install --cask curl
+brew list curl >/dev/null 2>&1 || brew install curl
 
 
 ## 2020-9-28: Install WhatSize.
-brew list --cask whatsize >/dev/null || brew install --cask whatsize
+brew list --cask whatsize >/dev/null 2>&1 || brew install --cask whatsize
 if [[ $(brew outdated | grep -c whatsize) > 0 ]]; then
     if [[ -e '/Applications/WhatSize.app' ]]; then
         rm -rf '/Applications/WhatSize.app'
@@ -627,10 +627,10 @@ if [[ $(brew outdated | grep -c whatsize) > 0 ]]; then
 fi
 
 ## 2020-11-1: Install youtube-dl.
-brew list youtube-dl >/dev/null || brew install youtube-dl
+brew list youtube-dl >/dev/null 2>&1 || brew install youtube-dl
 
 ## 2020-11-9: Install Franz.
-# brew list --cask franz >/dev/null || brew install --cask franz
+# brew list --cask franz >/dev/null 2>&1 || brew install --cask franz
 # if [[ $(brew outdated | grep -c franz) > 0 ]]; then
 #     if [[ -e '/Applications/Franz.app' ]]; then
 #         rm -rf '/Applications/Franz.app'
