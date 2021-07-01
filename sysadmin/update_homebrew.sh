@@ -77,6 +77,75 @@ brew doctor
 
 
 ################################################################################
+#+ 2021-6-28: Install SmcFanControls
+#+ 
+##
+brew list --cask smcfancontrol >/dev/null 2>&1 || brew install --cask smcfancontrol
+
+################################################################################
+#+ 2021-6-28: Install MenuMeters
+#+ * installed file: /Users/meng/Library/PreferencePanes/MenuMeters.prefPane
+##
+brew list --cask menumeters >/dev/null 2>&1 || brew install --cask menumeters
+if [[ $(brew outdated | grep -c menumeters) > 0 ]]; then
+    if [[ -e '/Applications/MenuMeters.app' ]]; then
+        rm -rf '/Applications/MenuMeters.app'
+    fi
+    brew reinstall --cask menumeters
+fi
+
+
+################################################################################
+#+ 2021-6-28: Install trash-cli
+#+ * alternative applications:
+#+   * trash-cli
+#+   * macos-trash
+#+   * trash
+##
+brew list --cask trash-cli >/dev/null 2>&1 || brew install --cask trash-cli
+
+
+################################################################################
+#+ 2021-6-26: Install Discord
+##
+brew list --cask discord >/dev/null 2>&1 || brew install --cask discord
+if [[ $(brew outdated | grep -c discord) > 0 ]]; then
+    if [[ -e '/Applications/Discord.app' ]]; then
+        rm -rf '/Applications/Discord.app'
+    fi
+    brew reinstall --cask discord
+fi
+
+################################################################################
+#+ 2021-6-25: Install The Unarchiver
+##
+brew list --cask the-unarchiver >/dev/null 2>&1 || brew install --cask the-unarchiver
+if [[ $(brew outdated | grep -c the-unarchiver) > 0 ]]; then
+    if [[ -e '/Applications/The Unarchiver.app' ]]; then
+        rm -rf '/Applications/The Unarchiver.app'
+    fi
+    brew reinstall --cask the-unarchiver
+fi
+
+################################################################################
+#+ Install sourcetree.
+##
+brew list --cask sourcetree >/dev/null 2>&1 || brew install sourcetree
+
+
+################################################################################
+#+ Install coreutils.
+##
+brew list coreutils >/dev/null 2>&1 || brew install coreutils
+
+################################################################################
+#+ Install rsync.
+##
+
+brew list rsync >/dev/null 2>&1 || brew install rsync
+
+
+################################################################################
 #+ Install FileZilla.
 #+ * 2021-1-20: Disable the installation as it is no longer available or
 #+ compatible with macOS 10.14.6 (at least).
