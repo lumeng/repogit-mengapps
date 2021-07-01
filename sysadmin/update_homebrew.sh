@@ -318,11 +318,6 @@ brew list npm > /dev/null || brew install npm
 brew list --cask gpg-suite > /dev/null || brew install --cask gpg-suite
 
 
-## 2017-11-24: Install [MenuMeters](https://www.ragingmenace.com/software/menumeters/)
-# brew list --cask menumeters > /dev/null || brew install --cask menumeters
-brew list --cask yujitach-menumeters > /dev/null || brew install --cask yujitach-menumeters
-
-
 ## 2017-11-24: Install and update selected [JetBrains](https://www.jetbrains.com/products.html) softwares.
 
 #formulas=(intellij-idea pycharm phpstorm webstorm datagrip clion)
