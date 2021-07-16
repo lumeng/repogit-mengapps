@@ -77,6 +77,50 @@ brew doctor
 
 
 ################################################################################
+#+ 2021-7-16: Install tree
+#+ 
+##
+brew list tree >/dev/null 2>&1 || brew install tree
+
+################################################################################
+#+ 2021-7-12: Install ipfs
+#+ 
+##
+brew list ipfs >/dev/null 2>&1 || brew install ipfs
+
+
+################################################################################
+#+ 2021-7-12: Install Evernote.
+#+ 
+##
+brew list --cask evernote >/dev/null 2>&1 || brew install --cask evernote
+if [[ $(brew outdated | grep -c evernote) > 0 ]]; then
+    if [[ -e '/Applications/Evernote.app' ]]; then
+        rm -rf '/Applications/Evernote.app'
+    fi
+    brew reinstall --cask evernote
+fi
+
+################################################################################
+#+ 2021-7-7: Install mkvtoolnix
+#+ 
+##
+brew list mkvtoolnix >/dev/null 2>&1 || brew install mkvtoolnix
+
+################################################################################
+#+ 2021-7-6: Install splayer
+#+ 
+##
+brew list --cask splayer >/dev/null 2>&1 || brew install --cask splayer
+
+
+################################################################################
+#+ 2021-7-5: Install snipaste
+#+ 
+##
+brew list --cask snipaste >/dev/null 2>&1 || brew install --cask snipaste
+
+################################################################################
 #+ 2021-6-28: Install SmcFanControls
 #+ 
 ##
@@ -264,14 +308,28 @@ brew list ghostscript > /dev/null || ( brew install ghostscript && brew link gho
 brew list --cask simple-comic > /dev/null || brew install --cask simple-comic
 
 
-
-## 2017-9-20: Install ntfs-3g and osxfuse to enable read and write on NTFS hard
+################################################################################
+#+ Install macfuse and ntfs-3g-mac
+#+ * 2021-6-22: Install macfuse and ntfs-3g-mac which now supersede osxfuse and ntfs-3g.
+#+ * 2017-9-20: Install ntfs-3g and osxfuse to enable read and write on NTFS hard
 #+ drives.
-#+ References:
-#+ * medium.com/@technikhil/setting-up-ntfs-3g-on-your-mac-os-sierra-11eff1749898
+#+ * References:
+#+   * ntfs-3g-mac: https://github.com/gromgit/homebrew-fuse/tree/main/Formula
+#+   * 2021-6-22: https://github.com/gromgit/homebrew-fuse/tree/main/Formula
+#+   * medium.com/@technikhil/setting-up-ntfs-3g-on-your-mac-os-sierra-11eff1749898
 ##
-brew list ntfs-3g > /dev/null || brew install ntfs-3g
-brew list --cask osxfuse >/dev/null || brew install --cask osxfuse
+
+## 2021-6-22: Uninstall osxfuse if it is installed as it has been superseded by macfuse.
+#brew list --cask osxfuse >/dev/null 2>&1 || brew install --cask osxfuse
+brew list osxfuse >/dev/null 2>&1 && brew uninstall osxfuse
+brew list --cask macfuse >/dev/null 2>&1 || brew install macfuse
+
+## 2021-6-22: Uninstall ntfs-3g if it is installed as it has been superseded by ntfs-3g-mac in tap gromgit/homebrew/fuse
+#brew list ntfs-3g > /dev/null || brew install ntfs-3g
+brew list ntfs-3g >/dev/null 2>&1 && brew uninstall ntfs-3g
+brew tap gromgit/homebrew-fuse
+brew list ntfs-3g-mac >/dev/null 2>&1 || brew install ntfs-3g-mac
+
 
 ## 2017-9-23: Install diffmerge
 ##
