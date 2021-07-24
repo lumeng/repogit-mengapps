@@ -77,6 +77,18 @@ brew doctor
 
 
 ################################################################################
+#+ 2021-7-16: Install [Manuskript](https://www.theologeek.ch/manuskript/)
+#+ 
+##
+brew list manuskript >/dev/null 2>&1 || brew install manuskript
+if [[ $(brew outdated | grep -c manuskript) > 0 ]]; then
+    if [[ -e '/Applications/Manuskript.app' ]]; then
+        rm -rf '/Applications/Manuskript.app'
+    fi
+    brew reinstall --cask manuskript
+fi
+
+################################################################################
 #+ 2021-7-16: Install tree
 #+ 
 ##
