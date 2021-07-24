@@ -585,6 +585,9 @@ brew list --cask vlc-webplugin || brew install --cask vlc-webplugin
 brew list --cask vlcstreamer || brew install --cask --force vlcstreamer
 
 if [[ $(brew outdated | grep -c vlc) > 0 ]]; then
+    if [[ -e '~/Library/Internet Plug-Ins/VLC Plugin.plugin' ]]; then
+        rm -rf '~/Library/Internet Plug-Ins/VLC Plugin.plugin'
+    fi
     if [[ -e '/Applications/VLC.app' ]]; then
         rm -rf '/Applications/VLC.app'
     fi
