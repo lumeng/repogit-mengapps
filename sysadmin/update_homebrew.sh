@@ -75,6 +75,122 @@ brew doctor
 #+ Install softwares.
 ##
 
+################################################################################
+#+ 2021-9-16: Install Matrix client [Element](https://matrix.org/clients-matrix/)
+#+ 
+##
+brew list element >/dev/null 2>&1 || brew install --cask element
+if [[ $(brew outdated | grep -c element) > 0 ]]; then
+    if [[ -e '/Applications/Element.app' ]]; then
+        rm -rf '/Applications/Element.app'
+    fi
+    brew reinstall --cask element
+fi
+
+
+################################################################################
+#+ 2021-9-10: Install [iMazing](https://www.imazing.com)
+#+ 
+##
+# brew list imazing >/dev/null 2>&1 || brew install --cask imazing
+# if [[ $(brew outdated | grep -c imazing) > 0 ]]; then
+#     if [[ -e '/Applications/Imazing.app' ]]; then
+#         rm -rf '/Applications/Imazing.app'
+#     fi
+#     brew reinstall --cask imazing
+# fi
+
+
+################################################################################
+#+ 2021-8-30: Install [RescueTime](https://www.rescuetime.com)
+#+ 
+##
+brew list rescuetime >/dev/null 2>&1 || brew install --cask rescuetime
+if [[ $(brew outdated | grep -c rescuetime) > 0 ]]; then
+    if [[ -e '/Applications/RescueTime.app' ]]; then
+        rm -rf '/Applications/RescueTime.app'
+    fi
+    brew reinstall --cask rescuetime
+fi
+
+
+################################################################################
+#+ 2021-8-30: Install [Audacity](https://wiki.audacityteam.org)
+#+ 
+##
+brew list audacity >/dev/null 2>&1 || brew install --cask audacity
+if [[ $(brew outdated | grep -c audacity) > 0 ]]; then
+    if [[ -e '/Applications/Audacity.app' ]]; then
+        rm -rf '/Applications/Audacity.app'
+    fi
+    brew reinstall --cask audacity
+fi
+
+
+################################################################################
+#+ 2021-8-29: Install [Anki](https://apps.ankiweb.net)
+#+ 
+##
+brew list anki >/dev/null 2>&1 || brew install --cask anki
+if [[ $(brew outdated | grep -c anki) > 0 ]]; then
+    if [[ -e '/Applications/Anki.app' ]]; then
+        rm -rf '/Applications/Anki.app'
+    fi
+    brew reinstall --cask anki
+fi
+
+
+################################################################################
+#+ 2021-8-27: Install [GoldenDict](http://goldendict.org)
+#+ 
+##
+brew list goldendict >/dev/null 2>&1 || brew install --cask goldendict
+if [[ $(brew outdated | grep -c goldendict) > 0 ]]; then
+    if [[ -e '/Applications/GoldenDict.app' ]]; then
+        rm -rf '/Applications/GoldenDict.app'
+    fi
+    brew reinstall --cask goldendict
+fi
+
+
+################################################################################
+#+ 2021-8-16: Install [Eclipse](https://www.eclipse.org)
+#+ 
+##
+brew list ebmac >/dev/null 2>&1 || brew install --cask ebmac
+if [[ $(brew outdated | grep -c ebmac) > 0 ]]; then
+    if [[ -e '/Applications/EBMac.app' ]]; then
+        rm -rf '/Applications/EBMac.app'
+    fi
+    brew reinstall --cask ebmac
+fi
+
+
+################################################################################
+#+ 2021-8-16: Install [Eclipse](https://www.eclipse.org)
+#+ 
+##
+brew list eclipse-jee >/dev/null 2>&1 || brew install eclipse-jee
+if [[ $(brew outdated | grep -c eclipse-jee) > 0 ]]; then
+    if [[ -e '/Applications/Eclipse.app' ]]; then
+        rm -rf '/Applications/Eclipse.app'
+    fi
+    brew reinstall eclipse-jee
+fi
+
+
+################################################################################
+#+ 2021-8-11: Install [IINA](https://iina.io)
+#+ 
+##
+brew list --cask iina >/dev/null 2>&1 || brew install --cask iina
+if [[ $(brew outdated | grep -c iina) > 0 ]]; then
+    if [[ -e '/Applications/IINA.app' ]]; then
+        rm -rf '/Applications/Iina.app'
+    fi
+    brew reinstall --cask iina
+fi
+
 
 ################################################################################
 #+ 2021-7-16: Install [Manuskript](https://www.theologeek.ch/manuskript/)
@@ -105,7 +221,7 @@ brew list ipfs >/dev/null 2>&1 || brew install ipfs
 #+ 2021-7-12: Install Evernote.
 #+ 
 ##
-brew list --cask evernote >/dev/null 2>&1 || brew install --cask evernote
+brew list --cask Evernote >/dev/null 2>&1 || brew install --cask evernote
 if [[ $(brew outdated | grep -c evernote) > 0 ]]; then
     if [[ -e '/Applications/Evernote.app' ]]; then
         rm -rf '/Applications/Evernote.app'
@@ -158,7 +274,7 @@ fi
 #+   * macos-trash
 #+   * trash
 ##
-brew list --cask trash-cli >/dev/null 2>&1 || brew install --cask trash-cli
+brew list trash-cli >/dev/null 2>&1 || brew install trash-cli
 
 
 ################################################################################
