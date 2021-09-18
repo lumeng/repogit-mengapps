@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ##
-#+ Script for updating Python.
+#+ Script for updating npm and its packages.
 #+
 ##
 
@@ -62,6 +62,7 @@ npm list -g minimatch > /dev/null || (npm install -g minimatch && npm update -g 
 ## 2017-11-24: Install and update pug.
 npm list -g pug > /dev/null || (npm install -g pug && npm update -g pug)
 
+
 ## 2017-12-3: Install and update iterm2-tab-set.
 npm list -g iterm2-tab-set > /dev/null || (npm install -g iterm2-tab-set && npm update -g iterm2-tab-set)
 
@@ -72,8 +73,11 @@ npm list -g express > /dev/null || (npm install -g express && npm update -g expr
 
 ## 2017-12-19: Install and update alexa-sdk (https://alexa.design).
 npm list -g alexa-sdk > /dev/null || (npm install -g alexa-sdk && npm update -g alexa-sdk)
+
+
 ## Alexa Skills Kit Command-Line Interface (ASK CLI), https://alexa.design/cli
 npm list -g ask-cli > /dev/null || (npm install -g ask-cli && npm update -g ask-cli)
+
 
 ## 2017-12-20: Install and update http.
 npm list -g http > /dev/null || (npm install -g http && npm update -g http)
