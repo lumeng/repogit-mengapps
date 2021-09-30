@@ -6,6 +6,7 @@
 #+ * TODO: add more documentation
 ##
 
+## Define music folders.
 if [[ $(hostname) == 'x3872' ]]; then
     TO_LISTEN_FOLDER='/mnt/c/Users/lumeng/百度云同步盘/DataSpace-Baidu/Music/to_listen'
     MUSIC_FOLDER='/mnt/c/Users/lumeng/百度云同步盘/DataSpace-Baidu/Music/favorite_music'
@@ -16,7 +17,7 @@ else
     SONG_FOLDER="$HOME/Google Drive/DataSpace-GoogleDrive/Music/favorite_song"
 fi
 
-
+## Define find command.
 if [[ $(hostname) == 'x3872' ]]; then
     FIND_CMD='/usr/bin/find'
 elif [[ $(uname) == 'Darwin' ]]; then
@@ -26,19 +27,25 @@ else
 fi
 
 
-FILE_FOLDER=${MUSIC_FOLDER}
+FILE_FOLDER="${TO_LISTEN_FOLDER}"
+FILE_FOLDERS=("${MUSIC_FOLDER}", "${SONG_FOLDER}", "${TO_LISTEN_FOLDER}")
 
-while getopts ":ms" opt; do
+while getopts ":msr" opt; do
   case ${opt} in
-      s) # process option t
+      s) # song
          FILE_FOLDER=${SONG_FOLDER}
          ;;
-      m) # process option t
+      m) # music
          FILE_FOLDER=${MUSIC_FOLDER}
+         ;;
+      r) # random
+	 RANDOM_IDX=$(jot 1 0 2)
+         FILE_FOLDER="${FILE_FOLDERS[$RANDOM_IDX]}"
          ;;
       \?) echo "Usage:
 * song: my-play-music -s
 * music: my-play-music -m
+* music: my-play-music -r
 * the folder \"to-listen\": my-play-music
 "
          FILE_FOLDER="${TO_LISTEN_FOLDER}"
@@ -65,24 +72,39 @@ fi
 ##
 
 if [[ -d "${FILE_FOLDER}" ]]; then
+
+    echo "folder: ${FILE_FOLDER}"
+
+    ## Play some oldest files since the last access time.
+    $FIND_CMD "${FILE_FOLDER}" -type f -regextype posix-extended -regex '.*\.(ape|flac|flv|mkv|mp3|mp4|ogg|opus|wav|webm)' -printf "\n%AD %AT %p" | sort -n -t"/" -k3 -k1 -k2 -k4 | sed '/^ *$/d' | head -2 | cut -d ' ' -f 3- | while read f; do
+        pkill -f 'VLC.app'
+        echo "file: $f"
+        $MY_PLAYER -Z --play-and-exit "$f"
+	touch -a "$f"
+    done
+
+    ## Play some files randomly chosen.
+    $FIND_CMD "${FILE_FOLDER}" -type f -regextype posix-extended -regex '.*\.(ape|flac|flv|mkv|mp3|mp4|ogg|opus|wav|webm)' | sort -R | tail -1 | while read f; do
+        pkill -f 'VLC.app'
+        echo "file: $f"
+        $MY_PLAYER -Z --play-and-exit "$f"
+        touch -a "$f"
+    done
+
+    ## Play some files from the to-listen folder.
     if [[ -d "${TO_LISTEN_FOLDER}" ]]; then
-        $FIND_CMD "${TO_LISTEN_FOLDER}" -type f | shuf -n 2 | while read f; do
+        echo "folder: ${TO_LISTEN_FOLDER}"
+
+        $FIND_CMD "${TO_LISTEN_FOLDER}" -type f -regextype posix-extended -regex '.*\.(ape|flac|flv|mkv|mp3|mp4|ogg|opus|wav|webm)' | shuf -n 2 | while read f; do
             pkill -f 'VLC.app'
-            echo "$f"
+            echo "file: $f"
             $MY_PLAYER -Z --play-and-exit "$f"
+            touch -a "$f"
         done
     fi
-    ## play some oldest files since the last access time
-    $FIND_CMD "${FILE_FOLDER}" -type f -printf "\n%AD %AT %p" | tail -n 10 | sort -R | tail -1 | while read f; do
-        pkill -f 'VLC.app'
-        echo "$f"
-        $MY_PLAYER -Z --play-and-exit "$f"
-    done
-    $FIND_CMD "${FILE_FOLDER}" -type f | sort -R | tail -1 | while read f; do
-        pkill -f 'VLC.app'
-        echo "$f"
-        $MY_PLAYER -Z --play-and-exit "$f"
-    done
+
+else
+    echo "[ERR] bad file folder: ${FILE_FOLDER}"
 fi
 
 ## EOF
