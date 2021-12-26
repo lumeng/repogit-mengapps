@@ -61,6 +61,8 @@ fi
 if [[ $(hostname) == 'x3872' ]]; then
     #MY_PLAYER=wslview
     MY_PLAYER='/mnt/c/Program Files/VideoLAN/VLC/vlc.exe'
+elif [[ $(uname) == 'Darwin' ]]; then
+    MY_PLAYER='/usr/local/bin/vlc --intf=macosx' # --intf: dummy, lua, c.f. https://wiki.videolan.org/Interfaces/
 else
     MY_PLAYER=$(which vlc)
 fi
