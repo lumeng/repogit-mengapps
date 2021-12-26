@@ -75,6 +75,21 @@ brew doctor
 #+ Install softwares.
 ##
 
+
+################################################################################
+#+ 2021-12-25: Install qView](https://interversehq.com/qview/).
+#+ 
+##
+
+brew list qview >/dev/null 2>&1 || brew install --cask qview
+if [[ $(brew outdated | grep -c qview) > 0 ]]; then
+    if [[ -e '/Applications/qView.app' ]]; then
+        rm -rf '/Applications/qView.app'
+    fi
+    brew reinstall --cask qview
+fi
+
+
 ################################################################################
 #+ 2021-9-16: Install Matrix client [Element](https://matrix.org/clients-matrix/)
 #+ 
