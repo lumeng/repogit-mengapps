@@ -75,10 +75,173 @@ brew doctor
 #+ Install softwares.
 ##
 
+################################################################################
+#+ 2023-8-9 Intsall [exa](https://the.exa.website)
+##
+
+brew list --cask exa >/dev/null 2>&1 || brew install --cask exa
+
 
 ################################################################################
-#+ 2021-12-25: Install qView](https://interversehq.com/qview/).
-#+ 
+#+ 2023-5-19 Intsall Skim.
+##
+
+brew list --cask skim >/dev/null 2>&1 || brew install --cask skim
+
+if [[ $(brew outdated | grep -c skim) > 0 || -z "$(ls -A '/Applications/skim.app')"  ]]; then
+    if [[ -e '/Applications/skim.app' ]]; then
+        osascript -e 'quit app "Skim"' && rm -rf '/Applications/skim.app'
+    fi
+    brew reinstall skim
+fi
+
+
+################################################################################
+#+ 2023-5-13 Intsall [jq](https://stedolan.github.io/jq/)
+##
+
+brew list jq >/dev/null 2>&1 || brew install jq
+
+
+################################################################################
+#+ 2023-2-24 Intsall [MacDjview](https://macdjview.en.softonic.com/mac)
+##
+
+brew list --cask macdjview >/dev/null 2>&1 || brew install --cask macdjview
+
+
+################################################################################
+#+ 2023-2-6 Intsall [鼠须管](https://rime.im/download/)
+##
+
+brew list --cask squirrel >/dev/null 2>&1 || brew install --cask squirrel
+
+
+################################################################################
+#+ 2023-1-30 Intsall NeteaseMusic 网易云音乐.
+##
+
+brew list --cask neteasemusic >/dev/null 2>&1 || brew install --cask neteasemusic
+
+if [[ $(brew outdated | grep -c neteasemusic) > 0 ]]; then
+    if [[ -e '/Applications/neteasemusic.app' || -z "$(ls -A '/Applications/NeteaseMusic.app')" ]]; then
+        osascript -e 'quit app "neteasemusic"' && rm -rf '/Applications/NeteaseMusic.app'
+    fi
+    brew reinstall neteasemusic
+fi
+
+
+################################################################################
+#+ 2023-1-30 Intsall TexStudio.
+##
+
+brew list --cask texstudio >/dev/null 2>&1 || brew install --cask texstudio
+
+if [[ $(brew outdated | grep -c texstudio) > 0 || -z "$(ls -A '/Applications/texstudio.app')"  ]]; then
+    if [[ -e '/Applications/texstudio.app' || -z "$(ls -A '/Applications/texstudio.app')" ]]; then
+        osascript -e 'quit app "TexStudio"' && rm -rf '/Applications/texstudio.app'
+    fi
+    brew reinstall texstudio
+fi
+
+
+################################################################################
+#+ 2023-1-9 Intsall cpan.
+##
+
+brew list cpanminus >/dev/null 2>&1 || brew install cpanminus
+
+
+################################################################################
+#+ 2022-10-9 Install [OpenShot video editor](https://en.wikipedia.org/wiki/OpenShot)
+brew list openshot-video-editor >/dev/null 2>&1 || brew install openshot-video-editor
+if [[ $(brew outdated | grep -c openshot-video-editor) > 0 ]]; then
+    if [[ -e '/Applications/OpenShot Video Editor.app' || -z "$(ls -A '/Applications/OpenShot Video Editor.app')" ]]; then
+        osascript -e 'quit app "OpenShot Video Editor.app"' && rm -rf '/Applications/OpenShot Video Editor.app'
+    fi
+    brew reinstall openshot-video-editor
+fi
+
+
+################################################################################
+#+ 2022-9-9: Install [exiftool](https://exiftool.org/examples.html)
+
+brew list exiftool >/dev/null 2>&1 || brew install exiftool
+if [[ $(brew outdated | grep -c exiftool) > 0 ]]; then
+    brew reinstall exiftool
+fi
+
+
+################################################################################
+#+ 2022-7-27: Install [rename](https://en.wikipedia.org/wiki/Ren_(command))
+
+brew list rename >/dev/null 2>&1 || brew install rename
+if [[ $(brew outdated | grep -c rename) > 0 ]]; then
+    brew reinstall rename
+fi
+
+
+################################################################################
+#+ 2022-7-7: Install [Tweeten](https://tweetenapp.com)
+#+ 2023-08-20: Disabled as Tweeten no longer works and the developer has decided
+#+ to not fix or maintain it.
+#+
+##
+
+##brew list tweeten >/dev/null 2>&1 || brew install --cask tweeten
+##if [[ $(brew outdated | grep -c tweeten) > 0 ]]; then
+##    if [[ -e '/Applications/Tweeten.app' || -z "$(ls -A '/Applications/Tweeten.app')" ]]; then
+##        osascript -e 'quit app "Tweeten"' && rm -rf '/Applications/Tweeten.app'
+##    fi
+##    brew reinstall --cask tweeten
+##fi
+
+
+################################################################################
+#+ 2022-5-24: Install [Sioyek](https://github.com/ahrm/sioyek)
+#+
+##
+
+brew list sioyek >/dev/null 2>&1 || brew install --cask sioyek
+if [[ $(brew outdated | grep -c sioyek) > 0 ]]; then
+    if [[ -e '/Applications/Sioyek.app' || -z "$(ls -A '/Applications/Sioyek.app')" ]]; then
+        osascript -e 'quit app "Sioyek"' && rm -rf '/Applications/Sioyek.app'
+    fi
+    brew reinstall --cask sioyek
+fi
+
+
+################################################################################
+#+ 2022-1-7: Install [Typora](https://typora.io)
+#+
+##
+
+brew list typora >/dev/null 2>&1 || brew install --cask typora
+if [[ $(brew outdated | grep -c typora) > 0 ]]; then
+    if [[ -e '/Applications/Typora.app' || -z "$(ls -A '/Applications/Typora.app')" ]]; then
+        osascript -e 'quit app "Typora"' && rm -rf '/Applications/Typora.app'
+    fi
+    brew reinstall --cask typora
+fi
+
+
+################################################################################
+#+ 2021-12-30: Install [Slack](https://slack.com).
+#+
+##
+
+brew list slack >/dev/null 2>&1 || brew install --cask slack
+if [[ $(brew outdated | grep -c slack) > 0 ]]; then
+    if [[ -e '/Applications/Slack.app' || -z "$(ls -A '/Applications/Slack.app')" ]]; then
+        osascript -e 'quit app "Slack"' && rm -rf '/Applications/Slack.app'
+    fi
+    brew reinstall --cask slack
+fi
+
+
+################################################################################
+#+ 2021-12-25: Install [qView](https://interversehq.com/qview/).
+#+
 ##
 
 brew list qview >/dev/null 2>&1 || brew install --cask qview
@@ -87,6 +250,99 @@ if [[ $(brew outdated | grep -c qview) > 0 ]]; then
         osascript -e 'quit app "qView"' && rm -rf '/Applications/qView.app'
     fi
     brew reinstall --cask qview
+fi
+
+
+################################################################################
+#+ 2021-12-3: Install GIMP.
+#+
+##
+
+brew list gimp >/dev/null 2>&1 || brew install --cask gimp
+if [[ $(brew outdated | grep -c gimp) > 0 ]]; then
+    for f in /Applications/GIMP-*.app; do
+        if [[ -e "$f" ]]; then
+            osascript -e 'quit app "GIMP"' && rm -rf "$f"
+        fi
+    done
+    brew reinstall gimp
+fi
+
+
+################################################################################
+#+ 2021-12-2: Install GNU command-line tools.
+#+
+#+ And set the following configuration to ~/.bashrc_macosx
+#+ ## If you need to use these commands with their normal names, you
+#+ ## can add a "gnubin" directory to your PATH from your bashrc like:
+#+
+#+ #export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+#+ export PATH="/usr/local/opt/ed/libexec/gnubin:$PATH"
+#+ #export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+#+ #export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+#+ export PATH=/usr/local/opt/gnu-indent/libexec/gnuman:$PATH
+#+ export PATH=/usr/local/opt/gnu-tar/libexec/gnuman:$PATH
+#+
+#+ ## Additionally, you can access their man pages with normal names if you add
+#+ ## the "gnuman" directory to your MANPATH from your bashrc as well:
+#+
+#+ #export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+#+ export MANPATH="/usr/local/opt/ed/libexec/gnuman:$MANPATH"
+#+ #export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
+#+ #export MANPATH=/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH
+#+ export MANPATH=/usr/local/opt/gnu-indent/libexec/gnuman:$MANPATH
+#+ export MANPATH=/usr/local/opt/gnu-tar/libexec/gnuman:$MANPATH
+#+
+##
+brew install ed findutils gnu-indent gnu-sed gnu-tar gnu-which grep
+
+
+################################################################################
+#+ 2021-10-18: Install Hydrogen.
+#+
+##
+
+brew list hydrogen >/dev/null 2>&1 || brew install --cask hydrogen
+if [[ $(brew outdated | grep -c hydrogen) > 0 ]]; then
+    if [[ -e '/Applications/Hydrogen.app' || -z "$(ls -A '/Applications/Hydrogen.app')" ]]; then
+        osascript -e 'quit app "Hydrogen"' && rm -rf '/Applications/Hydrogen.app'
+    fi
+    brew reinstall --cask hydrogen
+fi
+
+
+################################################################################
+#+ 2021-9-29: Install RescueTime.
+#+
+##
+
+brew list rescuetime >/dev/null 2>&1 || brew install --cask rescuetime
+if [[ $(brew outdated | grep -c rescuetime) > 0 ]]; then
+    if [[ -e '/Applications/RescueTime.app' || -z "$(ls -A '/Applications/RescueTime.app')" ]]; then
+        osascript -e 'quit app "RescueTime"' && rm -rf '/Applications/RescueTime.app'
+    fi
+    brew reinstall --cask rescuetime
+fi
+
+
+################################################################################
+#+ 2021-9-17: Install chrome-cli.
+#+
+##
+
+brew list chrome-cli >/dev/null 2>&1 || brew install --cask chrome-cli
+
+
+################################################################################
+#+ 2021-9-17: Install [GPG Suite, namely GPGTools](https://gpgtools.org/).
+#+
+##
+
+## Uninstall gpg in favor of gpg-suite.
+brew list gpg >/dev/null 2>&1 && brew uninstall gpg
+brew list gpg-suite >/dev/null 2>&1 || brew install --cask gpg-suite
+if [[ $(brew outdated | grep -c gpg-suite) > 0 ]]; then
+    brew reinstall --cask gpg-suite
 fi
 
 
@@ -425,6 +681,15 @@ brew list --cask docker-toolbox > /dev/null || brew install --cask docker-toolbo
 ################################################################################
 ## 2017-7-17： Install tor-browser.
 brew list --cask tor-browser > /dev/null || brew install --cask tor-browser
+
+if [[ $(brew outdated | grep -c tor-browser) > 0 || -z "$(ls -A '/Applications/Tor Browser.app')" ]]; then
+    if [[ -e '/Applications/Tor Browser.app' || -z "$(ls -A '/Applications/Tor Browser.app')" ]]; then
+           osascript -e 'quit app "Tor Browser"' && rm -rf '/Applications/Tor Browser.app'
+    fi
+    brew reinstall --cask tor-browser
+fi
+
+
 
 ################################################################################
 ## 2017-7-20： Install Python.
