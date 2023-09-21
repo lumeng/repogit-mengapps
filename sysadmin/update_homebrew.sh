@@ -1139,12 +1139,12 @@ brew list --cask stretchly >/dev/null 2>&1 || brew install --cask stretchly
 ## 2020-6-11: Install [JDownloader](https://jdownloader.com).
 #+ * First install JDK 8 which is required by jDownloader.
 ##
-brew list --cask macdjview >/dev/null 2>&1 || brew install --cask macdjview
-if [[ $(brew outdated | grep -c MacDjView) > 0 ]]; then
-    if [[ -e '/Applications/MacDjView.app' || -z "$(ls -A '/Applications/MacDjView.app')" ]]; then
-           osascript -e 'quit app "MacDjView"' && rm -rf '/Applications/MacDjView.app'
+brew list --cask djview >/dev/null 2>&1 || brew install --cask djview
+if [[ $(brew outdated | grep -c Djview) > 0 ]]; then
+    if [[ -e '/Applications/DjView.app' || -z "$(ls -A '/Applications/DjView.app')" ]]; then
+           osascript -e 'quit app "DjView"' && rm -rf '/Applications/DjView.app'
     fi
-    brew reinstall --cask macdjview
+    brew reinstall --cask djview
 fi
 
 
