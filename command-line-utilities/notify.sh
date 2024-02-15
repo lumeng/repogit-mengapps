@@ -21,15 +21,21 @@
 
 
 if hash afplay 2>/dev/null; then
+    for i in {1..10}; do
 	if [[ "$@" -eq 0 ]]; then
 		afplay -v 2 /System/Library/Sounds/Blow.aiff &
 	else
 		afplay -v 2 /System/Library/Sounds/Sosumi.aiff &
 	fi
+	sleep 5
+    done
 fi
 
 if hash say 2>/dev/null; then
-    say -v Alex "Task done at path $(basename "$(pwd)"), $@." &
+    for i in {1..10}; do
+	say -v Samantha "Task done at path $(basename "$(pwd)"), $@." &
+	sleep 20
+    done
 fi
 
 
