@@ -72,6 +72,7 @@ cd "$(brew --repo)" && git fetch && git reset --hard origin/master && git clean 
 ####
 
 ## Fix owner of files and folders recursively.
+sudo chown -R root:wheel /usr/local
 sudo chown -R $(whoami):wheel $(brew --prefix)/* /opt/homebrew-cask
 sudo chown -R $(whoami) "$HOME/Library/Caches/Homebrew"
 
