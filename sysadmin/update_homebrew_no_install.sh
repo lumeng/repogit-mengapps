@@ -90,7 +90,9 @@ type zsh >/dev/null 2>&1 && type compaudit >/dev/null 2>&1 && compaudit | xargs 
 #+
 #+
 brew tap buo/cask-upgrade    # install `brew-cask-upgrade`
+
 #brew cu pin intellij-idea     # pin the cask you want
+brew cu unpin intellij-idea    
 
 #+ Update, upgrade, cleanup, diagnose
 brew update
