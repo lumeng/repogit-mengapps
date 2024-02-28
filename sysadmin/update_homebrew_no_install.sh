@@ -59,6 +59,10 @@ cd "$(brew --repo)" && git fetch && git reset --hard origin/master && git clean 
 ##############################################################################
 #+ Fix ownership and permission of Homebrew related file paths.
 #+
+#+ * c.f.
+#+   * <https://apple.stackexchange.com/questions/1393/are-my-permissions-for-usr-local-correct>
+#+   * <https://www.google.com/search?q=%22%2Fusr%2Flocal%22+%22root%3Awheel%22+homebrew>
+#+   * https://apple.stackexchange.com/questions/470617/safe-way-to-fix-ownership-and-permission-of-homebrew-related-directories-as-part
 #+ * Old remark (possibly circa 2020 or earlier):
 #+ Homebrew no longer needs to have ownership of /usr/local. If you wish you can
 #+ return /usr/local to its default ownership with:
@@ -69,6 +73,8 @@ cd "$(brew --repo)" && git fetch && git reset --hard origin/master && git clean 
 #+ sudo chown -R root:wheel /usr/local/munki
 #+ sudo chmod -R o-w /usr/local/munki
 #+ fi
+#+ ```
+#+
 ####
 
 ## Fix owner of files and folders recursively.
