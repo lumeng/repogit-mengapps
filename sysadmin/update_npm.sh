@@ -13,7 +13,7 @@ fi
 ##############################################################################
 #+ Update Homebrew
 ##
-if [[ -f ./update_homebrew.sh ]]; then
+if [[ -f ./update_homebrew_no_install.sh ]]; then
     source ./update_homebrew_no_install.sh
 else
     echo "Cannot find script ./update_homebrew_no_install.sh. Please update Homebrew first."
