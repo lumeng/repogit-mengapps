@@ -56,7 +56,7 @@ declare -a DIR=( \
 for d in "${DIR[@]}"; # @: c.f. https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
 do
     if [[ -d "$d" ]]; then
-        #echo "[DEBUG] searching in ${d}:"
+        echo "searching in ${d}:"
         tree --charset unicode \
             -P "*${WILDCARDP}*" \
 	    --prune \

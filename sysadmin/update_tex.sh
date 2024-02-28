@@ -33,8 +33,13 @@ fi
 #+ References:
 #+ *
 
-tlmgr update --self
+sudo tlmgr update --self
 
+sudo tlmgr backup --all --clean
+
+sudo tlmgr update --all
+
+sudo tlmgr backup --all --clean=0
 
 ################################################################################
 #+ Install softwares.

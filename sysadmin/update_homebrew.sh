@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+c#!/usr/bin/env bash
 
 ##
 #+ Script for updating Homebrew.
@@ -47,12 +47,18 @@ export PATH=$BREW_BIN_PATH:$BASIC_PATH
 cd "$(brew --repo)" && git fetch && git reset --hard origin/master && git clean -i
 
 
+
+###
+#+ Temporarily pin a cask, i.e. pause the upgrading of a cask
+#+
+#+
+brew tap buo/cask-upgrade    # install `brew-cask-upgrade`
+brew cu pin intellij-idea     # pin the cask you want
+
 #+ Update, upgrade, cleanup, diagnose
 brew update
 
-
 brew upgrade
-
 
 brew cleanup
 
@@ -74,6 +80,118 @@ brew doctor
 ################################################################################
 #+ Install softwares.
 ##
+
+
+################################################################################
+#+ 2024-2-1 Intsall [Thorium](https://thorium.rocks).
+#+
+##
+
+brew list --cask thorium >/dev/null 2>&1 || brew install --cask thorium
+
+if [[ $(brew outdated | grep -c thorium) > 0 || -z "$(ls -A '/Applications/Thorium.app')"  ]]; then
+    if [[ -e '/Applications/Thorium.app' ]]; then
+        osascript -e 'quit app "Thorium"' && rm -rf '/Applications/Thorium.app'
+    fi
+    brew reinstall thorium
+fi
+
+
+################################################################################
+#+ 2024-1-31 Intsall mpv (used for playing audio in Anki).
+##
+
+brew list mpv >/dev/null 2>&1 || brew install mpv
+
+
+################################################################################
+#+ 2023-12-8 Intsall fonts.
+##
+brew tap homebrew/cask-fonts
+brew install font-xkcd-script
+brew install font-xkcd
+
+
+################################################################################
+#+ 2023-12-3 Intsall [Slack](https://slack.org).
+##
+
+brew list --cask slack >/dev/null 2>&1 || brew install --cask slack
+
+if [[ $(brew outdated | grep -c slack) > 0 || -z "$(ls -A '/Applications/Slack.app')"  ]]; then
+    if [[ -e '/Applications/Slack.app' ]]; then
+        osascript -e 'quit app "Slack"' && rm -rf '/Applications/Slack.app'
+    fi
+    brew reinstall slack
+fi
+
+
+################################################################################
+#+ 2023-11-30 Intsall [Inkscape](https://inkscape.org).
+##
+
+brew list --cask inkscape >/dev/null 2>&1 || brew install --cask inkscape
+
+if [[ $(brew outdated | grep -c inkscape) > 0 || -z "$(ls -A '/Applications/Inkscape.app')"  ]]; then
+    if [[ -e '/Applications/Inkscape.app' ]]; then
+        osascript -e 'quit app "Inkscape"' && rm -rf '/Applications/Inkscape.app'
+    fi
+    brew reinstall inkscape
+fi
+
+
+################################################################################
+#+ 2023-11-7 Intsall [Sigil](https://sigil-ebook.com/sigil/).
+##
+
+brew list --cask sigil >/dev/null 2>&1 || brew install --cask sigil
+
+if [[ $(brew outdated | grep -c sigil) > 0 || -z "$(ls -A '/Applications/Sigil.app')"  ]]; then
+    if [[ -e '/Applications/Sigil.app' ]]; then
+        osascript -e 'quit app "Sigil"' && rm -rf '/Applications/Sigil.app'
+    fi
+    brew reinstall sigil
+fi
+
+
+################################################################################
+#+ 2023-8-22 Intsall OnionShare.
+##
+
+brew list --cask onionshare >/dev/null 2>&1 || brew install --cask onionshare
+
+if [[ $(brew outdated | grep -c onionshare) > 0 || -z "$(ls -A '/Applications/OnionShare.app')"  ]]; then
+    if [[ -e '/Applications/OnionShare.app' ]]; then
+        osascript -e 'quit app "OnionShare"' && rm -rf '/Applications/OnionShare.app'
+    fi
+    brew reinstall onionshare
+fi
+
+
+################################################################################
+#+ 2023-9-20 Intsall dos2unix.
+##
+
+brew list dos2unix >/dev/null 2>&1 || brew install dos2unix
+
+if [[ $(brew outdated | grep -c dos2unix) > 0 ]]; then
+    brew reinstall dos2unix
+fi
+
+
+################################################################################
+#+ 2023-8-22 Intsall OnionShare.
+##
+
+brew list --cask onionshare >/dev/null 2>&1 || brew install --cask onionshare
+
+if [[ $(brew outdated | grep -c onionshare) > 0 || -z "$(ls -A '/Applications/OnionShare.app')"  ]]; then
+    if [[ -e '/Applications/OnionShare.app' ]]; then
+        osascript -e 'quit app "OnionShare"' && rm -rf '/Applications/OnionShare.app'
+    fi
+    brew reinstall onionshare
+fi
+
 
 ################################################################################
 #+ 2023-8-9 Intsall [exa](https://the.exa.website)
@@ -101,13 +219,6 @@ fi
 ##
 
 brew list jq >/dev/null 2>&1 || brew install jq
-
-
-################################################################################
-#+ 2023-2-24 Intsall [MacDjview](https://macdjview.en.softonic.com/mac)
-##
-
-brew list --cask macdjview >/dev/null 2>&1 || brew install --cask macdjview
 
 
 ################################################################################
@@ -413,15 +524,17 @@ fi
 
 ################################################################################
 #+ 2021-8-27: Install [GoldenDict](http://goldendict.org)
-#+
+#+ * 2023-10-4: Commented out GoldenDict in favor of GoldenDict-ng (ng stands for next generation).
+#+ * GoldenDict-ng: <https://xiaoyifang.github.io/goldendict-ng/>
+#+   Unfortunately, GoldenDict-ng, as of 2023-10-5, does not support installation via Homebrew.
 ##
-brew list goldendict >/dev/null 2>&1 || brew install --cask goldendict
-if [[ $(brew outdated | grep -c goldendict) > 0 ]]; then
-    if [[ -e '/Applications/GoldenDict.app' || -z "$(ls -A '/Applications/GoldenDict.app')" ]]; then
-        osascript -e 'quit app "GoldenDict"' && rm -rf '/Applications/GoldenDict.app'
-    fi
-    brew reinstall --cask goldendict
-fi
+#brew list goldendict >/dev/null 2>&1 || brew install --cask goldendict
+#if [[ $(brew outdated | grep -c goldendict) > 0 ]]; then
+#    if [[ -e '/Applications/GoldenDict.app' || -z "$(ls -A '/Applications/GoldenDict.app')" ]]; then
+#        osascript -e 'quit app "GoldenDict"' && rm -rf '/Applications/GoldenDict.app'
+#    fi
+#    brew reinstall --cask goldendict
+#fi
 
 
 ################################################################################
@@ -700,23 +813,21 @@ brew list python3 > /dev/null || brew install python3
 
 ################################################################################
 ## 2017-8-10: Install Emacs
+## 2023-09-20: C.f. <https://www.gnu.org/software/emacs/download.html#nonfree> for the up-to-date instruction on installing Emacs via Homebrow.
 #+
-
-#+ Uninstall emacs that was previously installed with
-#+ 'brew install emacs --with-cocoa'.
-
-# brew uninstall --ignore-dependencies emacs
-
-
-#+ Prior to at the most 2017-8 and Homebrew 1.3.1-24-g67b20d9, Emacs
-#+ can be intalled using the following command.
-
-# brew list emacs > /dev/null || ( brew install emacs --with-cocoa && brew linkapps emacs )
 
 #+ Install emacs using 'brew cask' so /Applications/Emacs.app is
 #+ properly created since 'brew linkapps emacs' is depcrecated since
 #+ at least 2017-8.
+
 brew list --cask emacs > /dev/null || brew install --cask emacs
+
+if [[ $(brew outdated | grep -c emacs) > 0 || -z "$(ls -A '/Applications/Emacs.app')" ]]; then
+    if [[ -e '/Applications/Emacs.app' || -z "$(ls -A '/Applications/Emacs.app')" ]]; then
+           osascript -e 'quit app "Emacs"' && rm -rf '/Applications/Emacs.app'
+    fi
+    brew reinstall --cask emacs
+fi
 
 
 ################################################################################
@@ -730,7 +841,9 @@ brew list --cask emacs > /dev/null || brew install --cask emacs
 #+ properly created since 'brew linkapps macvim' is depcrecated since
 #+ at least 2017-8.
 brew list macvim > /dev/null || brew reinstall macvim --with-override-system-vim
-brew link --overwrite macvim
+#brew link --overwrite macvim
+brew unlink macvim && brew link macvim
+
 
 ################################################################################
 ## 2017-8-10: Install ghostscript
@@ -826,21 +939,20 @@ brew list npm > /dev/null || brew install npm
 
 ################################################################################
 ## 2017-11-22: Install [GPG Suite, namely GPGTools](https://gpgtools.org/).
-brew list --cask gpg-suite > /dev/null || brew install --cask gpg-suite
+#+ 2021-9-20: Superseded by a new instance of this line.
+##
+#brew list --cask gpg-suite > /dev/null || brew install --cask gpg-suite
 
 
 ################################################################################
 ## 2017-11-24: Install and update selected [JetBrains](https://www.jetbrains.com/products.html) softwares.
+formulas=(intellij-idea pycharm phpstorm datagrip clion fleet)
+appdirs=("Intellij IDEA" "PyCharm" "PhpStorm" "DataGrip" "CLion" "Fleet")
 
-#formulas=(intellij-idea pycharm phpstorm webstorm datagrip clion)
-#appdirs=("Intellij IDEA" "PyCharm" "PhpStorm" "WebStorm" "DataGrip" "CLion")
-formulas=(intellij-idea pycharm phpstorm datagrip clion)
-appdirs=("Intellij IDEA" "PyCharm" "PhpStorm" "DataGrip" "CLion")
-
-for idx in {0..5}
+for idx in {0..6}
 do
     brew list --cask ${formulas[$idx]} >/dev/null 2>&1 || brew install --cask ${formulas[$idx]}
-    if [[ $(brew outdated | grep -c ${formulas[$idx]}) > 0 ]]; then
+    if [[ $(brew outdated | grep -c ${formulas[$idx]}) > 0 || -z $(ls -A "/Applications/${appdirs[$idx]}.app")  ]]; then
         if [[ -d "/Applications/${appdirs[$idx]}.app" ]]; then
             rm -rf "/Applications/${appdirs[$idx]}.app"
         fi
@@ -852,9 +964,9 @@ done
 [[ -d /Applications/IntelliJ\ IDEA.app ]] && xattr -d com.apple.quarantine /Applications/IntelliJ\ IDEA.app 2>/dev/null
 [[ -d /Applications/PyCharm.app ]] && xattr -d com.apple.quarantine /Applications/PyCharm.app 2>/dev/null
 [[ -d /Applications/PhpStorm.app ]] && xattr -d com.apple.quarantine /Applications/PhpStorm.app 2>/dev/null
-#[[ -d /Applications/WebStorm.app ]] && xattr -d com.apple.quarantine /Applications/WebStorm.app 2>/dev/null
 [[ -d /Applications/DataGrip.app ]] && xattr -d com.apple.quarantine /Applications/DataGrip.app 2>/dev/null
 [[ -d /Applications/CLion.app ]] && xattr -d com.apple.quarantine /Applications/CLion.app 2>/dev/null
+[[ -d /Applications/Fleet.app ]] && xattr -d com.apple.quarantine /Applications/Fleet.app 2>/dev/null
 
 
 ################################################################################
@@ -1116,7 +1228,11 @@ fi
 ## 2020-6-11: Install [JDownloader](https://jdownloader.com).
 #+ * First install JDK 8 which is required by jDownloader.
 ##
-brew list --cask homebrew/cask-versions/adoptopenjdk8 >/dev/null 2>&1 || brew install --cask homebrew/cask-versions/adoptopenjdk8
+
+
+## alternative JDK from OpenJDK:
+## brew list --cask homebrew/cask-versions/adoptopenjdk8 >/dev/null 2>&1 || brew install --cask homebrew/cask-versions/adoptopenjdk8
+#brew list --cask temurin8 >/dev/null 2>&1 || brew install --cask homebrew/cask-versions/temurin8
 
 brew list --cask jdownloader >/dev/null 2>&1 || brew install --cask jdownloader
 if [[ $(brew outdated | grep -c jdownloader) > 0 ]]; then
@@ -1185,9 +1301,9 @@ fi
 
 
 ################################################################################
-## 2020-11-1: Install youtube-dl.
+## 2020-11-1: Install youtube-dl and its younger fork yt-dlp.
 brew list youtube-dl >/dev/null 2>&1 || brew install youtube-dl
-
+brew list yt-dlp >/dev/null 2>&1 || brew install yt-dlp
 
 ################################################################################
 ## 2020-11-9: Install Franz.

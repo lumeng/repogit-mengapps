@@ -9,10 +9,11 @@
     ]
 ]&*)
 
+
 UsingFrontEnd[
     With[
 	{
-	    diffnb = NotebookDiff[#1, #2],
+	    diffnb = (Print[xNotebookDiff[#1, #2]]; NotebookDiff[#1, #2]),
 	    diffnbFile = FileNameJoin[{$TemporaryDirectory, "wolfram_notebook_diff_result.nb"}]
 	},
 	Export[diffnbFile, diffnb, "Notebook"]

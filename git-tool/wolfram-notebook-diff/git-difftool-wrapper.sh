@@ -23,12 +23,12 @@ new_file_name_base="${new_file_name%.*}"
 shopt -s nocasematch
 
 if [[ "$old_file_name_extension" =~ nb|cdf && "$new_file_name_extension" =~ nb|cdf ]]; then
-	echo "diff-ing files with Wolfram format:
+    echo "diff-ing files with Wolfram format:
 $2
 $5
 "
     wolfram-notebook-diff "$2" "$5"
-	exit 0
+    exit 0
 else
 # /Developer/Applications/Utilities/FileMerge.app
 #

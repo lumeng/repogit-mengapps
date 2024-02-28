@@ -14,7 +14,7 @@ if [[ $(uname) == 'Linux' ]]; then
 	exit 1
     fi
 elif [[ $(uname) == 'Darwin' ]]; then
-	OPEN_BIN=open
+    OPEN_BIN=open
 fi
 
 $OPEN_BIN $DIFF_RESULT
