@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-##
+##############################################################################
 #+ Script for updating npm and its packages.
 #+
 ##
 
-## If brew is not installed, exit.
+##############################################################################
+#+ If brew is not installed, exit.
+##
 if [[ $(uname) == 'Darwin' ]]; then
     type brew >/dev/null 2>&1 || { echo >&2 "Homebrew is not installed. Aborting."; exit 1; }
 fi
