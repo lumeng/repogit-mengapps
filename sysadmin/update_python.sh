@@ -51,37 +51,37 @@ fi
 
 ## Update pip and setuptools
 pip install --upgrade pip
-pip3 install --upgrade pip
+#pip3 install --upgrade pip
 
 pip install --upgrade setuptools
-pip3 install --upgrade setuptools
+#pip3 install --upgrade setuptools
 
 ## * 2017-7-21: Install and upgrade virtualenv.
 #+ * 2020-7-20: Stop installing virtualenv for Python 3.8 as it is superseded
-#+   by venv. 
+#+   by venv.
 #+
 ##
 pip install --upgrade virtualenv
-## pip3 install --upgrade virtualenv
+#pip3 install --upgrade virtualenv
 
 pip install --upgrade virtualenvwrapper
-pip3 install --upgrade virtualenvwrapper
+#pip3 install --upgrade virtualenvwrapper
 
 ## 2017-9-7: Install and upgrade matplotlib, pandas, scikit-learn, nltk, mrjob
 pip install --upgrade matplotlib
-pip3 install --upgrade matplotlib
+#pip3 install --upgrade matplotlib
 
 pip install --upgrade pandas
-pip3 install --upgrade pandas
+#pip3 install --upgrade pandas
 
 pip install --upgrade scikit-learn
-pip3 install --upgrade scikit-learn
+#pip3 install --upgrade scikit-learn
 
 pip install --upgrade nltk
-pip3 install --upgrade nltk
+#pip3 install --upgrade nltk
 
 pip install --upgrade mrjob
-pip3 install --upgrade mrjob
+#pip3 install --upgrade mrjob
 
 
 ## 2017-9-16: Install and upgrade pyzmq
@@ -89,19 +89,21 @@ pip3 install --upgrade mrjob
 #+ Language as an external evalutor using RegisterExternalEvaluator[<>]
 ##
 pip install --upgrade pyzmq
-pip3 install --upgrade pyzmq
+#pip3 install --upgrade pyzmq
 
 
 ## 2017-11-19: Install and upgrade JypyterLab
 ##
 pip install --upgrade jupyterlab
-pip3 install --upgrade jupyterlab
+#pip3 install --upgrade jupyterlab
 
 
 ## 2018-1-8: [Install and upgrade TensorFlow](https://www.tensorflow.org/install/install_mac)
 ##
 pip install --upgrade tensorflow
-pip3 install --upgrade tensorflow
+#pip3 install --upgrade tensorflow
+
+
 
 
 ##############################################################################
