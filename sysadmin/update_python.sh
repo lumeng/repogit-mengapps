@@ -49,6 +49,37 @@ if [[ $(uname) == 'Darwin' && -d '/usr/local/opt/python/libexec/bin' ]]; then
     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 fi
 
+
+##############################################################################
+#+ Create the main Python venv environment.
+#+
+#+ * venv: c.f. <https://docs.python.org/3/library/venv.html>
+#+
+
+## Deactivate Python in venv environment if it's activated.
+if [[ $(which python)="$HOME/python_venv/bin/python" && -f "$HOME/python_venv/bin/python" ]]; then
+    deactivate
+fi
+
+## Create the main Python venv environment using the Python3 installed with Homebrew,
+#+
+if [[ ! -d "$HOME/python_venv" || ! -f "$HOME/python_venv/pyvenv.cfg" ]]; then
+    python3 -m venv $HOME/python_venv
+fi
+#+ then activate it
+if [[ -d "$HOME/python_venv" && -f "$HOME/python_venv/pyvenv.cfg" ]]; then
+    source $HOME/python_venv/bin/activate
+else
+    echo "[ERROR] Python venv directory $HOME/python_venv cannot be created. Please investigate!\n"
+    exit 1
+fi
+
+
+##############################################################################
+#+ Install basic packages in the main Python venv environment.
+#+
+
+
 ## Update pip and setuptools
 pip install --upgrade pip
 #pip3 install --upgrade pip
@@ -105,6 +136,13 @@ pip install --upgrade tensorflow
 
 
 
+##############################################################################
+#+ Deactivate the main Python venv.
+##
+## Deactivate Python in venv environment if it's activated.
+if [[ $(which python)="$HOME/python_venv/bin/python" && -f "$HOME/python_venv/bin/python" ]]; then
+    deactivate
+fi
 
 ##############################################################################
 #+ Restore $PATH.
