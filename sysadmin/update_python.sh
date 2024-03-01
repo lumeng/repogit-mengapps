@@ -32,9 +32,9 @@ fi
 ## 2017-7-20： Install Python.
 if [[ $(uname) == 'Darwin' ]]; then
     type brew >/dev/null 2>&1 || { echo >&2 "Homebrew is not installed. Aborting."; exit 1; }
-    brew list python > /dev/null || { echo >&2 "Python is not installed via Homebrew. Aborting."; exit 1; }
-
+    (brew list python3 > /dev/null && brew upgrade python3) || { echo >&2 "Python3 is not installed via Homebrew. Aborting."; exit 1; }
 fi
+
 
 ################################################################################
 #+ Install python packages.
