@@ -1301,9 +1301,14 @@ fi
 
 
 ################################################################################
-## 2020-11-1: Install youtube-dl and its younger fork yt-dlp.
-brew list youtube-dl >/dev/null 2>&1 || brew install youtube-dl
+#+ 2020-11-1: Install youtube-dl and its younger fork yt-dlp.
+#+
+#+ * 2024-2-28: youtube-dl is superseded by yt-dlp.
+#+
+
+##brew list youtube-dl >/dev/null 2>&1 || brew install youtube-dl
 brew list yt-dlp >/dev/null 2>&1 || brew install yt-dlp
+
 
 ################################################################################
 ## 2020-11-9: Install Franz.
