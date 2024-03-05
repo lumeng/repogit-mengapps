@@ -37,7 +37,7 @@ fi
 
 
 ################################################################################
-#+ Install python packages.
+#+ Set up system Python.
 ##
 
 ## On macOS, use /usr/local/bin
@@ -48,6 +48,29 @@ fi
 if [[ $(uname) == 'Darwin' && -d '/usr/local/opt/python/libexec/bin' ]]; then
     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 fi
+
+
+################################################################################
+#+ Install Python packages at the system level
+##
+
+
+## * 2017-7-21: Install and upgrade virtualenv.
+#+ * 2020-7-20: Stop installing virtualenv for Python 3.8 as it is superseded
+#+   by venv.
+#+ * WARNING: do not install virtualenv and virtualenvwrapper in the venv:
+#+   <https://virtualenvwrapper.readthedocs.io/en/latest/install.html#basic-installation>
+##
+
+## TODO: tests with --dry-run
+
+pip install --upgrade --break-system-packages --dry-run virtualenv
+#pip install --upgrade virtualenv
+#pip3 install --upgrade virtualenv
+
+pip install --upgrade --break-system-packages --dry-run virtualenvwrapper
+#pip install --upgrade virtualenvwrapper
+#pip3 install --upgrade virtualenvwrapper
 
 
 ##############################################################################
@@ -89,17 +112,6 @@ pip install --upgrade pip
 
 pip install --upgrade setuptools
 #pip3 install --upgrade setuptools
-
-## * 2017-7-21: Install and upgrade virtualenv.
-#+ * 2020-7-20: Stop installing virtualenv for Python 3.8 as it is superseded
-#+   by venv.
-#+
-##
-pip install --upgrade virtualenv
-#pip3 install --upgrade virtualenv
-
-pip install --upgrade virtualenvwrapper
-#pip3 install --upgrade virtualenvwrapper
 
 ## 2017-9-7: Install and upgrade matplotlib, pandas, scikit-learn, nltk, mrjob
 pip install --upgrade matplotlib
