@@ -806,9 +806,11 @@ fi
 
 ################################################################################
 ## 2017-7-20： Install Python.
+#+
+#+ * 2024-2-28: Uninstalled python3 formula which is superseded by simply python.
+#+
 brew list python > /dev/null || brew install python
-brew list python3 > /dev/null || brew install python3
-#brew reinstall python
+#brew list --cask python3 > /dev/null || brew --cask install python3
 
 
 ################################################################################
