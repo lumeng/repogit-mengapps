@@ -83,6 +83,21 @@ brew doctor
 
 
 ################################################################################
+#+ 2024-3-3 Intsall [Marginnote](https://www.marginnote.com).
+#+
+##
+
+brew list --cask marginnote >/dev/null 2>&1 || brew install --cask marginnote
+
+if [[ $(brew outdated | grep -c marginnote) > 0 || -z "$(ls -A '/Applications/Marginnote.app')"  ]]; then
+    if [[ -e '/Applications/Marginnote 3.app' ]]; then
+        osascript -e 'quit app "Marginnote"' && rm -rf '/Applications/Marginnote 3.app'
+    fi
+    brew reinstall marginnote
+fi
+
+
+################################################################################
 #+ 2024-2-1 Intsall [Thorium](https://thorium.rocks).
 #+
 ##
