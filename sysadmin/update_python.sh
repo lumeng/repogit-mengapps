@@ -80,6 +80,9 @@ fi
 #+
 
 
+## Purge pip cache:
+pip cache purge
+
 ## Update pip and setuptools
 pip install --upgrade pip
 #pip3 install --upgrade pip
@@ -133,6 +136,9 @@ pip install --upgrade jupyterlab
 ##
 pip install --upgrade tensorflow
 #pip3 install --upgrade tensorflow
+
+## Purge pip cache again:
+pip purge cache
 
 
 
