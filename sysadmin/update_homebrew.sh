@@ -227,7 +227,7 @@ fi
 #+ 2023-8-9 Intsall [exa](https://the.exa.website)
 ##
 
-brew list --cask exa >/dev/null 2>&1 || brew install --cask exa
+brew list exa >/dev/null 2>&1 || brew install exa
 
 
 ################################################################################
