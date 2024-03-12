@@ -83,6 +83,21 @@ brew doctor
 
 
 ################################################################################
+#+ 2024-3-3 Intsall [Fontforge](https://www.fontforge.org).
+#+
+##
+
+brew list --cask fontforge >/dev/null 2>&1 || brew install --cask fontforge
+
+if [[ $(brew outdated | grep -c fontforge) > 0 || -z "$(ls -A '/Applications/Fontforge.app')"  ]]; then
+    if [[ -e '/Applications/Fontforge.app' ]]; then
+        osascript -e 'quit app "Fontforge"' && rm -rf '/Applications/Fontforge.app'
+    fi
+    brew reinstall fontforge
+fi
+
+
+################################################################################
 #+ 2024-3-3 Intsall [Marginnote](https://www.marginnote.com).
 #+
 ##
