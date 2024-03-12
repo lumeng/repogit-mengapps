@@ -1038,16 +1038,6 @@ fi
 
 
 ################################################################################
-## 2018-1-4: Install and update [MPlayer](https://en.wikipedia.org/wiki/MPlayer)
-brew list --cask mplayer-osx-extended >/dev/null 2>&1 || brew install --cask mplayer-osx-extended
-if [[ $(brew outdated | grep -c mplayer-osx-extended) > 0 ]]; then
-    if [[ -e '/Applications/MPlayer OSX Extended.app' || -z "$(ls -A '/Applications/MPlayer OSX Extended.app')" ]]; then
-           osascript -e 'quit app "MPlayer OSX Extended"' && rm -rf '/Applications/MPlayer OSX Extended.app'
-    fi
-    brew reinstall --cask mplayer-osx-extended
-fi
-
-
 #+ 2018-1-31: Install and update [Blockstack](https://blockstack.org/)
 #+
 #+ * 2024-3-12: Uninstalled because it is not maintained upstream.
