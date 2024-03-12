@@ -1048,15 +1048,17 @@ if [[ $(brew outdated | grep -c mplayer-osx-extended) > 0 ]]; then
 fi
 
 
-################################################################################
-## 2018-1-31: Install and update [Blockstack](https://blockstack.org/)
-brew list --cask blockstack >/dev/null 2>&1 || brew install --cask blockstack
-if [[ $(brew outdated | grep -c blockstack) > 0 ]]; then
-    if [[ -e '/Applications/Blockstack.app' || -z "$(ls -A '/Applications/Blockstack.app')" ]]; then
-           osascript -e 'quit app "Blockstack"' && rm -rf '/Applications/Blockstack.app'
-    fi
-    brew reinstall --cask blockstack
-fi
+#+ 2018-1-31: Install and update [Blockstack](https://blockstack.org/)
+#+
+#+ * 2024-3-12: Uninstalled because it is not maintained upstream.
+##
+#brew list --cask blockstack >/dev/null 2>&1 || brew install --cask blockstack
+#if [[ $(brew outdated | grep -c blockstack) > 0 ]]; then
+#    if [[ -e '/Applications/Blockstack.app' || -z "$(ls -A '/Applications/Blockstack.app')" ]]; then
+#           osascript -e 'quit app "Blockstack"' && rm -rf '/Applications/Blockstack.app'
+#    fi
+#    brew reinstall --cask blockstack
+#fi
 
 
 ################################################################################
