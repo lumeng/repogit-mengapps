@@ -1234,6 +1234,13 @@ brew list --cask airdroid || brew install --cask airdroid
 brew list --cask cyberduck >/dev/null 2>&1 || brew install --cask cyberduck
 
 
+
+################################################################################
+#+ 2024-3-12: Install [temurin](https://adoptium.net).
+#+ 
+##
+brew list --cask temurin >/dev/null 2>&1 || brew install --cask temurin
+
 ################################################################################
 ## 2020-3-26: Install [Zoom](https://zoom.us).
 #brew list --cask zoomus >/dev/null 2>&1 || brew install --cask zoomus
@@ -1258,14 +1265,31 @@ fi
 
 ################################################################################
 ## 2020-6-11: Install [JDownloader](https://jdownloader.com).
+#+
+#+ * 2024-3-12: Uninstalled adoptopenjdk which is superseded by temurin
 #+ * First install JDK 8 which is required by jDownloader.
 ##
 
+##------------------------------------------------------------------------------
+## 2020-6-23: Install OpenJDK.
+#+ 2020-07-20: Change openjdk from cask to formula.
+#+
+#+
+#+ brew list openjdk >/dev/null 2>&1 || brew install openjdk
+#+ brew list --cask adoptopenjdk >/dev/null 2>&1 || brew install --cask adoptopenjdk
+#+
+#+ alternative JDK from OpenJDK:
+#+ brew list --cask homebrew/cask-versions/adoptopenjdk8 >/dev/null 2>&1 || brew install --cask homebrew/cask-versions/adoptopenjdk8
+#+
+#+ brew list --cask temurin8 >/dev/null 2>&1 || brew install --cask homebrew/cask-versions/temurin8
+##
 
-## alternative JDK from OpenJDK:
-## brew list --cask homebrew/cask-versions/adoptopenjdk8 >/dev/null 2>&1 || brew install --cask homebrew/cask-versions/adoptopenjdk8
-#brew list --cask temurin8 >/dev/null 2>&1 || brew install --cask homebrew/cask-versions/temurin8
+##------------------------------------------------------------------------------
+## temurin
+brew list --cask temurin >/dev/null 2>&1 || brew install --cask temurin
 
+##------------------------------------------------------------------------------
+## jdownloader
 brew list --cask jdownloader >/dev/null 2>&1 || brew install --cask jdownloader
 if [[ $(brew outdated | grep -c jdownloader) > 0 ]]; then
     if [[ -e '/Applications/jDownloader 2.0.app' || -z "$(ls -A '/Applications/jDownloader 2.0.app')" ]]; then
@@ -1305,16 +1329,6 @@ if [[ $(brew outdated | grep -c skitch) > 0 ]]; then
     fi
     brew reinstall --cask skitch
 fi
-
-
-################################################################################
-## 2020-6-23: Install OpenJDK.
-#+ 2020-07-20: Change openjdk from cask to formula.
-#+
-##
-brew list openjdk >/dev/null 2>&1 || brew install openjdk
-brew list --cask adoptopenjdk >/dev/null 2>&1 || brew install --cask adoptopenjdk
-
 
 ################################################################################
 ## 2020-6-23: Install curl.
