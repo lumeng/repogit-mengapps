@@ -225,9 +225,11 @@ fi
 
 ################################################################################
 #+ 2023-8-9 Intsall [exa](https://the.exa.website)
+#+
+#+ * 2024-3-12: Uninstalled because it is not maintained upstream.
 ##
 
-brew list exa >/dev/null 2>&1 || brew install exa
+# brew list exa >/dev/null 2>&1 || brew install exa
 
 
 ################################################################################
