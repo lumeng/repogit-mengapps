@@ -83,6 +83,21 @@ brew doctor
 
 
 ################################################################################
+#+ 2024-3-12 Intsall Kindle.
+#+
+##
+
+brew install --cask kindle send-to-kindle
+
+################################################################################
+#+ 2024-3-12 Intsall openssl.
+#+
+##
+
+brew list openssl >/dev/null 2>&1 || brew install openssl
+
+
+################################################################################
 #+ 2024-3-3 Intsall [Fontforge](https://www.fontforge.org).
 #+
 ##
