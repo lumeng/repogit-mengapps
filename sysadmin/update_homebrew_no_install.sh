@@ -78,7 +78,7 @@ cd "$(brew --repo)" && git fetch && git reset --hard origin/master && git clean 
 ####
 
 ## Fix owner of files and folders recursively.
-sudo chown -R root:wheel /usr/local
+## sudo chown root:wheel /usr/local ## This is no longer necessary nor possible as of 2024-3 (macOS 14.4, Homebrew 4.1.0) as /usr/local is by default owned by root:wheel and not changeable.
 sudo chown -R $(whoami):wheel $(brew --prefix)/* /opt/homebrew-cask
 sudo chown -R $(whoami) "$HOME/Library/Caches/Homebrew"
 
