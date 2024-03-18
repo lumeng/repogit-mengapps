@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 ##############################################################################
 #+ Bash script to open something, usually an URL, in a browser app.
