@@ -22,9 +22,15 @@ if [[ $DEBUG_PRINT_Q ]]; then
 else
     :
 fi
+
+if [[ "$(uname -o)" == "Darwin" ]]; then
     BROWSER_BIN='/Applications/Firefox.app'
     BROWSER_BIN='/Applications/Google Chrome.app'
     BROWSER_BIN='/Applications/Thorium.app'
+elif [[ "$(uname -o)" == "Linux" ]]; then
+    BROWSER_BIN='/usr/bin/firefox'
+    BROWSER_BIN='/usr/bin/google-chrome-stable'
+fi
 
     if [[ "${DO_NOT_DISTURB}" = "${TRUE_VALUE}" ]]; then
 	#echo "${DO_NOT_DISTURB}"
