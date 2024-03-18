@@ -12,9 +12,16 @@
 
 TRUE_VALUE=true
 
-## 
-if [[ "$(uname -o)" = 'Darwin' ]]; then
+DEBUG_PRINT_Q=false
+#DEBUG_PRINT_Q=true
 
+DEBUG_LEVEL="DEBUG"
+
+if [[ $DEBUG_PRINT_Q ]]; then
+    DEBUG_PRINT_BIN=echo
+else
+    :
+fi
     BROWSER_BIN='/Applications/Firefox.app'
     BROWSER_BIN='/Applications/Google Chrome.app'
     BROWSER_BIN='/Applications/Thorium.app'
