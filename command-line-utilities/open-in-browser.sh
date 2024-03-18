@@ -7,10 +7,10 @@
 ## set up the DO_NOT_DISTURB environment variable:
 
 #source ~/bin/symlinks/my_environment
-#DO_NOT_DISTURB="false"
-#DO_NOT_DISTURB="true"
+#DO_NOT_DISTURB=false
+#DO_NOT_DISTURB=true
 
-TRUE_VALUE="true"
+TRUE_VALUE=true
 
 ## 
 if [[ "$(uname -o)" = 'Darwin' ]]; then

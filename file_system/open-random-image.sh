@@ -2,10 +2,10 @@
 
 ## set up the DO_NOT_DISTURB environment variable:
 #source ~/bin/symlinks/my_environment
-#DO_NOT_DISTURB="false"
-#DO_NOT_DISTURB="true"
+#DO_NOT_DISTURB=false
+#DO_NOT_DISTURB=true
 
-my_TRUE_VALUE="true"
+my_TRUE_VALUE=true
 
 my_VIEWER_APP="Preview"
 
