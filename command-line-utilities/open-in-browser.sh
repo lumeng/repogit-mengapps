@@ -32,14 +32,14 @@ elif [[ "$(uname -o)" == "Linux" ]]; then
     BROWSER_BIN='/usr/bin/google-chrome-stable'
 fi
 
-    if [[ "${DO_NOT_DISTURB}" = "${TRUE_VALUE}" ]]; then
-	#echo "${DO_NOT_DISTURB}"
-	#echo "DO_NOT_DISTURB is true!"
-	:
-    else
-	##echo "DO_NOT_DISTURB is NOT true!"
-	open -na $BROWSER_BIN --args --profile-directory="Default" "$1"
-    fi
+if [[ $DO_NOT_DISTURB = $TRUE_VALUE ]]; then
+    $DEBUG_PRINT_BIN "[INFO] ${DO_NOT_DISTURB}"
+    $DEBUG_PRINT_BIN "[INFO] DO_NOT_DISTURB is true!"
+    :
+else
+    $DDEBUG_PRINT_BIN "[DEBUG] DO_NOT_DISTURB is NOT true!"
+    $DEBUG_PRINT_BIN "[DEBUG] \$BROWSER_BIN: $BROWSER_BIN"
+    open -na $BROWSER_BIN --args --profile-directory="Default" "$1"
 fi
 
 ## END
