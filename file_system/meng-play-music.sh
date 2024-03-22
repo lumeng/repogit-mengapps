@@ -20,7 +20,7 @@ fi
 ## Define find command.
 if [[ $(hostname) == 'x3872' ]]; then
     FIND_CMD='/usr/bin/find'
-elif [[ $(uname) == 'Darwin' ]]; then
+elif [[ $(uname -s) == 'Darwin' ]]; then
     FIND_CMD=/usr/local/bin/gfind
 else
     FIND_CMD=$(which find)
@@ -53,7 +53,7 @@ while getopts ":msr" opt; do
   esac
 done
 
-if [[ $(uname) == 'Darwin' ]]; then
+if [[ $(uname -s) == 'Darwin' ]]; then
     /usr/bin/osascript -e "set Volume 3"
 fi
 
@@ -61,7 +61,7 @@ fi
 if [[ $(hostname) == 'x3872' ]]; then
     #MY_PLAYER=wslview
     MY_PLAYER='/mnt/c/Program Files/VideoLAN/VLC/vlc.exe'
-elif [[ $(uname) == 'Darwin' ]]; then
+elif [[ $(uname -s) == 'Darwin' ]]; then
     MY_PLAYER='/usr/local/bin/vlc --intf=macosx' # --intf: dummy, lua, c.f. https://wiki.videolan.org/Interfaces/
 else
     MY_PLAYER=$(which vlc)

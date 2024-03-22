@@ -8,11 +8,11 @@ TIMESTAMP="$(date +%s)"
 OUTPUTFILE="${TMPSUBDIR}/list_of_large_files__${TIMESTAMP}.txt"
 touch $OUTPUTFILE
 
-if [[ $(uname) == 'Darwin' ]]; then
+if [[ $(uname -s) == 'Darwin' ]]; then
     type gfind >/dev/null 2>&1 || { echo >&2 "gfind is not installed. Aborting."; exit 1; }
 fi
 
-if [[ $(uname) == 'Darwin' ]]; then
+if [[ $(uname -s) == 'Darwin' ]]; then
     FIND_CMD=gfind
 else
     FIND_CMD=find

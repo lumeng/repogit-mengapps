@@ -6,7 +6,7 @@
 ##
 
 ## If brew is not installed, exit.
-if [[ $(uname) == 'Darwin' ]]; then
+if [[ $(uname -s) == 'Darwin' ]]; then
     type brew >/dev/null 2>&1 || { echo >&2 "Homebrew is not installed. Aborting."; exit 1; }
 fi
 
@@ -30,7 +30,7 @@ fi
 ##
 
 ## 2017-7-20： Install Python.
-if [[ $(uname) == 'Darwin' ]]; then
+if [[ $(uname -s) == 'Darwin' ]]; then
     type brew >/dev/null 2>&1 || { echo >&2 "Homebrew is not installed. Aborting."; exit 1; }
     (brew list python3 > /dev/null && brew upgrade python3) || { echo >&2 "Python3 is not installed via Homebrew. Aborting."; exit 1; }
 fi
@@ -41,11 +41,11 @@ fi
 ##
 
 ## On macOS, use /usr/local/bin
-if [[ $(uname) == 'Darwin' && -d '/usr/local/bin' ]]; then
+if [[ $(uname -s) == 'Darwin' && -d '/usr/local/bin' ]]; then
     export PATH="/usr/local/bin:$PATH"  ## Make sure brew is on the path before checking its existence.
 fi
 
-if [[ $(uname) == 'Darwin' && -d '/usr/local/opt/python/libexec/bin' ]]; then
+if [[ $(uname -s) == 'Darwin' && -d '/usr/local/opt/python/libexec/bin' ]]; then
     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 fi
 

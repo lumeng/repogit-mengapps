@@ -6,8 +6,8 @@
 ##
 
 ## Abort if not on Mac OS X.
-if [[ ! $(uname) == 'Darwin' ]]; then
-    echo >&2 "Since Homebrew is a package management system for macOS (formerly known as Mac OS X), it does not make sense to update it on $(uname). Abort."
+if [[ ! $(uname -s) == 'Darwin' ]]; then
+    echo >&2 "Since Homebrew is a package management system for macOS (formerly known as Mac OS X), it does not make sense to update it on $(uname -s). Abort."
 	exit 1
 fi
 
