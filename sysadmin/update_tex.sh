@@ -25,8 +25,42 @@ if [[ ! -d $TEXMFHOME ]]; then
 	mkdir $TEXMFHOME
 fi
 
+
 ##
-#+ Update 
+#+ Fix the owner and group of sub-directories and files in /usr/local
+#+
+##
+sudo chown -R $(id -un):wheel \
+     /usr/local/texlive \
+     /usr/local/bin \
+     /usr/local/etc \
+     /usr/local/include \
+     /usr/local/lib \
+     /usr/local/opt \
+     /usr/local/sbin \
+     /usr/local/share
+
+sudo chown -R $(id -un) \
+     $HOME/Library/texmf
+
+##
+#+ Fix the permission sub-directories and files in /usr/local
+#+
+##
+sudo chmod -R u+rw \
+     /usr/local/texlive \
+     /usr/local/bin \
+     /usr/local/etc \
+     /usr/local/include \
+     /usr/local/lib \
+     /usr/local/opt \
+     /usr/local/sbin \
+     /usr/local/share
+
+sudo find $(brew --prefix) -type d -exec chmod ug+x '{}' \;
+
+##
+#+ Update
 #+
 #+
 
@@ -40,6 +74,7 @@ sudo tlmgr backup --all --clean
 sudo tlmgr update --all
 
 sudo tlmgr backup --all --clean=0
+
 
 ################################################################################
 #+ Install softwares.
