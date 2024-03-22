@@ -22,7 +22,7 @@ export PATH=/Library/TeX/texbin/:${BASIC_PATH}
 export TEXMFHOME=$(kpsewhich -var-value=TEXMFHOME)
 
 if [[ ! -d $TEXMFHOME ]]; then
-	mkdir $TEXMFHOME
+    mkdir $TEXMFHOME
 fi
 
 
