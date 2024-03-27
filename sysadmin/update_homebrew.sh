@@ -83,11 +83,20 @@ brew doctor
 
 
 ################################################################################
+#+ 2024-3-21 Intsall [Microsoft Remote Desktop](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466).
+#+
+##
+
+brew install --cask microsoft-remote-desktop
+
+
+################################################################################
 #+ 2024-3-12 Intsall Kindle.
 #+
 ##
 
 brew install --cask kindle send-to-kindle
+
 
 ################################################################################
 #+ 2024-3-12 Intsall openssl.
