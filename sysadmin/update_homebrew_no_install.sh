@@ -65,13 +65,9 @@ type $FIND_BIN >/dev/null 2>&1 || ( echo "[ERROR] Install GNU find executable fi
 #+ * http://apple.stackexchange.com/questions/277386/how-to-upgrade-homebrew-itself-not-softwares-formulas-installed-by-it-on-macos
 #+ * http://discourse.brew.sh/t/how-to-upgrade-brew-stuck-on-0-9-9/33
 
-if [[ -d "$(brew --prefix)/Homebrew" ]]; then
-    echo "[DEBUG] Start checking and fixing owner, group, and perission of $(brew --prefix)/Homebrew ..."
-    sudo chown -R $(id -un):wheel "$(brew --prefix)/Homebrew"
-    sudo chmod -R u+rw $(brew --prefix)/Homebrew
-    $FIND_BIN $(brew --prefix)/Homebrew -type d -exec sudo chmod ug+x '{}' \;
+if [[ -d "$(brew --repo)" ]]; then
+    cd "$(brew --repo)" && git fetch && git reset --hard origin/master && git clean -i
 fi
-cd "$(brew --repo)" && git fetch && git reset --hard origin/master && git clean -i
 
 
 ##############################################################################
