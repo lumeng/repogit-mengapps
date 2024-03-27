@@ -19,11 +19,16 @@
 
 if [[ $(uname -s) == 'Darwin' ]]; then
     if [[ -f /usr/local/bin/gfind ]]; then
-	FIND_BIN=/usr/local/bin/gfind
+        FIND_BIN=/usr/local/bin/gfind
+    else
+        FIND_BIN=find
     fi
 fi
 
 type $FIND_BIN >/dev/null 2>&1 || ( echo "[ERROR] Install GNU find executable first!" && exit 1 )
+
+[[ ! $($FIND_BIN --version) == *GNU* ]] && ( echo "[ERROR] Install GNU find executable first!" && exit 1 )
+
 
 
 ################################################################################
