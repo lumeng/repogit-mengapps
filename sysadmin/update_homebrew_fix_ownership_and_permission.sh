@@ -41,16 +41,16 @@ type $FIND_BIN >/dev/null 2>&1 || ( echo "[ERROR] Install GNU find executable fi
 if [[ -d "$(brew --prefix)/Homebrew" ]]; then
     echo "[INFO] Checking and fixing owner, group of $(brew --prefix)/Homebrew:"
     $FIND_BIN "$(brew --prefix)/Homebrew" \( -not -user $(id -un) \) -or \( -not -group wheel \) \
-	      -exec ls -l '{}' \; \
-	      -exec sudo chown $(id -un):wheel '{}' \;
+              -exec ls -l '{}' \; \
+              -exec sudo chown $(id -un):wheel '{}' \;
     echo "[INFO] Checking and fixing rw permission of $(brew --prefix)/Homebrew:"
     $FIND_BIN "$(brew --prefix)/Homebrew" -not -perm -u+rw \
-	      -exec ls -l '{}' \; \
-	      -exec sudo chmod u+rw '{}' \;
+              -exec ls -l '{}' \; \
+              -exec sudo chmod u+rw '{}' \;
     echo "[INFO] Checking and fixing x permission of sub-directories in $(brew --prefix)/Homebrew:"
     $FIND_BIN "$(brew --prefix)/Homebrew" -type d -not -perm -ug+x \
-	      -exec ls -l '{}' \; \
-	      -exec sudo chmod ug+x '{}' \;
+              -exec ls -l '{}' \; \
+              -exec sudo chmod ug+x '{}' \;
 fi
 
 
@@ -80,8 +80,8 @@ fi
 if [[ -d $(brew --prefix) ]]; then
     echo "[INFO] Checking and fixing owner and group for $(brew --prefix)/*:"
     $FIND_BIN $(brew --prefix) -mindepth 1 \( -not -user root \) -or \( -not -group wheel \) \
-	      -exec ls -l '{}' \; \
-	      -exec sudo chown root:wheel '{}' \;
+              -exec ls -l '{}' \; \
+              -exec sudo chown root:wheel '{}' \;
 fi
 
 
@@ -105,10 +105,10 @@ DIRS=(\
 for dir in $DIRS
 do
     if [[ -d $dir ]]; then
-	echo "[INFO] Checking and fixing owner and group for $dir:"
-	$FIND_BIN $dir \( -not -user $(id -un) \) -or \( -not -group wheel \) \
-		  -exec ls -l '{}' \; \
-		  -exec sudo chown $(id -un):wheel '{}' \;
+        echo "[INFO] Checking and fixing owner and group for $dir:"
+        $FIND_BIN $dir \( -not -user $(id -un) \) -or \( -not -group wheel \) \
+                  -exec ls -l '{}' \; \
+                  -exec sudo chown $(id -un):wheel '{}' \;
     fi
 done
 
@@ -116,24 +116,24 @@ done
 if [[ -d /opt/homebrew-cask ]]; then
     echo "[INFO] Checking and fixing owner and group for /opt/homebrew-cask:"
     $FIND_BIN /opt/homebrew-cask \( -not -user $(id -un) \) -or \( -not -group wheel \) \
-	      -exec ls -l '{}' \; \
-	      -exec sudo chown $(id -un):wheel '{}' \;
+              -exec ls -l '{}' \; \
+              -exec sudo chown $(id -un):wheel '{}' \;
     echo "[INFO] Checking and fixing permission for /opt/homebrew-cask:"
     $FIND_BIN /opt/homebrew-cask -not -perm -u+rw \
-	      -exec ls -l '{}' \; \
-	      -exec sudo chmod u+rw '{}' \;
+              -exec ls -l '{}' \; \
+              -exec sudo chmod u+rw '{}' \;
 fi
 
 
 if [[ -d $HOME/Library/Caches/Homebrew ]]; then
     echo "[INFO] Checking and fixing owner and group for $HOME/Library/Caches/Homebrew:"
     $FIND_BIN "$HOME/Library/Caches/Homebrew" -not -user $(id -un) \
-	      -exec ls -l '{}' \; \
-	      -exec sudo chown $(id -un) '{}' \;
+              -exec ls -l '{}' \; \
+              -exec sudo chown $(id -un) '{}' \;
     echo "[INFO] Checking and fixing permission for $HOME/Library/Caches/Homebrew:"
     $FIND_BIN "$HOME/Library/Caches/Homebrew" -not -perm -u+rw \
-	      -exec ls -l '{}' \; \
-	      -exec sudo chmod u+rw '{}' \;
+              -exec ls -l '{}' \; \
+              -exec sudo chmod u+rw '{}' \;
 fi
 
 
@@ -152,10 +152,10 @@ DIRS=(\
 for dir in $DIRS
 do
     if [[ -d $dir ]]; then
-	echo "[INFO] Checking and fixing x permission of sub-directories in $dir:"
-	$FIND_BIN $dir -type d -not -perm -ug+x \
-		  -exec ls -l '{}' \; \
-		  -exec sudo chmod ug+x '{}' \;
+        echo "[INFO] Checking and fixing x permission of sub-directories in $dir:"
+        $FIND_BIN $dir -type d -not -perm -ug+x \
+                  -exec ls -l '{}' \; \
+                  -exec sudo chmod ug+x '{}' \;
     fi
 done
 
