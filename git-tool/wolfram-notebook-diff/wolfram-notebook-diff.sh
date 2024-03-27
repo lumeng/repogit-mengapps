@@ -4,7 +4,7 @@ DIFF_RESULT=$(/usr/bin/env wolfram-notebook-diff.wls "$1" "$2")
 
 echo $DIFF_RESULT
 
-if [[ $(uname) == 'Linux' ]]; then
+if [[ $(uname -s) == 'Linux' ]]; then
     if [[ $(type xdg-open) ]]; then
 	OPEN_BIN=xdg-open
     elif [[ $(type Mathematica) ]]; then
@@ -13,7 +13,7 @@ if [[ $(uname) == 'Linux' ]]; then
 	echo "[ERROR] cannot find a program to open Wolfram notebooks."
 	exit 1
     fi
-elif [[ $(uname) == 'Darwin' ]]; then
+elif [[ $(uname -s) == 'Darwin' ]]; then
     OPEN_BIN=open
 fi
 
