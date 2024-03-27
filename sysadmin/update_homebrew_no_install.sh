@@ -69,88 +69,9 @@ if [[ -d "$(brew --prefix)/Homebrew" ]]; then
     echo "[DEBUG] Start checking and fixing owner, group, and perission of $(brew --prefix)/Homebrew ..."
     sudo chown -R $(id -un):wheel "$(brew --prefix)/Homebrew"
     sudo chmod -R u+rw $(brew --prefix)/Homebrew
-    $FIND_BIN $(brew --prefix)/Homebrew -type d -exec sudo chmod ug+x '{}' \;   
+    $FIND_BIN $(brew --prefix)/Homebrew -type d -exec sudo chmod ug+x '{}' \;
 fi
 cd "$(brew --repo)" && git fetch && git reset --hard origin/master && git clean -i
-
-
-##############################################################################
-#+ Fix ownership and permission of Homebrew related file paths.
-#+
-#+ * c.f.
-#+   * <https://apple.stackexchange.com/questions/1393/are-my-permissions-for-usr-local-correct>
-#+   * <https://www.google.com/search?q=%22%2Fusr%2Flocal%22+%22root%3Awheel%22+homebrew>
-#+   * https://apple.stackexchange.com/questions/470617/safe-way-to-fix-ownership-and-permission-of-homebrew-related-directories-as-part
-#+ * Old remark (possibly circa 2020 or earlier):
-#+ Homebrew no longer needs to have ownership of /usr/local. If you wish you can
-#+ return /usr/local to its default ownership with:
-#+ bash% sudo chown root:wheel /usr/local
-#+
-#+ ```
-#+ if [[ -d /usr/local/munki ]]; then
-#+ sudo chown -R root:wheel /usr/local/munki
-#+ sudo chmod -R o-w /usr/local/munki
-#+ fi
-#+ ```
-#+
-####
-
-#+ Fix owner of files and folders recursively.
-#+ sudo chown root:wheel /usr/local ## This is no longer necessary nor
-#+ possible as of 2024-3 (macOS 14.4, Homebrew 4.1.0) as /usr/local is by
-#+ default owned by root:wheel and not changeable.
-echo "[INFO] Start checking and fixing file ownership and permission:"
-
-
-#+ Finding sub-directories and files in $(brew --prefix) that do not have
-#+ ownership as $(id -un):wheel
-#+ This has been superseded by the following four chown commands that do
-#+ not run $FIND_BIN for better clarity:
-#+
-#$FIND_BIN "$(brew --prefix)" -mindepth 1 -not -user $(id -un) -or -not -group wheel -exec sudo chown $(id -un):wheel '{}' \;
-#$FIND_BIN /opt/homebrew-cask -not -user $(id -un) -or -not -group wheel -exec sudo chown $(id -un):wheel '{}' \;
-#$FIND_BIN "$HOME/Library/Caches/Homebrew" -not -user $(id -un) -exec sudo chown $(id -un) '{}' \;
-
-echo "[INFO] sudo chown -R root:wheel $(brew --prefix)/*:"
-sudo chown -R root:wheel $(brew --prefix)/*
-
-echo "[INFO] sudo chown -R $(id -un):wheel <various /usr/local/XXX directories required by Homebrew>:"
-sudo chown -R $(id -un):wheel \
-     /usr/local/Caskroom \
-     /usr/local/Cellar \
-     /usr/local/Frameworks \
-     /usr/local/Homebrew \
-     /usr/local/bin \
-     /usr/local/etc \
-     /usr/local/include \
-     /usr/local/lib \
-     /usr/local/opt \
-     /usr/local/sbin \
-     /usr/local/share \
-     /usr/local/var/homebrew
-
-echo "[INFO] sudo chown -R $(id -un):wheel /opt/homebrew-cask"
-sudo chown -R $(id -un):wheel /opt/homebrew-cask
-
-echo "[INFO] sudo chown -R $(id -un) $HOME/Library/Caches/Homebrew"
-sudo chown -R $(id -un) "$HOME/Library/Caches/Homebrew"
-
-#+
-#+ Fix read and write permission of files and folders recursively for the
-#+ user so Homebrew can create and modify files there for installing
-#+ softwares without using sudo.
-echo "[INFO] sudo chmod -R u+rw $(brew --prefix)/* /opt/homebrew-cask $HOME/Library/Caches/Homebrew"
-sudo chmod -R u+rw $(brew --prefix)/* /opt/homebrew-cask "$HOME/Library/Caches/Homebrew"
-
-#+ Fix execute permission of folders recursively, so content inside
-#+ are accessible by the user and the group
-#+ (c.f. <https://superuser.com/questions/168578/why-must-a-folder-be-executable>.)
-#+
-echo "[INFO] sudo $FIND_BIN $(brew --prefix) /opt/homebrew-cask $HOME/Library/Caches/Homebrew -type d -exec chmod ug+x '{}' \;"
-sudo $FIND_BIN $(brew --prefix) /opt/homebrew-cask "$HOME/Library/Caches/Homebrew" -type d -exec chmod ug+x '{}' \;
-
-## Fix write permission of zsh folders. c.f. <https://archive.ph/dL8U1>
-type zsh >/dev/null 2>&1 && type compaudit >/dev/null 2>&1 && compaudit | xargs chmod g-w
 
 
 ##############################################################################
@@ -160,7 +81,7 @@ type zsh >/dev/null 2>&1 && type compaudit >/dev/null 2>&1 && compaudit | xargs 
 brew tap buo/cask-upgrade    # install `brew-cask-upgrade`
 
 #brew cu pin intellij-idea     # pin the cask you want
-brew cu unpin intellij-idea    
+brew cu unpin intellij-idea
 
 #+ Update, upgrade, cleanup, diagnose
 brew update
