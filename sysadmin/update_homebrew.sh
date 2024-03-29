@@ -95,7 +95,8 @@ brew install --cask microsoft-remote-desktop
 #+
 ##
 
-brew install --cask kindle send-to-kindle
+brew list --cask kindle >/dev/null 2>&1 || brew install --cask kindle
+brew list --cask send-to-kindle >/dev/null 2>&1 || brew install --cask send-to-kindle
 
 
 ################################################################################
