@@ -83,12 +83,19 @@ brew doctor
 
 
 ################################################################################
+#+ 2024-3-21 Intsall [Fluent Reader](https://hyliu.me/fluent-reader/)
+#+
+##
+
+brew list --cask fluent-reader >/dev/null 2>&1 || brew install --cask fluent-reader
+
+
+################################################################################
 #+ 2024-3-21 Intsall [Microsoft Remote Desktop](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466).
 #+
 ##
 
-brew install --cask microsoft-remote-desktop
-
+brew list --cask microsoft-remote-desktop >/dev/null 2>&1 || brew install --cask microsoft-remote-desktop
 
 ################################################################################
 #+ 2024-3-12 Intsall Kindle.
