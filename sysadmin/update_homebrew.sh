@@ -90,6 +90,14 @@ brew list visual-studio-code >/dev/null 2>&1 || brew install visual-studio-code
 
 
 ################################################################################
+#+ 2024-4-7 Intsall [ImageMagick](https://imagemagick.org)
+#+
+##
+
+brew list --cask imagemagick >/dev/null 2>&1 || brew install --cask imagemagick
+
+
+################################################################################
 #+ 2024-3-21 Intsall [Fluent Reader](https://hyliu.me/fluent-reader/)
 #+
 ##
