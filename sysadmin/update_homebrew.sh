@@ -81,6 +81,13 @@ brew doctor
 #+ Install softwares.
 ##
 
+################################################################################
+#+ 2024-6-13 Intsall [VS Code](https://code.visualstudio.com/)
+#+
+##
+
+brew list visual-studio-code >/dev/null 2>&1 || brew install visual-studio-code
+
 
 ################################################################################
 #+ 2024-3-21 Intsall [Fluent Reader](https://hyliu.me/fluent-reader/)
