@@ -130,6 +130,21 @@ brew list openssl >/dev/null 2>&1 || brew install openssl
 
 
 ################################################################################
+#+ 2024-5-9 Intsall [Arc browser](https://arc.net).
+#+
+##
+
+brew list --cask arc >/dev/null 2>&1 || brew install --cask arc
+
+if [[ $(brew outdated | grep -c arc) > 0 || -z "$(ls -A '/Applications/Arc.app')"  ]]; then
+    if [[ -e '/Applications/Arc.app' ]]; then
+        osascript -e 'quit app "Arc"' && rm -rf '/Applications/Arc.app'
+    fi
+    brew reinstall arc
+fi
+
+
+################################################################################
 #+ 2024-3-3 Intsall [Fontforge](https://www.fontforge.org).
 #+
 ##
